@@ -126,13 +126,85 @@ volumetric has a circular channel filled with powder that spins based on the mas
 
 [14](/Research_FIles/October/Development_of_a_generalized_parameter_window.pdf)
 
-has a lot of info on size and speed 
+Fig. 7. Critical impact velocity for a 25 lm particle calculated for different
+materials with Eq. (8). The dark grey levels indicate a range of uncertainty
+with respect to the range of available materials data
+
+
 
 [15](/Research_FIles/October/A_Review_of_Advances_in_Cold_Spray_Additive_Manufacturing.pdf)
 
 has info on parameter correlation with DE and stuff like that
 
+Table 1 lists the Vcr and Ver for the most CSAM-ed materials
+
+Table 2. Correlation behavior among the different input/output for CS 
+[!alt text](/Research_FIles/October/empirical_relations_of_cold_spray_parameters.png)
+
 [16](/Research_FIles/October/Cold_spray_deposition_for_additive_manufacturing_of_freeform_structural.pdf)
 
 300 - 400 cm^3/hr but quoted at 5-20% porosity so probably low mass (p sure not the 2kg/hr seen)
 
+[17](https://www.nottingham.ac.uk/research/groups/cse/facilities/processing-equipment.aspx)
+
+nottingham cold spray set up
+
+
+[18](/Research_FIles/October/Establishing_a_Cold_Spray_Particle_Deposition_Window_on_Polymer_Substrate.pdf)
+
+thought it had info on hardness wrt particle diameter but keeping cos maybe useful?
+
+
+[19](/Research_FIles/October/Experimental_and_Numerical_Investigations_of_Titanium.pdf)
+
+thought it had info on hardness wrt particle diameter but keeping cos maybe useful?
+
+
+[20](/Research_FIles/October/Cold_Spraying_of_Titanium_A_Review_of_Bonding_Mechanisms.pdf)
+
+The cooling rate of the material decreases with increasing particle size. 
+The cooling rate has to be “low enough” to promote shear instability and on the other hand, “high enough” to let the interface solidify and finish the bonding process.
+
+The shear loading under critical conditions leads to what is termed as adiabatic shear instability where thermal softening is locally dominant over strain and strain rate hardening, which leads to a discontinuous jump in strain and temperature and breakdown of flow stresses [6]. This adiabatic shear instability phenomenon results in viscous flow of material in an outward flowing direction at temperatures close to the melting temperature of the material.
+
+
+[21](/Research_FIles/October/Cold_Spraying_a_materials_perspective.pdf)
+
+The particle impact is associated with viscoplastic deformation of the interacting bodies, leading to (1) sequential compaction of the feedstock powder into a deposit, and (2) metallurgical bonding over a significant fraction of the particle-particle interfaces. Both of these processes are central to obtaining a dense and strong deposit.
+
+incomplete compaction results in high porosity, whereas poor bonding results in low strength of the deposit.
+
+Particles of cold spray powders are typically 10-50 µm in diameter, and the process of particle impact – from the time of initial contact to total dissipation of kinetic energy – takes about 100 ns. 
+
+There are several physical phenomena that play a role in the process of deposition in CS of deformable materials. The most important of these is viscoplastic deformation, which occurs under dynamic shear loading.
+
+[elastic deformation isnt important]
+
+(wikipedia) - Viscoplasticity is a theory in continuum mechanics that describes the rate-dependent inelastic behavior of solids.
+
+This means that for the same impact velocity, larger particles deform more adiabatically, and vice versa. 
+
+The heat generation during plastic deformation, especially under high-strain rates, may lead to strain localisation and shear instability. This condition is normally manifested as shear banding and failure in bulk materials [46].
+
+ During strain softening, the material becomes inherently unstable with respect to plastic deformation, so that localization and shear banding may occur at a critical strain, gamma_cr. Beyond this point, the local strain at the shear band increases sharply to high values, while the overall strain remains almost unchanged up to the point of rupture. As will be discussed later in more detail, this phenomenon is considered to be closely related to particle bonding in CS [40].
+
+Generally, bonding takes place as soon as atomically-flat clean surfaces of two components are brought into contact. In principle, this can occur without a need for heating, fusion or mechanical interlocking. In practice, however, surfaces of metallic components are rarely flat and are usually covered by an oxide layer.
+
+[22](/Research_FIles/October/Performance_Metric_for_Powder_Feeder_Systems_in_Additive_Manufacturing.pdf)
+
+![alt text](/Research_FIles/October/screw_feed.png)
+![alt text](/Research_FIles/October/wheel_feed.png)
+![alt text](/Research_FIles/October/disk_feed.png)
+
+[23](/Research_FIles/October/Vibratory_Powder_Feeding_for_Powder_Bed_Additive_Manufacturing_Using_Water_and_Gas_Atomized_Metal_Powders.pdf)
+
+![alt text](/Research_FIles/October/vibrational_feed.png)
+![alt text](/Research_FIles/October/feed_rate_with_vibrational.png)
+
+[24](/Research_FIles/October/Powder_feeding_in_a_powder_engine_under_different_gas_solid_ratios.pdf)
+
+![alt text](/Research_FIles/October/fluidising_feed_system.png)
+
+[25](https://www.parkerionics.com/powder-coating-equipment/powder-handling-equipment/auger-feed--ace-feed--system_pt30.html)
+
+![alt text](/Research_FIles/October/auger.jpg)

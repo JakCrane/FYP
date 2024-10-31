@@ -42,3 +42,12 @@ mass flow rates of powder
 velocities of powder
 deposition rates
 
+
+
+
+get ppt of current feed systems, look at benefits in space and then translate into space context
+understand the correlation matrix to back up choice of why i would want to 
+time isnt bottleneck quality is 
+low to moderate particle size
+
+make word document on what i wanted to do for the week, what i ended up doing and how i felt about the week
