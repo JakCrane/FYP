@@ -1,7 +1,7 @@
 deliverable for week 44
 
 
-![alt text](/Research_FIles/October/empirical_relations_of_cold_spray_parameters.png)
+![alt text](/Research_Files/October/empirical_relations_of_cold_spray_parameters.png)
 
 need to be checked with Ajit ***
 

@@ -1,0 +1,30 @@
+Command: pyfr run --backend openmp ./Research_Files/November/channel.pyfrm ./Research_Files/November/config.ini
+Exit code: 1
+Standard Output:
+Standard Error:
+Traceback (most recent call last):
+  File "/home/jack/Documents/FYP/FYP_pyenv/bin/pyfr", line 8, in <module>
+    sys.exit(main())
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/__main__.py", line 124, in main
+    args.process(args)
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/__main__.py", line 258, in process_run
+    _process_common(
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/__main__.py", line 237, in _process_common
+    backend = get_backend(args.backend, cfg)
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/backends/__init__.py", line 11, in get_backend
+    return subclass_where(BaseBackend, name=name.lower())(cfg)
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/backends/openmp/base.py", line 56, in __init__
+    self._providers = [k(self) for k in kprovcls]
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/backends/openmp/base.py", line 56, in <listcomp>
+    self._providers = [k(self) for k in kprovcls]
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/backends/openmp/xsmm.py", line 33, in __init__
+    self._wrappers = w = XSMMWrappers()
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/ctypesutil.py", line 16, in __init__
+    self._lib = lib = self._load_library()
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/ctypesutil.py", line 29, in _load_library
+    return load_library(self._libname, self._mode)
+  File "/home/jack/Documents/FYP/FYP_pyenv/lib/python3.10/site-packages/pyfr/ctypesutil.py", line 69, in load_library
+    return ctypes.CDLL(lname, mode=mode)
+  File "/home/jack/.pyenv/versions/3.10.13/lib/python3.10/ctypes/__init__.py", line 374, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: /home/jack/libxsmm/lib/libxsmm.so: undefined symbol: dgemm_
