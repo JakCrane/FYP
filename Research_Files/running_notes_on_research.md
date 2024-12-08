@@ -208,3 +208,56 @@ Generally, bonding takes place as soon as atomically-flat clean surfaces of two 
 [25](https://www.parkerionics.com/powder-coating-equipment/powder-handling-equipment/auger-feed--ace-feed--system_pt30.html)
 
 ![alt text](/Research_Files/October/auger.jpg)
+
+[26](/Research_Files/November/A_gravity-independent_powder-based_additive_manufacturing_process.pdf)
+
+
+
+
+not convinced that screw feeding could work in microgravity so simulated a storage cavity coming off from the nozzle line and images are in /Research_Files/November/Starccm_images
+
+chris cantwell ask about how to simulate it (24/11/24 email sent)
+
+looked at some papers to figure out how the simulations are done
+
+[27](/Research_Files/November/CFD_modelling_of_powder_flow_in_a_continuous_horizontal_mixer.pdf)
+
+[27](/Research_Files/November/CFD-DEM_model_of_a_cold_plasma_assisted_fluidized_bed_powder_coating_process.pdf)
+
+
+
+this was acc useful
+[28](/Research_Files/November/discrete-particle-simulation-of-particle-fluid-flow-model-formulations-and-their-applicability.pdf)
+
+
+to start i want to simulate a geometry using ansys as it claims to be able to do this
+
+to get the geometry i want to use nominal sizes to reduce cost
+found pipe that seems close or atleast a good start that is OuterDiamter = 152.4mm and thickness 3.5mm
+this link has thickness 6.25mm which is larger than simulated but idk where the 3.5mm was found and can only find 3.25
+https://www.aluminium-online.co.uk/product-category/aluminium-tube/aluminium-round-tube/?filter_diameter=152-4mm-6&srsltid=AfmBOooBOb9tkRpl-M447nQHUXg1aj7u2ifmwgI266YiS4VFWTNPvhYZ 
+ran sims to see if this is safe in the 2 load cases 0bar inside, 1bar outside and 10bar inside and 0bar outside
+
+the results can be seen of 0bar inside here
+![alt text](/Research_Files/November/Capture4.PNG)
+this was buckling using
+    YoungsModulus = 68900
+    PoissonsRatio = 0.033
+    Height = 500
+    pressure on outside going in = 0.1
+
+    greatest deflection is 1mm from the results suggesting with end caps we wouldnt expect buckling
+![alt text](/Research_Files/November/Capture8.PNG)
+pressure of 1bar is put on the outside
+highest stress is 0.01 of yield stress so also looks good
+
+results of 10bar inside
+![alt text](/Research_Files/November/Capture7.PNG)
+the load case where we are filling the hopper even to 10 bar it is 0.1 of yield
+
+all look good if not a little low (maybe did something wrong)
+
+moving on to cadding up a geometry taking heavy inspiration from the permiable piston/image below source [3]
+
+[29](https://www.youtube.com/watch?v=7cW08f7ugkU)
+different types of behaviour you can get in fluidised powder bed
