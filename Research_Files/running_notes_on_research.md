@@ -82,7 +82,12 @@ compared to those CS is lower resolution
 
 The process offers material deposition rates of typical 2–7 kg/h [need to validate this]
 
-
+87.6 g/s of Cu powder
+300 standard liters per minute
+8.94 g/mL at 25 °C [8.1](https://www.sigmaaldrich.com/GB/en/product/aldrich/266086?srsltid=AfmBOorlnBo-7y7D9ZJpWqgP9Rl2erRRW8rduaXeQcGV3pTplybTiREa)
+roughly 10mL/s of copper
+vs 5L/s of gas
+0.2% volume
 [9](/Research_Files/October/influence_of_feedstock_pwoder_and_cold_spray_processing_parameters_on_microstructure_and_mechanical_properties.pdf)
 
 
@@ -261,3 +266,94 @@ moving on to cadding up a geometry taking heavy inspiration from the permiable p
 
 [29](https://www.youtube.com/watch?v=7cW08f7ugkU)
 different types of behaviour you can get in fluidised powder bed
+
+started ansys analysis of system. wanted to begin with /Research_Files/December/fluidising_bed_simulation but doing it 3d for the first time using ansys was too complex
+
+rolled back the complexity to the /Research_Files/December/2D_fluidisation_simulation
+
+this is a cross section of the assembly, first want to start with the piston face as an outlet for the gas and the powder inlet as an inlet for gas ( with the walls and the actual gas inlet and outlet parts of the funnel being modelled as walls )
+
+the simulation is all settings default besides 
+    transient time for the solver, 
+    multiphase is on using eulerian model 
+    fluid is default air and a second fluid is generated called al_powder rho = 2700 nu = 1.7894e-05
+    secondary phase was set to granular with 40um size
+    granular viscosity was set to syamlal-obrien
+    all bcs were set to wall besides
+    piston_face was set to pressure outlet at 0Pa and operating condition of gravity in the -y direction
+    powder_outlet was velocity inlet of 0.31m/s for the gas only
+    transient formula is second order implicit
+
+
+    this simulation gave a result that seems reasonable, had difficulty saving the sim as a video but think the anumation on ansys works
+
+next is trying to get the 3d version working
+
+want to do some investigation through simulation as to what sensors i would need where when trying to build the control system for it
+then validate that the simulations are atleast somewhaty representative of the real system through a certain set of tests to be prescribed
+
+going to run with pneumatic actuation of the piston and then at a later date look at permiable
+
+need to look into vacuum grease for o-ring 
+need to look into outgassing of material for an o-ring
+
+
+for 3d sim most is the same besides
+    gas_inlet and gas_outlet are pressure inlet and outlet respectively where inlet pressure is 6bar and outlet is 0
+    powder_outlet is pressure outlet at 3bar
+    powder to gas volume ratio im taking at 0.5% from [8]
+
+
+have two directions, 
+    compare and contrast through simulations the current design and the old design and try and show how it wouldnt work
+    start with current design, assume it works and then run with it and make it
+        downfall for this approach is why this architecture specifically and the project doesnt care about what is testable. (it isnt a valid reason to chose this device solely based on testability)
+
+old design thoughts
+    im microgravity can the powder floating be controlled well enough, thing w fuel where it floats somewhere
+    does it work well or at all in microgravity and prove exactly why not
+
+
+got image of old design, bottom inlet is for gas to fluidise, top inlet touching the mesh is for fluidised powder to flow out of and higher inlet is for venting
+
+to try and see if the simulations are valid im going to try and match what the final experiment was with the current hopper geometry
+
+[30](https://met3dp.com/product/ti6al4v-powder/)
+apparent density of ti64 powder is 60% of its regular density given as 4.43 g/cc in the above reference so 2.66 will be used
+
+the simulation is all settings default besides 
+    transient time for the solver, 
+    multiphase is on using eulerian model 
+    fluid is default air and a second fluid is generated called ti-64-powder rho = 2660 nu = 1.7894e-05
+    secondary phase was set to granular with 40um size
+    granular viscosity was set to syamlal-obrien
+    all bcs were set to wall besides
+    gas inlet was set to 5bar
+    wire_mesh was set to a wall and had specified shear of 0,0 for air and no-slip for the powder 
+    powder_outlet was set to pressure outlet at 0Pa and operating condition of gravity in the -y direction
+    transient formula is second order implicit
+
+hitting negative value of d1 for symalia-param for drag for particles so going to investigate
+syamlal-obrien model is for estimating drag between phases, syamlal-obrien-para is to be able to finetune the parameters to avoid the tendency to over/underestimate bed expansion [https://ansyshelp.ansys.com/account/secured?returnurl=/Views/Secured/corp/v242/en/flu_ug/flu_ug_sec_mphase_using_steps_eulerian.html%23flu_ug_sec_eulermp_using_drag]
+
+ran at 5 bar pressure differential trying to use the mesh, mesh didnt allow gas through so changed the mesh to be just the bottom of the mesh is the filter that the powder would sit on
+ran again with a 5 bar pressure differential with roughly 8000 cells, very weird result and saved as 5_bar_pressure_differential.mpeg
+changed to 5bar in and 4bar at the pressure outlet but still had a weird animation so trying 4.5bar one end 5 bar another and then after finer mesh
+the other change is the previous 2 animations use a 1 in 5 frames saved so the first 0.005s are very fast. I will change the time step to 0.0005 instead of 0.001 and then save every 2 frames not five to check time influence
+
+getting much more standard results with 0.5bar pressure differential and smaller time step. changing to 0.1bar differential to see if i can get something representative in 2D
+
+realised i was initialising at 0bar in the chambar and that initial rush of pressure coming in lead to the strange result
+
+multiphase flow, decided maybe we dont understand the fundamental mechanism for fludiising besides
+journals to look at is
+    journal of fluids
+    multiphase flow
+    chemeng fluidising
+
+whole point is looking for how powder control rate change
+does rampinig add additional functionality
+does it have start stop capabilities
+does duration of simulation match what we have seen
+
+follow up with ruth to check if the powder was disposed (phd student )

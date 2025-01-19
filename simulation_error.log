@@ -1,7 +1,0 @@
-Command: pyfr -p run -b openmp ./Research_Files/November/channel.pyfrm ./Research_Files/November/config.ini
-Exit code: 2
-Standard Output:
-Standard Error:
-usage: pyfr [-h] [--verbose] [--version] [--progress]
-            {import,partition,export,run,restart,ascent,tavg} ...
-pyfr: error: argument --progress/-p: ignored explicit argument ' run'
