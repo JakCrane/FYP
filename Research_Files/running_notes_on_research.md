@@ -357,3 +357,9 @@ does it have start stop capabilities
 does duration of simulation match what we have seen
 
 follow up with ruth to check if the powder was disposed (phd student )
+
+
+trying to do 3d sim now
+running into some issues and the sim is much much slower than the 2d which is to be expected.
+![alt text](/Research_Files/January/scaled_residuals_showing_data_before_crash.png)
+initial guess is that with the increase in dimension the numerical stability of the sim has decreased, i will drop the time step from 0.001 to 0.0001 and if still unstable i will look into learning how to refine a mesh. current sim is with 499000pa on one side and 500000pa on the mesh
