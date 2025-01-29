@@ -376,3 +376,30 @@ since V is super sonic for previous calculations I will increase inlet pressure 
 from the incompressibility calculations (i know M>0.3 but will review this later) I will assume that a mass flow rate of 0.01 * 0.01 * π * 163 * 1.225 = 0.0627kg/s
 
 this mass flow rate caused it to reach millions of bar in the chamber therefore i will retry the calculation guessing values of mass flow rate and then trying to reach a chamber pressure of 5 bar
+
+upon looking back and to make sure i dont forget
+the ###fixed_0p01_bar_pressure### simulations were the 2d ones still and seemed to show different behaviour than the most recent. this could be because they still didnt have mass flow rate bc at the bottom so the powder could leak out
+the ###0p01 diff 3d w mesh refinement### was done as the large mesh was too slow especially at the time steps required for numerical stability being 0.001s
+the next sim produced in the investigation were the ###pressure/powder of 3d working sim###. these had normal gravity and accounted for the fact i wanted the bottom bc to not let powder through. this looks close to what we would expect other than the mass flow rate of the powder looks considerably higher than i would expect
+the most recent set of simulations were ###0 grav 5bar initial pressure### and ###0 grav 4bar initial pressure###. I expected that the starting pressure within the tank would affect the initial velocity of the powder and push it upwards in the tank away from the powder outlet pipe. this didnt seem to happen which could be because the powder doesnt have enough time to accellerate the particles before it normalises the pressure in the tank as from the pressure plots after 0.005s it looked like the pressure had reached the 5.05ish bar it remained at for the rest of the sim. however this could also be because there isnt enough coupling behaviour between the powder and particles. if the particles dont cause the pressure gradient we would expect to see over a fluidising bed then there will be no buoyancy force which is very important in the calculations for particle suspension.
+
+a final simulation is running where the powder starts at the middle to verify that this would even be a problem in the first place but has not yet finished
+
+
+
+
+going onto research again. I am looking at propellant management devices as they are analogous to this situation. 
+(https://en.wikipedia.org/wiki/Propellant_management_device)
+[31](/Research_Files/January/A_Detailed_Historical_Review_of_Propellant_Management.pdf)
+this also outlines the different usecases. it seems that all pmd that do not use surface tension use some kind of piston, bladder or diaphragms.
+
+
+talk to caitlin and get access to workstation with good fluent and has cpu and gpu 4070 12th gen cpu
+research software for fluent
+
+ajit seems convinced that a new design is needed so realistically should start with that ASAP and wrap up the other things at another date
+things to wrap up
+    mesh convergence on the specific study
+    investigate if the gas is being adequately affected by the powder as l.g. gibilaro says there should always be a pressure drop across the fluid but this isnt seen in current simulations
+    simulate powder dropping then being fluidised and dispensed (from /jan/configuration that demands pms.png)
+
