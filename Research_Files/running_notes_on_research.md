@@ -363,3 +363,16 @@ trying to do 3d sim now
 running into some issues and the sim is much much slower than the 2d which is to be expected.
 ![alt text](/Research_Files/January/scaled_residuals_showing_data_before_crash.png)
 initial guess is that with the increase in dimension the numerical stability of the sim has decreased, i will drop the time step from 0.001 to 0.0001 and if still unstable i will look into learning how to refine a mesh. current sim is with 499000pa on one side and 500000pa on the mesh
+
+while using pressure inlet i am getting weird behaviour where the powder seemingly falls out of the bottom bc. Seen in (/Research_Files/January/0p01_diff_3d_w_mesh_refinement.mpeg) so am trying to switch to mass flow rate boundary condition
+
+assuming the chokepoint is the pipe at the outlet and using that to size the mass flow rate of gas
+using a 10mm diameter pipe and incompressibility assumptions
+(taking density as 1.225kg/m^3 as thats what is being used at the moment in the sim)
+    V = root(2 * pressure_diff / rho) = root(2 * 0.01*10^5 / 1.225) = 1632
+
+since V is super sonic for previous calculations I will increase inlet pressure to 499900 (from 499000) as this may have been causing strange behaviour
+
+from the incompressibility calculations (i know M>0.3 but will review this later) I will assume that a mass flow rate of 0.01 * 0.01 * π * 163 * 1.225 = 0.0627kg/s
+
+this mass flow rate caused it to reach millions of bar in the chamber therefore i will retry the calculation guessing values of mass flow rate and then trying to reach a chamber pressure of 5 bar
