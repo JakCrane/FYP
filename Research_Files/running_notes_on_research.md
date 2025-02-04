@@ -403,3 +403,27 @@ things to wrap up
     investigate if the gas is being adequately affected by the powder as l.g. gibilaro says there should always be a pressure drop across the fluid but this isnt seen in current simulations
     simulate powder dropping then being fluidised and dispensed (from /jan/configuration that demands pms.png)
 
+
+for designing the tank
+
+https://www.halfcatrocketry.com/
+useful link on rocketry and a little on piston tanks
+
+
+from meeting with ajit
+
+    what modifications to make to the old set up could be somethign i outline as future work but right now i should follow the avenue that has the most promising results, that being the 2 new designs
+
+    currently have cadded a possible solution following [!alt text](/Research_Files/October/gas_permeable_piston.png) 
+    other possible solution follows [!alt text](/Research_Files/October/fluidised_design.png)
+
+    in the meeting we discovered that i dont really understand the underlying physics behind it. my working theory is:
+        powder bed will expand with the flow of air through the powder.
+        the piston will push down on this expanded powder to contain it but not compact it
+        this will give a regime of reliably fluidised powder that will be close to fully entrained into the flow and therefore easy to control
+
+    next steps are then
+        figure out how much the bed expands,
+        figure out how much force the piston should put on it,
+        figure out what geometry will get a pressure drop across the piston faces of that force value
+        figure out if this is a valid model
