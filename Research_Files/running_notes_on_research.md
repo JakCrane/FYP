@@ -427,3 +427,12 @@ from meeting with ajit
         figure out how much force the piston should put on it,
         figure out what geometry will get a pressure drop across the piston faces of that force value
         figure out if this is a valid model
+
+in trying to find info about fluidisation i found [32](/Research_Files/February/Operation_of_magnetically_assisted_fluidized_beds_in_microgravity.pdf)
+maybe i could think of the other restoring force as magnetic
+
+do deep dive into Powder_feeding_enhancement_of_powder_propellant_supply_system_by_using_gas_permeable_piston and maybe look at their experimental results
+
+try simulate what they got
+
+reading through the paper, first thing to check is that a gear piston does cause a drop in pressure across the two faces of the piston and try and generate some kind of inlet pressure vs outlet pressure vs drop across the faces relation
