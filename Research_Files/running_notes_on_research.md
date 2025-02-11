@@ -436,3 +436,32 @@ do deep dive into Powder_feeding_enhancement_of_powder_propellant_supply_system_
 try simulate what they got
 
 reading through the paper, first thing to check is that a gear piston does cause a drop in pressure across the two faces of the piston and try and generate some kind of inlet pressure vs outlet pressure vs drop across the faces relation
+
+also martin reviewed my cad. the width of the tank is way too large. start with mass i aim to be able to move and atleast half the width smaller. for subtractive manufacturing dont worry about making things thin.
+push fit to 1/4bsp 
+6mm nylon tubing
+shop air and sand
+for output 1/4in swagelock
+
+https://www.metals4u.co.uk/materials/aluminium/aluminium-tube/728-p 
+38.1mm radius - 1.6 thickness pi r^2  gives 0.00419 m^3/m
+with ti being 2.66 g/cc => 2660kg/m
+therefore 11.1454kg/m
+500mm length then gives 5.6kg total but with plunger and stuff aiming for 5kg
+
+pricing
+
+600mm tie rods * 6 = £4.4 * 6
+
+101.6mm cylinder * 90mm = £42.55
+    50mm funnel
+    10mm endcap
+    20mm piston
+
+
+76.2mm tube * 500mm = £9.42
+
+1m of 6mm nylon tubing = £1.74
+
+6mm x 1/4 bspt connector ~= £2 * 4 or 5?
+https://www.advancedfluidsolutions.co.uk/6mm-x-14-bspt-male-stud-push-in-fitting-nylon-pipetube-connector-1661-p.asp 
