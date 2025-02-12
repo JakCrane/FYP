@@ -465,3 +465,7 @@ pricing
 
 6mm x 1/4 bspt connector ~= £2 * 4 or 5?
 https://www.advancedfluidsolutions.co.uk/6mm-x-14-bspt-male-stud-push-in-fitting-nylon-pipetube-connector-1661-p.asp 
+[34](/Research_Files/February/High_Rate_Deposition_in_Cold_Spray.pdf)
+
+
+post ajit meeting. looks good ajit is happy with me starting to gather experimental data
