@@ -437,6 +437,10 @@ try simulate what they got
 
 reading through the paper, first thing to check is that a gear piston does cause a drop in pressure across the two faces of the piston and try and generate some kind of inlet pressure vs outlet pressure vs drop across the faces relation
 
+
+[33](/Research_Files/February/Experimental_investigation_on_mass_flow_rate_measurements_and_feeding_characteristics_of_powder_at_high_pressure.pdf)
+while doing these sims i am finding more information about the empriical relations. [33] suggests that mass flow rate is a linear scale of equations (5), (6) & (7)
+
 also martin reviewed my cad. the width of the tank is way too large. start with mass i aim to be able to move and atleast half the width smaller. for subtractive manufacturing dont worry about making things thin.
 push fit to 1/4bsp 
 6mm nylon tubing
@@ -469,3 +473,4 @@ https://www.advancedfluidsolutions.co.uk/6mm-x-14-bspt-male-stud-push-in-fitting
 
 
 post ajit meeting. looks good ajit is happy with me starting to gather experimental data
+
