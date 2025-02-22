@@ -436,3 +436,6 @@ do deep dive into Powder_feeding_enhancement_of_powder_propellant_supply_system_
 try simulate what they got
 
 reading through the paper, first thing to check is that a gear piston does cause a drop in pressure across the two faces of the piston and try and generate some kind of inlet pressure vs outlet pressure vs drop across the faces relation
+
+[33](/Research_Files/February/Experimental_investigation_on_mass_flow_rate_measurements_and_feeding_characteristics_of_powder_at_high_pressure.pdf)
+while doing these sims i am finding more information about the empriical relations. [33] suggests that mass flow rate is a linear scale of equations (5), (6) & (7)
