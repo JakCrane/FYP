@@ -469,3 +469,27 @@ https://www.advancedfluidsolutions.co.uk/6mm-x-14-bspt-male-stud-push-in-fitting
 
 
 post ajit meeting. looks good ajit is happy with me starting to gather experimental data
+
+https://www.ebay.co.uk/itm/133562315642?_skw=90mm+ABS+plastic+stock&itmmeta=01JKXVFSZH8FJRBW3DSSMFHF5P&hash=item1f18ef337a%3Ag%3AmKsAAOSwuE9fnYyi&itmprp=enc%3AAQAKAAAA0FkggFvd1GGDu0w3yXCmi1elfp7ZQxan4zsUIe2pUSrFE8AAyr0deIR3xPgV1xMguzO3QZQWfHg2JJ1cqbGfN8IBjNuHPq33ilxgXZ6bObwU16URZm2fD75Kf5U65uE8TE2Q%2BYe3Sqvr3sKehyniGLlIgJS3a8XohUgfuo%2FjYnN9TOYl2mC%2B41NNvOyz7XqInCuf4%2BC9GGmCVI10vTUiY1Ja53xBLAngECdbe%2Fq1o3Bnq78r6CyCWBPIx7ydiW6hqRY%2Bg2Y%2FSGtmZB37GEZj5B0%3D%7Ctkp%3ABk9SR_Sfv7ufZQ&var=433021669627
+
+https://www.ebay.co.uk/itm/166173980495?_skw=500mm+acrylic+tube&itmmeta=01JKXV09S24BYWGYRMQGF6NTCW&hash=item26b0bdb74f:g:ce4AAOSwDpxnq4tu&itmprp=enc%3AAQAKAAAA8FkggFvd1GGDu0w3yXCmi1fcstDfwDPvY30ozRAruwSvMRBpIKcgUPmXtkpDNmJ4T5dq8Vr9NVdnWQCc5j1IW3B49WUAKP6fugMSQTPn0OBTi1HPNJYo9PEhaDhyncE%2BUsf5BuOPJAhb4J4FiOpYOztmWych5JFCwF9Qcr%2BY3knSLDpkEdFxiUTVrRkHICENBujmqTyP1kbo1t6GUkJn0dNpJIODRRj7%2Bo6%2Bz%2BzIWj3kryPO%2BGLsupIg%2Fc0BCtWMpcXjkKJcHDYE%2BBJBOolkL4w%2FpMvY3LLgt7IRWGVxO1KmvmDRdc8LI7vAcCb1JfkEPA%3D%3D%7Ctkp%3ABk9SR9ycgbufZQ
+
+
+when designing the prototype i was advised to do radial bolts.
+the stress on the bolt holes was at the limit of damaging the plastic under 7 bar of presure 
+/Research_Files/February/acrylic_tube_4mm_sim.png
+
+to remedy this I will make the wholes larger decreasing the concentration of stress and epoxying in threaded inserts to make the distribution of force more uniform across the whole not just at the top edge
+
+before testing the prototype for my report i want to see if i can get valid simulation results.
+The first thing was verifying a test size for the chokepoint. 4.5mm chokepoint choked with a 1 bar pressure differential.
+This is shown in
+![alt text](/Research_Files/March/choke_point_investigation.png)
+This was a 1 bar pressure differential from 1 bar above atmospheric to atmospheric
+
+had a meeting with the technicians, they pointed out that 4.5mm is wider than the pipes so the choke point was changed to 3.5mm. We also discussed that the sand will sandblast the geometry so either a very hard material or replacable materials should be used like 3d printed ones
+
+They also mentioned for a risk assessment i should either enclose the tank in a case for safety or have pressurised it to double the operating for safety. This leads me to investigate the safety factor for a 10bar pressure.
+
+10 bar across the face of the delrin piece with the o ring results in 4289.2N
+1,000,000*pi*0.0739*0.0739/4
