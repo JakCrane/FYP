@@ -493,3 +493,35 @@ They also mentioned for a risk assessment i should either enclose the tank in a 
 
 10 bar across the face of the delrin piece with the o ring results in 4289.2N
 1,000,000*pi*0.0739*0.0739/4
+
+
+Tank has been pressurised to 7bar absolute and sustained no damage. In the interest of getting some data and going from there, 3bar has been chosen as the operating pressure for the device.
+
+Testing was done with the shop air line and regulating the pressure down to 3 bar. This didnt produce enough force to move the piston and the pressure reg could only maintain the 3 bar with a ball valve just after it and almost entirely closed. This shows that for the mass flow of the line, it will not choke at 3.5mm.
+
+The set up is now going to use a 300 bar nitrogen tank to achieve the mass flow rate required to actually choke the flow through the choke point.
+
+From the choked flow calculator (https://engineeringamp.com/piping/choked_flow) with nitrogen : {
+    MW: 14.0067,
+    T_c: 20 deg c,
+    P_g: 300 kPa,
+    P_atm: 101.325 kPa,
+    z: 1,
+    C_d: 0.61,
+    k: 1.4,
+    d_0: 3.5
+}
+The Mass flow rate is 13.919 kg/h of nitrogen
+nitrogen is 1.205 g/L on wikipedia at 0 degrees C
+This is almost 0.8 L/g so 800 L/kg
+This means 11135.2 L/h or 185.6 L/m
+
+if the chokepoint width is 3mm then the mass flow rate required is 10.226 kg/h or 136.35 L/m
+2.5mm = 7.101kg/h = 94.68 L/m
+2mm = 4.545 kg/h = 60.6 L/m
+1.5mm = 2.556 kg/h = 34.08 L/m
+1mm = 1.136 kg/h = 15.15 L/m
+
+a wild guess using a mass flow meter that went up to 5 L/m suggests maybe the line does up to 20 L/m but this isnt enough for the application.
+
+next steps are get access to the nitrogen bottle to test the cyclone seperator and if it is the right size for the application
