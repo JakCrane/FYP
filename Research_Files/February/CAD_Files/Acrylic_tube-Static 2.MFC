@@ -1,0 +1,16 @@
+[StartTime]
+Acrylic_tube-Static 2.MFC=4m:41s
+[SolverState]
+Acrylic_tube-Static 2.MFC=2
+[MainFrame]
+Acrylic_tube-Static 2.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+Acrylic_tube-Static 2.MFC=No
+[SolverType]
+Acrylic_tube-Static 2.MFC=Linear Analysis
+[StudyType]
+Acrylic_tube-Static 2.MFC=0
+[StudyName]
+Acrylic_tube-Static 2.MFC=Static 2
+[Solver]
+Acrylic_tube-Static 2.MFC=Iterative

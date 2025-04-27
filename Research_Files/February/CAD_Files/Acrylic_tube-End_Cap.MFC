@@ -1,0 +1,16 @@
+[StartTime]
+Acrylic_tube-End_Cap.MFC=1s
+[SolverState]
+Acrylic_tube-End_Cap.MFC=2
+[MainFrame]
+Acrylic_tube-End_Cap.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+Acrylic_tube-End_Cap.MFC=No
+[SolverType]
+Acrylic_tube-End_Cap.MFC=Linear Analysis
+[StudyType]
+Acrylic_tube-End_Cap.MFC=0
+[StudyName]
+Acrylic_tube-End_Cap.MFC=End_Cap
+[Solver]
+Acrylic_tube-End_Cap.MFC=Iterative
