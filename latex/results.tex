@@ -1,0 +1,26 @@
+\section{Expected Results}
+An arbitrary 30g/s mass flow rate of sand was chosen to design the system around. This seems resonable because [source of 2-7kg hr] and [source 100g/s] and this is with metal powders like aluminium which has a density of 2.7g/s so chill.
+Given this, the velocity of the piston can be calculated as mass per second = density * volume per second; volume per second = speed * cross sectional area of tank.
+Density of sand - 1.4 g/cm3. (0.0014g/mm3). The CS of the pipe is 4300mm3 so the speed is 5mm/s. If the test is wanting to be ran for 30s this requires 900g of sand in the tank. Rounding up for transient behaviour at the start the tank will begin with 1kg
+
+From [Powder feeding in a powder engine under different gas-solid ratios] they found chill behaviour at gas-solid ratios of between 0.01 and 0.05. Therefore a gas solid ratio of 0.3 was chosen. This then requires that 1kg/s of air is required.
+
+\section{Levers of control}
+IDK where to put this but its chill. Things i can actaully control to change the parameters of the system
+inlet pressure,
+geometry of piston
+gas mass flow rate through choke points
+
+\section{Simulations of the setup}
+Due to the complex nature of the system, it was simulated in two parts. The first being static sim of piston head with powder at one side and looking at the pressure differential. The second is the simulation of the powder with the piston moving at a constant 5mm/s.
+
+
+
+\section{idk yet}
+Changing just the piston geometry comes close to isolating the physics regarding the pressure differential across the faces.
+(sim wise would be changing the velocity of piston in fsi)
+
+Changing pressure with a corresponding change in piston geometry to match the forces comes close to isolating the physics regard fluidisation.
+(simwise would be changing the pressure in static geometry sim)
+
+holy grail would be somehow figuring out how much force the powder puts back on the piston due to bed expansion

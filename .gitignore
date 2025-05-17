@@ -9,4 +9,7 @@
 /Research_Files/February/.gear_plunger_sim_files.backup
 /Research_Files/November/PyFR-Test-Cases
 /Research_Files/March/prototype_sim_files
+/latex/bin/*
+
+!latex/bin/main.tex
 /Research_Files/April/fsi_stuff/fsi_files

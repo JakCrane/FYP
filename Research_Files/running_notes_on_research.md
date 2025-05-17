@@ -138,7 +138,7 @@ with respect to the range of available materials data
 
 
 [15](/Research_Files/October/A_Review_of_Advances_in_Cold_Spray_Additive_Manufacturing.pdf)
-
+AM trl tech maturity graph
 has info on parameter correlation with DE and stuff like that
 
 Table 1 lists the Vcr and Ver for the most CSAM-ed materials
@@ -530,3 +530,36 @@ a wild guess using a mass flow meter that went up to 5 L/m suggests maybe the li
 
 next steps are get access to the nitrogen bottle to test the cyclone seperator and if it is the right size for the application
 
+
+Fig. 3.4 Comparison of metallic additive manufacturing processes
+in May/Innovations_In Additive Manufacturing
+
+
+
+/home/jack/Documents/FYP/Research_Files/May/in-space_manufacturing:_technologies.pdf
+California-based private company Varda specializes in manufacturing pharmaceuticals in space. One of their groundbreaking advancements involves developing
+single-use manufacturing satellites equipped with onboard reentry capsules. Collaborating with Rocket Lab, Varda launched their first test satellite in June 2024. These
+automated manufacturing satellites aim to revolutionize pharmaceutical production,
+
+
+
+
+i can control mass flow rate of powder using the force on the piston
+i can control the force on the piston with the mass flow rate of air
+what is the relationship between force on piston and mass flow rate?
+    is it linear or dependent on something?
+
+Is it possible to assume they are two seperate phenomenon, that being the pushing of the piston and the fluidisation of the powder? !important!!!!!!!
+https://ntrs.nasa.gov/api/citations/19940017287/downloads/19940017287.pdf seems to suggest no relation between piston head pressure differential and mass flow rate
+
+
+
+
+
+
+
+https://catalogimages.wiley.com/images/db/pdf/9780632064564.excerpt.pdf could read this to understand fluidised beds better
+
+![alt text](./May/image.png) 4.581kg/hr from airline
+
+loftus has some equ on flow rate and fluidisation

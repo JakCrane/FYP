@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="27.0.5">
   <diagram name="Page-1" id="koAt_1DJ4aizDEp0hSSp">
-    <mxGraphModel dx="1674" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1778" dy="415" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -88,56 +88,59 @@
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="0Xus20Z5ZAyfjVPvp_kh-4" target="0Xus20Z5ZAyfjVPvp_kh-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-4" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=-90;" parent="1" vertex="1">
-          <mxGeometry x="302.5" y="565" width="60" height="80" as="geometry" />
+        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-4" value="custom tank" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=-90;" parent="1" vertex="1">
+          <mxGeometry x="320" y="565" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-5" value="&lt;div&gt;Shop air (6bar)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="22.5" y="575" width="120" height="60" as="geometry" />
+        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-5" value="7bar compressed air line regulated to 3 bar" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-120" y="575" width="162.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-6" value="Container" style="triangle;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="630" y="510" width="70" height="190" as="geometry" />
+        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-6" value="Cyclone Seperator" style="triangle;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="510" width="70" height="190" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="0Xus20Z5ZAyfjVPvp_kh-5" target="0Xus20Z5ZAyfjVPvp_kh-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-10" value="Reg" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="82.5" y="445" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-17" value="Particle Filter" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
           <mxGeometry x="12.5" y="440" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-19" value="Choke point" style="shape=tape;whiteSpace=wrap;html=1;size=0.2222222222222222;" parent="1" vertex="1">
-          <mxGeometry x="17.5" y="485" width="40" height="55" as="geometry" />
+          <mxGeometry x="-70" y="432.5" width="40" height="55" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-20" value="Choke point" style="shape=tape;whiteSpace=wrap;html=1;size=0.2222222222222222;" parent="1" vertex="1">
-          <mxGeometry x="452.5" y="575" width="40" height="55" as="geometry" />
+          <mxGeometry x="470" y="577.5" width="40" height="55" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-21" value="Ball&amp;nbsp;&lt;div&gt;Valve&lt;/div&gt;" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="152.5" y="440" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-24" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="0Xus20Z5ZAyfjVPvp_kh-23" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="410" y="610" as="targetPoint" />
+            <mxPoint x="437" y="609" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-23" value="PT" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="392.5" y="540" width="35" height="30" as="geometry" />
+          <mxGeometry x="420" y="535" width="35" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-25" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="0Xus20Z5ZAyfjVPvp_kh-26" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="237.5" y="610" as="targetPoint" />
+            <mxPoint x="200" y="610" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-26" value="PT" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="220" y="540" width="35" height="30" as="geometry" />
+          <mxGeometry x="183" y="545" width="35" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-27" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="0Xus20Z5ZAyfjVPvp_kh-28" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="527.5" y="610" as="targetPoint" />
+            <mxPoint x="528" y="610" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="0Xus20Z5ZAyfjVPvp_kh-28" value="PT" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="510" y="540" width="35" height="30" as="geometry" />
+          <mxGeometry x="510" y="535" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="edxGDXQpdtz9oHDjBQGX-2" value="Particle Filter" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
+          <mxGeometry x="239" y="587" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="0Xus20Z5ZAyfjVPvp_kh-10" value="Solenoid" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="590" width="80" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
