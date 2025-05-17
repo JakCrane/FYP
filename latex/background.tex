@@ -1,0 +1,62 @@
+\section{Previous In-Space Manufacturing Missions}
+Due to the advantages of in-space manufacturing, there have been many previous missions to investigate and demonstrate its feasibiliy. Starting in 1969 with the Soyuz-6 mission\cite{nasa1984welding}, the soviets proved that it was possible to weld in a vacuum and from this the in-space manufacturing industry was born. Later milestones include advances in materials processing in 1974\cite{gatos1974indium}, semiconductor manfuacturing in 1990\cite{zak_kristall}, and the first 3D printing in space in 2014\cite{johnston2014zeroG}. This first example of 3D printing was Polymer Fused Deposition Modeling (FDM).
+
+Talk about the feed system of these manufacturing methods and why it wasnt a big deal before
+
+
+\section{Cold Spray}
+CSAM works by accelerating metal powder particles to supersonic speeds and impacting these particles onto a substrate. The particles deform on contact, exposing an unoxidised layer of metal, that bonds them to the substrate. 
+
+Any two atomically-flat, clean surfaces of metal will chemically bond upon contact due to the surface energy of the seperated metal faces being heigher than that of them bonded together[cite]. This subprocess is known as cold welding 
+% and occurs most commonly in a vacuum because there is no contaminants to regenerate any oxide layers that happen to get scraped off. [[[lowkey not strictly necessary]]]
+
+While the particles often start coated in an oxide layer, the high velocity of the impact causes the oxide layer to be removed, exposing the clean metal surface underneath. This is thought to be caused by adiabatic shear instability at the interface that breaks up the layer\cite{assadi2016cold}, but this has not reached academic consensus yet [cite the guy disagreeing]. 
+% This is important to note as there is no environmental controls required for the storage of the metal powder
+Cold Spray as a process has many parameters, key ones are particle diameter and hardness, gas pressure and temperature, particle velocity, deposit hardness, porosity of deposition, deposition efficiency and flattening ratio\cite{Vaz2023} as well as mass flow rate of powder [cite].
+
+critical impact velocity
+
+what happens on multiple passes
+
+\newpage
+\section{Powder Feed Systems}
+Powder-feed systems fall into two main paradigms, mechanical and pneumatic, based on the delivery requirements and the properties of the powder they are feeding. Mechanical feeders include rotary-screw units, where powder is metered by the helix speed; vibratory or hopper systems, which use controlled agitation to prevent bridging; and roller or disc designs that finely adjust the gap between rotating elements for high-precision flow. Pneumatic systems split into dense- and dilute-phase conveying: dense-phase moves powder in discrete slugs at low velocity—ideal for fragile or shear-sensitive particles—while dilute-phase entrains powder in a fast airstream for long-distance transfer, at the cost of higher attrition. 
+
+These feeders underpin key applications like additive manufacturing, thermal spray coatings, powder metallurgy, and pharmaceuticals and food production. 
+
+Recently, interest around metallic powder fuelled aircraft engines has slowly increased and with it comes the same kind of requirements of a powder feed system as used in in-space manufacturing.
+
+talk more about this
+
+\section{Fluidised powder feeding}
+The subsection of powder feed systems focused on in this report are dilute-phase pneumatic systems, commonly investigated in the context of powder fueled propulsion. A commonly cited first implementation was fricke in 1970 [cant find research paper on it]. Then [loftus] investigated pneumatically actuated pistons in a similar setup to look at powder rocket feasibility. Further to this is the gas permiable advancement from [chinese guys]. With many of these papers looking to investigate and prove a process there is no general investigation into how it works. 
+
+\newpage
+\section{Two-phase flow}
+Due to the complicated nature of 2 phase flows and the mechanisms of particle entrainment, research into the physics was conducted.
+
+Multiple ways to model it, two-phase equilibrium flow model (simplest and easiest)
+
+1 equ coupling, air effects particles, particles do not affect air
+
+2 equ coupling like euler-euler or euler lagrange where they both affect eachother
+
+
+
+The simplest system involving fluidised powder is that of the column fluidised bed. As seen in \autoref{fig:column-fluidised-bed}, the physics can be reduced to a force balance of drag on the particle pushing it up, the buoyancy force due to the pressure differential around the particle and gravity pulling the particle back down. Immediately this presents a problem for the first principles analysis due to the lack of gravity in an in-space application. However, continuing with this model one can expect to see expansion of the packed particles as they distribute themselves more equally in the column.
+
+Maybe could do something where I replace gravity with the ficticious inertial forces. 
+
+\section{sylalm-obrien model?}
+
+\newpage
+\section{the chinese research group work}
+
+In addition to the first principles approach, analytical expressions [cite] for the mass flow rate of powder in a fluidised system have been developed and split the regime into a choked system and an unchoked system. The formula for the choked regime, shown in \autoref{equ:1} is simpler, therefore easier to control, and so was used to drive the design choices.
+
+\begin{align}
+    M &= \frac{P_0 A}{\sqrt{R_m T_0}} \sqrt{\gamma_m} \left( \frac{2}{\gamma_m + 1} \right)^{\frac{\gamma_m + 1}{2(\gamma_m - 1)}} \\[10pt]
+    \gamma_m &= \gamma_g \left( 1 + \frac{\phi}{1 - \phi} \frac{C_P}{C_{P,g}} \right) \left( 1 + \frac{\phi}{1 - \phi} \frac{C_P}{C_{P,g}} \gamma_g \right)^{-1} \\[10pt]
+    R_m &= \frac{1 - \phi}{1 - \varepsilon} R_g
+\end{align}
+    

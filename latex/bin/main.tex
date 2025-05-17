@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{report}
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries}
+  {\thechapter\quad}
+  {0pt}
+  {}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage[font=footnotesize]{caption}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\theequation}{\arabic{equation}} % <--- Fix equation numbering!
+
+% Layout
+\geometry{margin=1in}
+\onehalfspacing
+
+\begin{document}
+\pagenumbering{roman} % Roman numerals for front matter
+% Title Page
+\begin{titlepage}
+
+    \noindent
+    \begin{minipage}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{../report_assets/imperial.png}
+    \end{minipage}
+    \hfill
+    
+    \vspace{1cm} % Space between logo and the title
+    \begin{center}
+        {\huge \textbf{Design and Optimization of a Powder Feed System for In-Space Additive Manufacturing}}\\[1cm]
+        {\Large Jack Crane}\\[1cm]
+
+        \begin{minipage}{0.8\textwidth}
+            \includegraphics[width=\linewidth]{../../Research_Files/October/current_system.png}
+        \end{minipage}
+        \hfill
+        
+        \vspace{1cm} % Space between logo and the title
+
+        Masters project thesis.\\
+
+        \begin{center}
+            \renewcommand{\arraystretch}{1.5}
+            \hfill\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+            \hfill\textbf{Academic Supervisors:} & Dr Ajit Panesar \\ 
+            \hfill\textbf{Department:}           & Department of Aeronautics \\
+            \hfill\textbf{Course:}               & MEng Aeronautics with Spacecraft Engineering \\
+            \hfill\textbf{Academic Year:}        & 2024/2025 \\
+            \hfill\textbf{Date:}                 & \today \\
+            \end{tabular}
+        \end{center}
+            
+        
+    \end{center}
+\end{titlepage}
+
+% Abstract
+\begin{abstract}
+\input{../abstract.tex}
+\end{abstract}
+
+% Acknowledgments
+\chapter*{Acknowledgments}
+\input{../acknowledgments.tex}
+
+% Table of Contents
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+
+\clearpage
+\pagenumbering{arabic}
+
+% Chapters
+\chapter{Introduction and Context}
+\input{../introduction.tex}
+
+\chapter{Academic Background}
+\input{../background.tex}
+
+\chapter{Methodology}
+\input{../methodology.tex}
+
+\chapter{Results and Discussion}
+\input{../results.tex}
+
+\chapter{Conclusion and Future Work}
+Summarize your conclusions and propose future research directions.
+
+% References
+\newpage
+\bibliographystyle{plain} % or use "unsrt" / "apalike" depending on your preference
+\bibliography{../references} % assumes you have a references.bib BibTeX file
+
+\appendix
+
+\chapter{Comparative Analysis of Powder Feed Architectures}
+\label{appendix:feed-architecture-analysis}
+
+\end{document}
