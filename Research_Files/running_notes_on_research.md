@@ -563,3 +563,6 @@ https://catalogimages.wiley.com/images/db/pdf/9780632064564.excerpt.pdf could re
 ![alt text](./May/image.png) 4.581kg/hr from airline
 
 loftus has some equ on flow rate and fluidisation
+
+2 phase sim
+sand as solid w density 2650kg/m^3 diameter of 0.25mm 0.6 packing density
