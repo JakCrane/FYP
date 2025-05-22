@@ -1,3 +1,0 @@
-Time step = 5e-05
-Outlet was pressure outlet at 0bar
-10,000 time steps but stopped at 1,796
