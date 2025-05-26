@@ -1,26 +1,68 @@
-\section{Expected Results}
-An arbitrary 30g/s mass flow rate of sand was chosen to design the system around. This seems resonable because [source of 2-7kg hr] and [source 100g/s] and this is with metal powders like aluminium which has a density of 2.7g/s so chill.
-Given this, the velocity of the piston can be calculated as mass per second = density * volume per second; volume per second = speed * cross sectional area of tank.
-Density of sand - 1.4 g/cm3. (0.0014g/mm3). The CS of the pipe is 4300mm3 so the speed is 5mm/s. If the test is wanting to be ran for 30s this requires 900g of sand in the tank. Rounding up for transient behaviour at the start the tank will begin with 1kg
+\section{first test}
+highlighted the issue of the piston locking up,
+force required to compact the sand to the outlet
+sand only at the top moved
+no fluidisation behaviours observed, maybe higher pressures required after all
+chokepoint blocked sand and prevented flow into cyclone seperator
+\section{Piston velocity - mass flow rate relation}
+didnt really work. idk why but it should have
+\section{Piston design}
+due to granular material being bigger than typical, often gets stucka round the piston and causes it to lock up
 
-From [Powder feeding in a powder engine under different gas-solid ratios] they found chill behaviour at gas-solid ratios of between 0.01 and 0.05. Therefore a gas solid ratio of 0.3 was chosen. This then requires that 1kg/s of air is required.
+redesign
+modelling the piston as a circle and the sand as a fluid. 
+P = rho * h * g
+P = 1529 * (74mm - y) * 9.81~= 15000* (74mm - y)
+\begin{equation}
+    \int_{-0.037}^{0.037}\!\int_{0}^{0.037+\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x
+    \;-\;
+    \int_{-0.037}^{0.037}\!\int_{0}^{0.037-\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x.
+\end{equation}
 
-\section{Levers of control}
-IDK where to put this but its chill. Things i can actaully control to change the parameters of the system
-inlet pressure,
-geometry of piston
-gas mass flow rate through choke points
+% \begin{equation}
+%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
+% \end{equation}
+% \begin{equation}
+%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
+% \end{equation}
+\begin{equation}
+    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
+    \;-\;
+    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
+\end{equation}
+\begin{equation}
+    15000\int_{-0.037}^{0.037}\Bigl(0.074\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 2.38697N
+\end{equation}
 
-\section{Simulations of the setup}
-Due to the complex nature of the system, it was simulated in two parts. The first being static sim of piston head with powder at one side and looking at the pressure differential. The second is the simulation of the powder with the piston moving at a constant 5mm/s.
+555.001308106 Pa average pressure differential across the two piston faces to get this force required to compact the sand
+
+deltaP for fluidising bed is $h*(rho_s - rho_a)*9.81$ which is 0.2 1527 10 = 300pa
 
 
+sand drops static pressure only. Therefore probably need to make the piston drop about half a bar of static pressure aswell
+this is easily testable in the setup
 
-\section{idk yet}
-Changing just the piston geometry comes close to isolating the physics regarding the pressure differential across the faces.
-(sim wise would be changing the velocity of piston in fsi)
+need to think about friction when testing for a certain dp across the faces
 
-Changing pressure with a corresponding change in piston geometry to match the forces comes close to isolating the physics regard fluidisation.
-(simwise would be changing the pressure in static geometry sim)
+need to think about the sand when designing for the geometry so it doesnt get stucka
 
-holy grail would be somehow figuring out how much force the powder puts back on the piston due to bed expansion
+might run into the inherent cocking issue since pressure from sand is concentrated at the bottom
+
+static pressure losses from the tank and set up alone
+
+3 bar (gauge) total goes to 1.405bar static and 1.195bar static = loss of 0.210bar static
+4 bar (gauge) total goes to 1.625bar static and 1.303bar static = loss of 0.322bar static
+5 bar (gauge) total goes to 1.852bar static and 1.432bar static = loss of 0.420bar static
+
+static pressure losses from the tank + piston
+
+3 bar (gauge) total goes to 1.425bar static and 1.209bar static = loss of 0.216bar static
+4 bar (gauge) total goes to 1.628bar static and 1.304bar static = loss of 0.324bar static
+5 bar (gauge) total goes to 1.831bar static and 1.431bar static = loss of 0.400bar static
+
+static pressure losses from the tank + new piston
+
+3 bar (gauge) total goes to 1.423bar static and 1.205bar static = loss of 0.218bar static
+4 bar (gauge) total goes to 1.645bar static and 1.311bar static = loss of 0.334bar static
+5 bar (gauge) total goes to 1.850bar static and 1.450bar static = loss of 0.400bar static
+

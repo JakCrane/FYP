@@ -566,3 +566,27 @@ loftus has some equ on flow rate and fluidisation
 
 2 phase sim
 sand as solid w density 2650kg/m^3 diameter of 0.25mm 0.6 packing density
+
+
+crazy direction change after first test
+
+(y-0.037)^2 + x^2 = 0.037^2 is the equation for the cirlce
+
+integrate that where z = (0.074-y)*2650 will give the pressure that the sand exerts on the piston
+
+P = rho * g * h
+
+calculate it as though its a cylinder being 0.00430m^2 * 2650kg/m^3 = 11.4kg/m
+
+density of the sand (as is, with packing efficincy != 1)
+
+density of tap water at 20c = 998.23kg/m^3 (https://www.simetric.co.uk/si_water.htm)
+
+775.4g empty
+4335.5g sand
+3100.0g water
+
+3560.1g sand w/o bowl
+2324.6g water w/o bowl
+vol of bowl = 0.0023287m^3
+density of sand = 1529kg/m^3
