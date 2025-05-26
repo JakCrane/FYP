@@ -3,27 +3,51 @@ I thought it would be good to try and categorise the static pressure losses from
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
-        \caption{Current feed system diagram.}\label{fig:static-pressure-drop-3bar}
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
+        \caption{pressure readings full.}\label{fig:static-pressure-drop-3bar_full}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
-        \caption{Simplified fluidized powder bed diagram.}\label{fig:static-pressure-drop-4bar}
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static.png}
+        \caption{pressure readings of 3bar gauge.}\label{fig:static-pressure-drop-3bar}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/4_bar_static.png}
+        \caption{pressure readings of 4bar gauge.}\label{fig:static-pressure-drop-4bar}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/configuration_that_demands_pms.png}
-        \caption{Fluent simulation in microgravity.}\label{fig:static-pressure-drop-5bar}
+        \includegraphics[width=\textwidth]{../report_assets/5_bar_static.png}
+        \caption{pressure readings of 5bar gauge.}\label{fig:static-pressure-drop-5bar}
+    \end{minipage}
+
+
+\end{figure}
+One thing of note is that the pressure transducer readings seem to deviate from atmospheric in fig 3 and 4. This is due to the solenoid valve leaking slightly allowing some air to pass through not miscalibration, yap about in appendix.
+
+As seen in figure 1, the regulator was able to control the static pressure to 3 bar gauge when the system was closed. When the system was opened this static pressure dropped to 0.4 gauge. Even accounting for the dynamic pressure and assuming the flow was mach 1 through the 4mm nylon tube, this would put total pressure at roughly 1bar gauge not 3bar initially set.
+\section{first test}
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
+        \caption{pressure readings full.}\label{fig:static-pressure-drop-3bar_full}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static.png}
+        \caption{pressure readings of 3bar gauge.}\label{fig:static-pressure-drop-3bar}
     \end{minipage}
 
 \end{figure}
-
-\section{first test}
 highlighted the issue of the piston locking up,
 force required to compact the sand to the outlet
 sand only at the top moved

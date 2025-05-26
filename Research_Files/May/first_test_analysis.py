@@ -13,10 +13,6 @@ df_2 = pd.read_csv(input_file_2)
 df_1 = df_1[['BackendTime', 'ch0sens', 'ch2sens', 'ch7sens']]
 df_2 = df_2[['BackendTime', 'ch0sens', 'ch1sens', 'ch7sens']]
 
-# Overwrite the original files with the filtered data
-df_1.to_csv(input_file_1, index=False)
-df_2.to_csv(input_file_2, index=False)
-
 # Replace any values in 'ch1sens' column of df_2 above 3 with 0
 df_2['ch1sens'] = df_2['ch1sens'].apply(lambda x: None if x > 3 else x)
 df_2['ch7sens'] = df_2['ch7sens'].apply(lambda x: None if x > 3 else x)
@@ -30,7 +26,6 @@ plt.plot(df_1['BackendTime'], df_1['ch2sens'], label='Load Cell start (df_1)')
 plt.plot(df_1['BackendTime'], df_1['ch7sens'], label='Load Cell end (df_1)')
 
 # Plot the values from df_2 against BackendTime
-plt.plot(df_2['BackendTime'], df_2['ch0sens'], label='Pre-choke PT', linestyle='--')
 plt.plot(df_2['BackendTime'], df_2['ch1sens'], label='Post-choke PT', linestyle='--')
 plt.plot(df_2['BackendTime'], df_2['ch7sens'], label='Load Cell cyclone', linestyle='--')
 
