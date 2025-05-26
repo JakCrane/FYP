@@ -590,3 +590,7 @@ density of tap water at 20c = 998.23kg/m^3 (https://www.simetric.co.uk/si_water.
 2324.6g water w/o bowl
 vol of bowl = 0.0023287m^3
 density of sand = 1529kg/m^3
+
+
+
+from tests with fixed piston, it appears that the device is only fluidising the particles close to the piston as they have a high enough velocity to do so, this causes the fluidised particles to move through a preexisting path and not fluidise the rest of the device

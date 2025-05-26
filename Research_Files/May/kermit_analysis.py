@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read the CSV files
-input_file_1 = 'Research_Files/May/kermit106_7.csv'  # 0 2 7
-input_file_2 = 'Research_Files/May/kermit108_7.csv'  # 0 1 7
+input_file_1 = 'Research_Files/May/kermit106_8.csv'  # 0 2 7
+input_file_2 = 'Research_Files/May/kermit108_8.csv'  # 0 1 7
 
 # Load the data into a DataFrame
 df_1 = pd.read_csv(input_file_1)
@@ -17,6 +17,12 @@ df_2 = df_2[['BackendTime', 'ch0sens', 'ch1sens', 'ch7sens']]
 df_1.to_csv(input_file_1, index=False)
 df_2.to_csv(input_file_2, index=False)
 
+# Replace any values in 'ch1sens' column of df_2 above 3 with 0
+df_2['ch1sens'] = df_2['ch1sens'].apply(lambda x: None if x > 3 else x)
+df_2['ch7sens'] = df_2['ch7sens'].apply(lambda x: None if x > 3 else x)
+# Rescale BackendTime to seconds and set the first value to 0
+df_1['BackendTime'] = (df_1['BackendTime'] - df_1['BackendTime'].iloc[0]) / 1e3
+df_2['BackendTime'] = (df_2['BackendTime'] - df_2['BackendTime'].iloc[0]) / 1e3
 # Plot the values from df_1 against BackendTime
 plt.figure(figsize=(12, 8))
 plt.plot(df_1['BackendTime'], df_1['ch0sens'], label='Inlet PT (df_1)')
@@ -43,3 +49,4 @@ plt.show()
 # 2 - 4 were static pressure loss tests with clean tank
 # 5 - 6 were static pressure loss tests with old piston design (handle)
 # 7 was static pressure loss test with new piston design (no handle)
+# 8 was new piston design with sand
