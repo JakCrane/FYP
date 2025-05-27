@@ -111,8 +111,42 @@ Due to safety and ease of handling, the desired 3 bar total pressure supplied in
 \newpage
 \subsection{Hopper tank design}
 As seen in \autoref{appendix:feed-architecture-analysis}, there are many ways the feed system can be messed up, especially around pressurising and depressurising the vessle. Therefore, for the tank to perform its function correctly, it must be resistant to these problems as well as managing the position of the powder during operations. Typically, fluid containing tanks can use the plethora of propellant management devices which take advantage of surface tension to keep the fuel close to the outlet. For this tank, this isn't possible and so a piston design was used. This has the advantage of being another component of the system that can be optimised to achieve the desired mass flow rate but has implications for the rest of the design. The piston is much better suited to long thin tank designs which typically perform worse under high pressures than their circular counterparts. Additionally, the demands on the geometry make it harder to scale up. The aspect ratio of the piston is important to prevent cocking!!!cite!!! so a wider tank requires a much bigger piston and a longer tank may have implications on the inlet pressure required due to the flow through the powder reducing the static pressure of the gas!!!check this is true!!!
+
+\subsection{Piston}
+The piston's main function in this design is to constrain the powder to the outlet of the device. In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
+        \caption{Current feed system diagram.}\label{fig:piston_geom_1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
+        \caption{Simplified fluidized powder bed diagram.}\label{fig:piston_geom_2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
+        \caption{Current design with turbulent inlet.}\label{fig:piston_geom_3}
+    \end{minipage}
+
+\end{figure}
+
+The first was blah blah blah and was used in testing the system for the first time.
+Upon identifying that this was not pushing the piston far enough, the piston was redesigned taking inspiration from cite the gear paper.
+This then ran into the issue of cocking, a problem where the piston becomes misaligned due to pressure differences.
+The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
+ 
 \subsection{Choke Point}
-It is proposed that the flow characteristics of the fluidised powder bed system are simpler, therefore easier to control, if the flow is choked. This chokepoint then needs to withstand getting sand blasted as to not change the throat area over time. The most ideal solution to this problem involves very hard materials like!!! or!!! that can withstand the powder for many tests. Given the scope of this project, however, one-time use 3D printed chokepoints were used. They were made of PLA which has a hardness of~!!! and is expected to wear away at a rate of~!!!. This was deemed experimentally acceptable because of a change in throat diameter of~!!! over~!!! doesnt significantly alter the results.
+It is proposed that the flow characteristics of the fluidised powder bed system are simpler, therefore easier to control, if the flow is choked. (validate this as not in design anymore)
+
+
+This chokepoint then needs to withstand getting sand blasted as to not change the throat area over time. The most ideal solution to this problem involves very hard materials like!!! or!!! that can withstand the powder for many tests. Given the scope of this project, however, one-time use 3D printed chokepoints were used. They were made of PLA which has a hardness of~!!! and is expected to wear away at a rate of~!!!. This was deemed experimentally acceptable because of a change in throat diameter of~!!! over~!!! doesnt significantly alter the results.
 
 \newpage
 \subsection{Cyclone seperator and measurement method}
@@ -137,6 +171,29 @@ For safety and due to the limited budget, sand was used as the powder. This is o
 
 \newpage
 \section{Numerical Setup}
+\subsection{Static pressure Verification}
+To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/systems_diagram.png}
+        \caption{Systems diagram.}\label{fig:geometry_static_sim}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
+        \caption{Pic of experiment.}\label{fig:something_else}
+    \end{minipage}
+
+\end{figure}
+and was done as a 2D, axisymmetric sim as it was faster and allowed for more detail while still preserving quantities of 3D behaviour as no theta dependence or swirling is expected to occur. Size constraints on the number of cells meant that all attempts to invesitage a 3d sim of the physics were numerically unstable and therefore werent useful.
+
+Mesh convergence was done maybe if i got time?
+
+\subsection{Moving piston simulation}
 governing equations eularian-eularian
 2d is valid because:
 2D vs 3D Eulerian Multiphase Simulations of a Piston-Driven Fluidized Bed
@@ -204,7 +261,6 @@ witpress.com
 researchgate.net
 . All these studies collectively suggest that a 2D Eulerian-Eulerian Fluent simulation is a useful predictive tool with known limitations, and with careful interpretation it can be reliably used to inform 3D behavior in the early stages of engineering design. The linear piston velocity-mass flow relationship is expected to appear in the 2D model (as observed experimentally), but final design decisions should account for 3D effects identified in the literature.
 solver settings
-\subsection{Moving piston simulation}
 geometry and mesh details
 boundary and initial conditions
 
