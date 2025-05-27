@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read the CSV files
-input_file_1 = 'Research_Files/May/kermit106_1.csv'  # 0 2 7
-input_file_2 = 'Research_Files/May/kermit108_1.csv'  # 0 1 7
+input_file_1 = 'Research_Files/May/kermit106_10.csv'  # 0 2 7
+input_file_2 = 'Research_Files/May/kermit108_10.csv'  # 0 1 7
 
 # Load the data into a DataFrame
 df_1 = pd.read_csv(input_file_1)

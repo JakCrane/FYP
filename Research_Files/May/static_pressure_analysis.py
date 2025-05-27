@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read the CSV files
-input_file_1 = 'Research_Files/May/kermit106_2.csv'  # 0 2 7
-input_file_2 = 'Research_Files/May/kermit108_2.csv'  # 0 1 7
+input_file_1 = 'Research_Files/May/kermit106_9.csv'  # 0 2 7
+input_file_2 = 'Research_Files/May/kermit108_9.csv'  # 0 1 7
 
 # Load the data into a DataFrame
 df_1 = pd.read_csv(input_file_1)
@@ -21,8 +21,8 @@ plt.plot(df_1['BackendTime'], df_1['ch0sens'], label='Inlet PT (df_1)')
 plt.plot(df_2['BackendTime'], df_2['ch1sens'], label='Post-choke PT', linestyle='--')
 
 # Plot a horizontal line at y = 1.2
-plt.axhline(y=1.431, color='red', linestyle='-.', label='y = 1.431')
-plt.axhline(y=1.832, color='green', linestyle='-.', label='y = 1.832')
+# plt.axhline(y=1.431, color='red', linestyle='-.', label='y = 1.431')
+# plt.axhline(y=1.832, color='green', linestyle='-.', label='y = 1.832')
 # Add labels and title
 plt.xlabel('BackendTime')
 plt.ylabel('Sensor Values')
