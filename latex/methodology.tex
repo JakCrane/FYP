@@ -1,3 +1,10 @@
+\section{Modelling previous design}
+Measurements taken of tank were 120mm OD 20mm thickness 100mm depth, top section was 30mm ID
+
+2d axisymmetric simulation
+eulerian model
+volume fraction parameters - implicit as more stable
+ti6al4v used for sls printing with particle size distributions between 15 to 53um has a density of 4.51g/cm^3~\cite{ma17040952}.
 \section{System Architecture Design}\label{sec:system_architecture}
 There have been previous systems like ESA's MARS-M module that have powder transportation functionality but there is little detail on how they did it available to the public. Therefore, the many well documented terrestrial methods and the required adaptations to microgravity were reviewed and compared.
 
@@ -88,16 +95,20 @@ The physics is hopefully understood as a non-linear combination of the two effec
 At the end of the day, this system is similar to other systems investiaged. It varies in 1 key way, the fact that since it is going into a nozzle then a vacuum in the LPCS process there is no combustion chamber to provide backpressure.
 \newpage
 \section{Experimental Setup}
-Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5-10bar range but there is no reason why this pressure range couldnt work
+Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5 — 10bar range but there is no reason why this pressure range couldnt work
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.95\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/systems_diagram.png}
+        \includegraphics[width=\textwidth]{../report_assets/static_test.drawio.png}
         \caption{Systems diagram.}\label{fig:systems-diagram}
     \end{minipage}
-    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/end_cap.drawio.png}
+        \caption{Systems diagram.}\label{fig:systems-diagram-end-cap}
+    \end{minipage}
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
@@ -144,7 +155,7 @@ This then ran into the issue of cocking, a problem where the piston becomes misa
 The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
  
 \subsection{Choke Point}
-It is proposed that the flow characteristics of the fluidised powder bed system are simpler, therefore easier to control, if the flow is choked. (validate this as not in design anymore)
+It is proposed that the flow characteristics of the fluidised powder bed system are simpler, therefore easier to control, if the flow is choked.!!validate this as not in design anymore!!
 
 
 This chokepoint then needs to withstand getting sand blasted as to not change the throat area over time. The most ideal solution to this problem involves very hard materials like!!! or!!! that can withstand the powder for many tests. Given the scope of this project, however, one-time use 3D printed chokepoints were used. They were made of PLA which has a hardness of~!!! and is expected to wear away at a rate of~!!!. This was deemed experimentally acceptable because of a change in throat diameter of~!!! over~!!! doesnt significantly alter the results.
@@ -203,17 +214,16 @@ Hydrodynamics and Void Distribution: Two-dimensional Eulerian-Eulerian simulatio
 link.springer.com
 . This occurs because neglecting the third dimension forces the gas-solid flow into a constrained plane, which exaggerates hydrodynamic structures and fluctuations
 link.springer.com
-. In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:
-Bubble Dynamics: Gas bubbles in a fluidized bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
+. In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:Bubble Dynamics: Gas bubbles in a fluidized bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
 witpress.com
 . In a 3D simulation or experiment, bubbles can expand and coalesce in three directions, forming larger voids that accelerate upward. The 2D constraint suppresses some coalescence, so the bed may appear “bubblier” (many small bubbles) or even form slugging bubbles that span the width. This impacts particle motion and could alter the paths through which solids circulate and exit the bed.
-Circulation and Wall Effects: Three-dimensional beds allow complex circulation patterns - particles can move around bubbles and across the entire cross-section. In a 2D model, by contrast, flow is essentially confined between two parallel walls (the front and back of the 2D slice). This artificial confinement increases wall friction effects and creates a large circulating cell in the 2D plane that has no out-of-plane escape. As a result, 2D simulations may produce stronger single circulation loops or jetting along the centerline, whereas a 3D bed would have more distributed flow paths (including around the perimeter of bubbles or toward the center of a cylinder). Such differences could influence how continuously and evenly the powder flows out - 3D systems tend to have more uniform, axisymmetric flow, while 2D systems might exhibit more pronounced channeling or periodic “puffing.”
+Circulation and Wall Effects: Three-dimensional beds allow complex circulation patterns — particles can move around bubbles and across the entire cross-section. In a 2D model, by contrast, flow is essentially confined between two parallel walls (the front and back of the 2D slice). This artificial confinement increases wall friction effects and creates a large circulating cell in the 2D plane that has no out-of-plane escape. As a result, 2D simulations may produce stronger single circulation loops or jetting along the centerline, whereas a 3D bed would have more distributed flow paths (including around the perimeter of bubbles or toward the center of a cylinder). Such differences could influence how continuously and evenly the powder flows out — 3D systems tend to have more uniform, axisymmetric flow, while 2D systems might exhibit more pronounced channeling or periodic “puffing.”
 Turbulence and Mixing: The restriction to two dimensions also affects turbulence and mixing of the phases. Fully 3D turbulent eddies and clusters cannot form in a 2D plane, so 2D simulations often show greater oscillatory behavior (numerical instability or large-scale swings) but less of the small-scale chaotic mixing present in 3D
 link.springer.com
 . For example, pressure fluctuation spectra differ: only a 3D simulation can capture realistic pressure dynamics, whereas a 2D model gives a distorted spectrum
 witpress.com
-. This means the distribution of particles and the stability of the fluidization can differ - a 3D bed might self-buffer some fluctuations by distributing them in all directions, while a 2D bed tends to amplify fluctuations within its constrained geometry.
-Implications for Mass Flow Features: These flow-feature disparities imply that certain phenomena affecting mass outflow could differ between 2D and 3D. For instance, jetting and channeling of powder-gas mixture might be more pronounced in one case versus the other. A 3D piston-driven bed could develop a roughly axisymmetric flow of powder out of the piston region, whereas a 2D model might produce a sheet-like ejection that interacts differently with the walls. Likewise, particle distribution in 3D may be more uniform across the cross-section of an outlet, while in 2D it might be clumped or stratified, potentially affecting instantaneous mass flow rates. Overall, 2D models capture the qualitative flow patterns (e.g. fluidization regimes, general trends in circulation), but certain 3D-specific effects (like true spatial distribution of particles, or the full spectrum of bubble sizes) are lost, which can influence the accuracy of mass flow predictions
+. This means the distribution of particles and the stability of the fluidization can differ — a 3D bed might self-buffer some fluctuations by distributing them in all directions, while a 2D bed tends to amplify fluctuations within its constrained geometry.
+Implications for Mass Flow Features: These flow-feature disparities imply that certain phenomena affecting mass outflow could differ between 2D and 3D. For instance, jetting and channeling of powder-gas mixture might be more pronounced in one case versus the other. A 3D piston-driven bed could develop a roughly axisymmetric flow of powder out of the piston region, whereas a 2D model might produce a sheet-like ejection that interacts differently with the walls. Likewise, particle distribution in 3D may be more uniform across the cross-section of an outlet, while in 2D it might be clumped or stratified, potentially affecting instantaneous mass flow rates. Overall, 2D models capture the qualitative flow patterns (e.g.fluidization regimes, general trends in circulation), but certain 3D-specific effects (like true spatial distribution of particles, or the full spectrum of bubble sizes) are lost, which can influence the accuracy of mass flow predictions
 witpress.com
 witpress.com
 . Researchers therefore caution that 2D CFD results should be used primarily for sensitivity studies or trend analysis, whereas 3D simulations are needed to accurately reproduce absolute measures like bed expansion, bubble size distributions, and pressure oscillation characteristics
