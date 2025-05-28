@@ -4,7 +4,17 @@ Measurements taken of tank were 120mm OD 20mm thickness 100mm depth, top section
 2d axisymmetric simulation
 eulerian model
 volume fraction parameters - implicit as more stable
-ti6al4v used for sls printing with particle size distributions between 15 to 53um has a density of 4.51g/cm^3~\cite{ma17040952}.
+ti6al4v used for sls printing with particle size distributions between 15 to 53um has a bulk density between 2.04 and 2.34g/cm3~\cite{ma17040952}.
+particle size then chosen at 40um and density of 2200kg/m3 to model the material in fluent
+air was modelled as rho is 1.225
+solid phase was granular using granular viscosity as gidaspow, granular bulk viscosity as lun-et-al and rest as default
+phase interactions solid-gas gidaspow
+pressure inlet at 2bar, 0 vol fraction for solid (still let powder through so changed to vel inlet)
+pressure outlet at 1bar
+a region off the mesh is then defined and patched placing solid there
+time steps above 0.001 create non-physical flow (through yap yap yap)
+
+\newpage
 \section{System Architecture Design}\label{sec:system_architecture}
 There have been previous systems like ESA's MARS-M module that have powder transportation functionality but there is little detail on how they did it available to the public. Therefore, the many well documented terrestrial methods and the required adaptations to microgravity were reviewed and compared.
 
@@ -106,23 +116,35 @@ Low pressures were investiaged, both because it makes the experiment easier but 
     \end{minipage}
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/end_cap.drawio.png}
-        \caption{Systems diagram.}\label{fig:systems-diagram-end-cap}
-    \end{minipage}
-    \begin{minipage}{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
         \caption{Pic of experiment.}\label{fig:experiment-image}
     \end{minipage}
 
 \end{figure}
 
-\subsection{Pressure Source}
-Due to safety and ease of handling, the desired stagnation pressure supplied into the system came from a compressed air line. As discussed in \autoref{sec:static_test}, characterising the air supply was not trivial and multiple tests were conducted. 
-The first of these involved disconnecting the tank from the system and replacing it with a pushfit end cap to tune the regulator. As seen in figure  
-\newpage
+
 \subsection{Hopper tank design}
 As seen in \autoref{appendix:feed-architecture-analysis}, there are many ways the feed system can be messed up, especially around pressurising and depressurising the vessle. Therefore, for the tank to perform its function correctly, it must be resistant to these problems as well as managing the position of the powder during operations. Typically, fluid containing tanks can use the plethora of propellant management devices which take advantage of surface tension to keep the fuel close to the outlet. For this tank, this isn't possible and so a piston design was used. This has the advantage of being another component of the system that can be optimised to achieve the desired mass flow rate but has implications for the rest of the design. The piston is much better suited to long thin tank designs which typically perform worse under high pressures than their circular counterparts. Additionally, the demands on the geometry make it harder to scale up. The aspect ratio of the piston is important to prevent cocking!!!cite!!! so a wider tank requires a much bigger piston and a longer tank may have implications on the inlet pressure required due to the flow through the powder reducing the static pressure of the gas!!!check this is true!!!
+
+\newpage
+\subsection{Pressure Source}
+Due to safety and ease of handling, the desired stagnation pressure supplied into the system came from a compressed air line. As discussed in \autoref{sec:static_test}, characterising the air supply was not trivial and required multiple experiments. 
+
+The first of these involved a flow through the system without any sand or piston. To tune the regulator for these tests, the system was closed by removing inlet tube connecting the tank to the compressed air line and replacing it with a pushfit end cap, as seen in figure \autoref{fig:systems-diagram-end-cap}. The regulator attached to the compressed air line was then adjusted using the inlet PT as a reference. While there was a gauge on the regulator, it was consistently reading 0.2 to 0.3 bar higher than the PTs or manual pressure gauges so was deemed unreliable. 
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/end_cap.drawio.png}
+        \caption{Diagram of closed system.}\label{fig:systems-diagram-end-cap}
+    \end{minipage}
+\end{figure}
+
+Once the pressure was tuned on the regulator, the ball valve was closed, the end cap was removed and the tube was reattached to the tank. The system was now back to it's open configuration and the static pressures were read by opening the solenoid valve allowing the air to flow.
+
+Follow up tests were conducted to validate that the test set up was not configured incorrectly. The static pressure readings were abnormally low and this could have been attributed to many things. The most likely and therefore first investigated was the pressure regulator. If the regulator was faulty or there was somehow dramatic static pressure losses from the outlet of the compressed air line to the inlet of the ball valve this could be remedied by adding an additional regulator after the ball valve and fully opening the one connected to the wall.
+The same tests as before were conducted to investigate this but the static pressures read were even lower suggesting this wasnt the issue.
+A final attempt to solve the problem was verifying that the solenoid valve wasn't causing the problem. If the cross-sectional area of the open solenoid valve was very small, this could have choked the flow and lead to the lower stagnation pressure observed. Even after running the same test again without the solenoid valve, the results were equal to that of the system with the regulator and solenoid valve.
 
 \subsection{Piston}
 The piston's main function in this design is to constrain the powder to the outlet of the device. In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
@@ -162,6 +184,7 @@ This chokepoint then needs to withstand getting sand blasted as to not change th
 
 \newpage
 \subsection{Cyclone seperator and measurement method}
+There are many methods used in literature to measure the mass flow rate of powder exiting the tank. Of those, the most common are displacement of the piston, cyclone seperators + load cell and 
 Typical literature ways of measuring powder mass flow rate is through Displacement of the piston. This paper [cite] shows that other methods equally as effective are measuring the mass of powder leaving. This project does the latter through the use of a cyclone seperator.
 
 Cyclone seperators work like this
@@ -175,9 +198,7 @@ Data aquisition was done through ICLR SRAD boards. The sensors were calibrated s
 
 The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
 
-\newpage
-\subsection{Testing operations}
-
+Tuning of PTs and Load cells
 \subsection{Powder}
 For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
