@@ -1,40 +1,75 @@
 \section{Previous design}\label{sec:prev-design-analysis}
+As seen in \autoref{fig:old-design-phase-density}, there is a marked difference in behaviour between the dynamics under gravity and under microgravity. This hypoethesised issue appears supported by the numerical simulations.
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
+        \caption*{(a) Old Design Under Gravity.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
+        \caption*{(b) Old Design Under microgravity.}
+    \end{minipage}
+    \caption{Phase density of Old Design.}\label{fig:old-design-phase-density}
+\end{figure}
+This behaviour is present in many tanks under microgravity but is usually remedied by propellant management devices. These often employ surface tension as a means to concentrate the liquid held in the tank towards the outlet but this isnt possible with powder. The main consequence of this behaviour is shown in \autoref{fig:old-design-mass-change}.
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
+        \caption{New regulator.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
+        \caption{New regulator + no solenoid.}
+    \end{minipage}
+
+\end{figure}\label{fig:old-design-mass-change}
+Given that mass flow rate is such an important parameter in CSAM systems, it is crucial that controlability is prioritied from the start. While the simulation is only 2D, there is still the important result that the system under gravity has 2 different rates of mass flow. The first is less predictable and highly dependent on the amount of powder in the tank. The second is the time taken to settle into steady state.
 \section{Characterising Pressure Source}\label{sec:static_test}
 \subsection{Initial Test}
-The first step in characterising the system was to investigate the static pressure losses present in the tank without a piston or any powder. This immediately presented a problem as the static pressure readings, given a gas source with a stagnation pressure of 4 to 6 bar, were far below expected, as seen in figure \autoref{fig:static-pressure-drop-3bar}. 
+The first step in characterising the system was to investigate the static pressure losses present in the tank without a piston or any powder. This immediately presented a problem as the static pressure readings, given a gas source with a stagnation pressure of 4 to 6 bar, were far below expected, as seen in figure \autoref{fig:static-pressure-drop}. 
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
-        \caption{Full 4 bar test.}\label{fig:static-pressure-drop-3bar_full}
+        \caption*{(a) Full 4 bar test.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static.png}
-        \caption{Static pressure from 4 bar.}\label{fig:static-pressure-drop-3bar}
+        \caption*{(b) Static pressure from 4 bar.}
     \end{minipage}
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/4_bar_static.png}
-        \caption{Static pressure from 5 bar.}\label{fig:static-pressure-drop-4bar}
+        \caption*{(c) Static pressure from 5 bar.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/5_bar_static.png}
-        \caption{Static pressure from 6 bar.}\label{fig:static-pressure-drop-5bar}
+        \caption*{(d) Static pressure from 6 bar.}
     \end{minipage}
 
-
+    \caption{Full caption mb?}\label{fig:static-pressure-drop}
 \end{figure}
 If the compressed air line was truely supplying a stagnation pressure of 4 bar, through isentropic flow relations the data implies that the mach number of the flow is 1.3 which is unlikely.
 
-As seen in \autoref{fig:static-pressure-drop-3bar_full}, the regulator was able to control the static pressure to 4 bar when the system was closed. When the system opens, one could expect that the regulator would maintain this 4 bar static pressure and only static pressure losses in the system and acceleration of the flow beyond the regulator would reduce it somewhat. However, by the time the flow reached the pressure transducer before the tank, the static pressure had dropped to 1.4 bar. 
+As seen in \autoref{fig:static-pressure-drop} (a), the regulator was able to control the static pressure to 4 bar when the system was closed. When the system opens, one could expect that the regulator would maintain this 4 bar static pressure and only static pressure losses in the system and acceleration of the flow beyond the regulator would reduce it somewhat. However, by the time the flow reached the pressure transducer before the tank, the static pressure had dropped to 1.4 bar. 
 
-Assuming the flow was mach 1 through the nylon pipe, this would imply a stagnation pressure of roughly 2 bar not the 4 bar initially desired. As seen in~\autoref{fig:static-pressure-drop-4bar} and~\autoref{fig:static-pressure-drop-5bar}, this behaviour was persistant at higher inlet pressures, dont really know why rn but justify when i do
+Assuming the flow was mach 1 through the nylon pipe, this would imply a stagnation pressure of roughly 2 bar not the 4 bar initially desired. As seen in~\autoref{fig:static-pressure-drop} (c) and (d), this behaviour was persistant at higher inlet pressures, dont really know why rn but justify when i do
 
 \subsection{Further Investigation}
 In an attempt to diagnose this behaviour, follow up tests were conducted. As seen in figure the performance was much worse giving even lower static pressure readings. 

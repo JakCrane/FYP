@@ -36,7 +36,7 @@ To model the
 % phase interactions solid-gas gidaspow
 
 
-Ideally, the inlet would have been modelled as a pressure inlet as this is most representative of the system. However it was found that it is more reliable to have a velocity inlet as pressure inlets when flow is reversed allow powder to escape the simulation and this was even less representative of the system.
+Ideally, the inlet would have been modelled as a pressure inlet as this is most representative of the system. However it was found that it is more reliable to have a velocity inlet as pressure inlets when flow is reversed allow powder to escape the simulation and this was even less representative of the system. The magnitude of velocity in couldnt really be related to any real values as the 2D nature meant that quantities like that are not conserved. A velocty of 0.1m/s was chosen as fluidisation happend too quickly at 0.5 which meant less accurate physics
 
 A region of the tank above the mesh was then patched to be full of powder and the simulation was ran both with and without gravity to investigate the dynamics.
 \newpage
