@@ -1,24 +1,47 @@
-\section{Modelling previous design}
-Measurements taken of tank were 120mm OD 20mm thickness 100mm depth, top section was 30mm ID
+\section{Modelling Previous Design}
+To investigate the previous design, a geometry was outlined on Ansys Discovery through measurements of the previous tank, seen in \autoref{fig:old-design-sim} (a).
+% For dimensionalaccuracy, measurements of the COSMOS hopper tank were made and 
+% Measurements taken of tank were 120mm OD 20mm thickness 100mm depth, top section was 30mm ID
+\begin{figure}[htbp]
+    \centering
 
-2d axisymmetric simulation
-eulerian model
-volume fraction parameters - implicit as more stable
-ti6al4v used for sls printing with particle size distributions between 15 to 53um has a bulk density between 2.04 and 2.34g/cm3~\cite{ma17040952}.
-particle size then chosen at 40um and density of 2200kg/m3 to model the material in fluent
-air was modelled as rho is 1.225
-solid phase was granular using granular viscosity as gidaspow, granular bulk viscosity as lun-et-al and rest as default
-phase interactions solid-gas gidaspow
-pressure inlet at 2bar, 0 vol fraction for solid (still let powder through so changed to vel inlet)
-pressure outlet at 1bar
-a region off the mesh is then defined and patched placing solid there
-time steps above 0.001 create non-physical flow (through yap yap yap)
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
+        \caption*{(a) Previous Design.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption*{Simplified Geometry.}\label{fig:idkyet9}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption*{Current design with turbulent inlet.}\label{fig:idkyet10}
+    \end{minipage}
 
+\end{figure}\label{fig:old-design-sim}
+Initially, a fine-mesh (0.4mm + refinement) axisymmetric model was constructed as it was expected to run faster than a 3D simulation but still retain useful quantities of the simulation. This configuration was shown to be numerically unstable, even crashing with no flow through the tank and the powder just acting under gravity. Therefore, a 2D sim with a much coarser mesh was conducted. While the 2D nature of the sim means that none of the quantities are representative of the 3D design, key flow characteristics are still expected to remain. Increasing the mesh coarseness results in a dampening of sharp gradients likely to cause instabilities. Diffusion maybe relevant but idk
+% courant number maybe?
+The 2-phase flow was modelled using eulerian-eulerian because 
+
+The powder was modelled as TI6AL4V as this was what was used in the prior testing. Typical titanium allow powder used in SLS printing has a particle size distribution between 15 and 53um and a density between 2.04 and 2.34g/cm3~\cite{ma17040952}. It is assumed this is similar to the powder used in CSAM and therefore a 40um particle size and 2200kg/m3 density was used. The gas was modelled as air with a density of 1.225kg/m3.
+
+To model the 
+
+% solid phase was granular using granular viscosity as gidaspow, granular bulk viscosity as lun-et-al and rest as default
+% phase interactions solid-gas gidaspow
+
+
+Ideally, the inlet would have been modelled as a pressure inlet as this is most representative of the system. However it was found that it is more reliable to have a velocity inlet as pressure inlets when flow is reversed allow powder to escape the simulation and this was even less representative of the system. The magnitude of velocity in couldnt really be related to any real values as the 2D nature meant that quantities like that are not conserved. A velocty of 0.1m/s was chosen as fluidisation happend too quickly at 0.5 which meant less accurate physics
+
+A region of the tank above the mesh was then patched to be full of powder and the simulation was ran both with and without gravity to investigate the dynamics.
 \newpage
-\section{System Architecture Design}\label{sec:system_architecture}
-There have been previous systems like ESA's MARS-M module that have powder transportation functionality but there is little detail on how they did it available to the public. Therefore, the many well documented terrestrial methods and the required adaptations to microgravity were reviewed and compared.
-
-Five common methods of powder dispensing were identified: Screw Fed, Vibration Fed, Liquid Suspension Fed, Rotating Disk Fed and Positive Displacement Fluidized Powder Bed. Basic diagrams of the different methods are shown in \autoref{fig:powder-dispensing-methods}. 
+\section{Choosing New Feed System Architecture}\label{sec:system_architecture}
+As discussed in \autoref{sec:prev-design-analysis}, a new design was desirable and research into current powder feed technology was conducted. While every effort was made to review analogous systems reported in the literature, time constraints mean that the author cannot rule out overlooking relevant works. The only research found on powder-based AM experiments conducted in microgravity originate from the Fraunhofer Institute for Transportation and Automation Technology, but those reports offer scant detail on the powder-feed mechanism employed~\cite{OVERMEYER2025}. Accordingly, five common terrestrial powder-dispensing methods were examined, and the modifications required to adapt each for use in a space environment were evaluated. Basic schematics of these methods are presented in \autoref{fig:powder-dispensing-methods} and the full analysis can be found in \autoref{appendix:feed-architecture-analysis}. 
 \begin{figure}[htbp]
     \centering
 
@@ -44,28 +67,101 @@ Five common methods of powder dispensing were identified: Screw Fed, Vibration F
     \vspace{0.5cm} % space between top and bottom rows
 
     % Second row: 2 images
-    \begin{minipage}{0.4\textwidth}
+    \begin{minipage}{0.35\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/rotating_disk.png}
         \caption*{(d) Rotating Disk Design~\cite{Crawmer2013}}
     \end{minipage}
     \hspace{0.1\textwidth}
-    \begin{minipage}{0.4\textwidth}
+    \begin{minipage}{0.35\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/fluidising_powder_design.png}
-        \caption*{(e) Fluidized Powder Bed Design~\cite{Li2016}}
+        \caption*{(e) Fluidised Powder Bed Design~\cite{Li2016}}
     \end{minipage}
 
-    \caption{Overall figure caption describing all subfigures.}\label{fig:powder-dispensing-methods}
+    \caption{5 common powder feed system architectures.}\label{fig:powder-dispensing-methods}
+\end{figure}
+Given that CSAM already requires an accelerant gas, the fludising powder bed design was deemed the most optimal as this mitigates one of the architectures largest drawbacks. Furthermore, the method is assumed to be inherently gravity-agnostic, requiring no adjustments of the core mechanic of feeding. 
+
+As mentioned in \autoref{sec:fluidised-powder-feed-systems}, the fluidising powder bed architecture has gone through a number of design iterations since it's first implementation. To align the investigation as closely to state-of-the-art, the pneumatically driven, permiable piston architecture was chosen. This also simplifies the systems plumming and reduces the overall mass of the system but comes at the cost of complexity in dynamics.
+\newpage
+\section{Hopper Tank Design}
+% what it was designed for
+The tank was designed to operate at a maximum pressure of 8 bar because of previous experience during the COSMOS project. 8 bar was on the high end of powder hopper inlet pressures during successful tests and was therefore deemed appropriate. A safety factor of 1.5 was chosen but only after manufacturing, it was discovered that the standard for pressure vessels was 3.5-4~\cite{redriver2024asme}. This would be accounted for given another design iteration but was determined a low priority given the time constraints.
+
+% what it was made from and why
+The end caps were manufactured from Acetal C POM Delrin as the material is low-cost, easy to machine and chemically inert. The tube was made from clear acrylic to allow the flow behaviour to be observed but upon evaluation, polycarbonate would have been more appropriate as it is less prone to shattering.
+% what it looks like
+\begin{figure}[htbp]
+    \centering
+
+    % First row: 3 images
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/inlet_end_cap.png}
+        \caption*{(a) Inlet End Cap}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/tube.png}
+        \caption*{(b) Acrylic Tube}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/outlet_end_cap.png}
+        \caption*{(c) Outlet End Cap Cross Section}
+    \end{minipage}
+    \caption{Components of the Hopper Tank.}\label{fig:hopper-tank-components}
+\end{figure}
+As seen in \autoref{fig:hopper-tank-components}, the inlet end cap is radially screwed into the tube. This was done as one of the end caps had to be removable to allow for changing the piston. The outlet end cap was bonded to the tube using plastic-friendly epoxy.
+
+% additional functionality requirements
+To validate that the design could operate at a pressure of 8 bar, a combination of hand calculations and finite element analysis (FEA) were conducted. The failure modes analysed were stress concentrations from the bolt holes and hoop stress rupture. Fracturing at the delrin-epoxy interface was a concern but there is no relevant literature on how to model this so it was not investigated. Bolt tearout was not investigated as it was deemed an unlikely mode of failure.
+
+% design evaluation
+Upon construction of the tank, it was hydrostatically pressure tested to a pressure of 8 bar. At the time of testing, it was known that the safety factor of the design was lower than standard and therefore was not pressurised above the 8 bar limit for fear of damaging the tank. This was definitely not ideal but given the time and budget constraints, manufacturing a new powder hopper was not an option.
+\newpage
+\section{Piston Design}
+The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation. 
+\begin{equation}\label{equ:hydrostatic}
+P = \rho * h * g
+\end{equation}
+The other forces the piston undergoes are the pressure differential and friction.
+
+For 2 of the 3 geometries, the frictional force was unpredictable, especailly if sand particles got into the sides of the piston and prevented smooth movement. This in combination with the inconsistent 
+In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
+        \caption{Current feed system diagram.}\label{fig:piston_geom_1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Simplified fluidised powder bed diagram.}\label{fig:piston_geom_2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Current design with turbulent inlet.}\label{fig:piston_geom_3}
+    \end{minipage}
+
 \end{figure}
 
-The most promising methods were Screw Fed and Fluidized Powder Bed. The whole tabulated comparison of the methods can be seen in \autoref{appendix:feed-architecture-analysis}.
-% After selecting the architecture of Fluidized Powder Bed, a deeper dive into the usage and physics was conducted. 
-
-
-
-\newpage
-\section{System Physics}
+The first was blah blah blah and was used in testing the system for the first time.
+Upon identifying that this was not pushing the piston far enough, the piston was redesigned taking inspiration from cite the gear paper.
+This then ran into the issue of cocking, a problem where the piston becomes misaligned due to pressure differences.
+The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
+ 
+\section{Expected Behaviour}
+Given that the architecture is a revision of older systems, it is analysed in two stages. Like the motor-actuated 
 One could expect to model a system like this by combining previous data and insight of how the motor actuated fluidised system works and then augmenting this due to the pneumatic actuation of the piston. However, previous investigations into this [cite] seem to suggest that there is no such correlation between force applied to the piston and mass flow rate of the powder. 
 
 \begin{figure}[htbp]
@@ -79,13 +175,13 @@ One could expect to model a system like this by combining previous data and insi
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
-        \caption{Simplified fluidized powder bed diagram.}\label{fig:idkyet2}
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Simplified fluidised powder bed diagram.}\label{fig:idkyet2}
     \end{minipage}
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
         \caption{Current design with turbulent inlet.}\label{fig:idkyet3}
     \end{minipage}
 
@@ -104,30 +200,17 @@ The physics is hopefully understood as a non-linear combination of the two effec
 
 At the end of the day, this system is similar to other systems investiaged. It varies in 1 key way, the fact that since it is going into a nozzle then a vacuum in the LPCS process there is no combustion chamber to provide backpressure.
 \newpage
+
 \section{Experimental Setup}
-Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5 — 10bar range but there is no reason why this pressure range couldnt work
-\begin{figure}[htbp]
-    \centering
+\subsection{Data acuisition and actuators}
+Data aquisition was done through ICLR SRAD boards. The sensors were calibrated soon before the experiment but through no rigorous method. Area for improvement.
 
-    \begin{minipage}{0.95\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/static_test.drawio.png}
-        \caption{Systems diagram.}\label{fig:systems-diagram}
-    \end{minipage}
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
-        \caption{Pic of experiment.}\label{fig:experiment-image}
-    \end{minipage}
+The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
 
-\end{figure}
-
-
-\subsection{Hopper tank design}
-As seen in \autoref{appendix:feed-architecture-analysis}, there are many ways the feed system can be messed up, especially around pressurising and depressurising the vessle. Therefore, for the tank to perform its function correctly, it must be resistant to these problems as well as managing the position of the powder during operations. Typically, fluid containing tanks can use the plethora of propellant management devices which take advantage of surface tension to keep the fuel close to the outlet. For this tank, this isn't possible and so a piston design was used. This has the advantage of being another component of the system that can be optimised to achieve the desired mass flow rate but has implications for the rest of the design. The piston is much better suited to long thin tank designs which typically perform worse under high pressures than their circular counterparts. Additionally, the demands on the geometry make it harder to scale up. The aspect ratio of the piston is important to prevent cocking!!!cite!!! so a wider tank requires a much bigger piston and a longer tank may have implications on the inlet pressure required due to the flow through the powder reducing the static pressure of the gas!!!check this is true!!!
-
-\newpage
-\subsection{Pressure Source}
+Tuning of PTs and Load cells
+\subsection{Pressure Source Characterisation}
+% justify low pressures in this section
+% Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5 — 10bar range but there is no reason why this pressure range couldnt work
 Due to safety and ease of handling, the desired stagnation pressure supplied into the system came from a compressed air line. As discussed in \autoref{sec:static_test}, characterising the air supply was not trivial and required multiple experiments. 
 
 The first of these involved a flow through the system without any sand or piston. To tune the regulator for these tests, the system was closed by removing inlet tube connecting the tank to the compressed air line and replacing it with a pushfit end cap, as seen in figure \autoref{fig:systems-diagram-end-cap}. The regulator attached to the compressed air line was then adjusted using the inlet PT as a reference. While there was a gauge on the regulator, it was consistently reading 0.2 to 0.3 bar higher than the PTs or manual pressure gauges so was deemed unreliable. 
@@ -146,44 +229,30 @@ Follow up tests were conducted to validate that the test set up was not configur
 The same tests as before were conducted to investigate this but the static pressures read were even lower suggesting this wasnt the issue.
 A final attempt to solve the problem was verifying that the solenoid valve wasn't causing the problem. If the cross-sectional area of the open solenoid valve was very small, this could have choked the flow and lead to the lower stagnation pressure observed. Even after running the same test again without the solenoid valve, the results were equal to that of the system with the regulator and solenoid valve.
 
-\subsection{Piston}
-The piston's main function in this design is to constrain the powder to the outlet of the device. In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
+% To further investigate this behaviour, the pressure regulator connected to the compressed air line was set to max (roughly 7bar) and a second regulator was introduced closer to the system. If the problem was large static pressure losses from the long nylon tube connecting the inlet of the experiment to the pressure source, a larger pressure during operation would have been observed. Additionally, if the pressure regulator was faulty or some other weird behaviour was occuring upstream of the setup, this could have indicated that.
+\subsection{Mass flow rate vs Inlet Pressure Experimental Setup}
+
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.95\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
-        \caption{Current feed system diagram.}\label{fig:piston_geom_1}
+        \includegraphics[width=\textwidth]{../report_assets/static_test.drawio.png}
+        \caption{Systems diagram.}\label{fig:systems-diagram}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
-        \caption{Simplified fluidized powder bed diagram.}\label{fig:piston_geom_2}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
-        \caption{Current design with turbulent inlet.}\label{fig:piston_geom_3}
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Pic of experiment.}\label{fig:experiment-image}
     \end{minipage}
 
 \end{figure}
 
-The first was blah blah blah and was used in testing the system for the first time.
-Upon identifying that this was not pushing the piston far enough, the piston was redesigned taking inspiration from cite the gear paper.
-This then ran into the issue of cocking, a problem where the piston becomes misaligned due to pressure differences.
-The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
- 
-\subsection{Choke Point}
-It is proposed that the flow characteristics of the fluidised powder bed system are simpler, therefore easier to control, if the flow is choked.!!validate this as not in design anymore!!
+\newpage
 
-
-This chokepoint then needs to withstand getting sand blasted as to not change the throat area over time. The most ideal solution to this problem involves very hard materials like!!! or!!! that can withstand the powder for many tests. Given the scope of this project, however, one-time use 3D printed chokepoints were used. They were made of PLA which has a hardness of~!!! and is expected to wear away at a rate of~!!!. This was deemed experimentally acceptable because of a change in throat diameter of~!!! over~!!! doesnt significantly alter the results.
 
 \newpage
-\subsection{Cyclone seperator and measurement method}
+\subsubsection{Cyclone seperator and measurement method}
 There are many methods used in literature to measure the mass flow rate of powder exiting the tank. Of those, the most common are displacement of the piston, cyclone seperators + load cell and 
 Typical literature ways of measuring powder mass flow rate is through Displacement of the piston. This paper [cite] shows that other methods equally as effective are measuring the mass of powder leaving. This project does the latter through the use of a cyclone seperator.
 
@@ -193,18 +262,13 @@ measurement of the mass changes was done through 3 load cells shown in figure bl
 
 If needed could take vid of experiment and look at piston displacement but probs not
 
-\subsection{Data acuisition and actuators}
-Data aquisition was done through ICLR SRAD boards. The sensors were calibrated soon before the experiment but through no rigorous method. Area for improvement.
 
-The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
-
-Tuning of PTs and Load cells
-\subsection{Powder}
+\subsubsection{Powder}
 For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
 \newpage
 \section{Numerical Setup}
-\subsection{Static pressure Verification}
+\subsection{Pressure Source Verification}
 To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In
 \begin{figure}[htbp]
     \centering
@@ -217,7 +281,7 @@ To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, 
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidized_Bed_polished.png}
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
         \caption{Pic of experiment.}\label{fig:something_else}
     \end{minipage}
 
@@ -229,13 +293,13 @@ Mesh convergence was done maybe if i got time?
 \subsection{Moving piston simulation}
 governing equations eularian-eularian
 2d is valid because:
-2D vs 3D Eulerian Multiphase Simulations of a Piston-Driven Fluidized Bed
+2D vs 3D Eulerian Multiphase Simulations of a Piston-Driven Fluidised Bed
 Flow Features in 2D vs 3D Multiphase Models
-Hydrodynamics and Void Distribution: Two-dimensional Eulerian-Eulerian simulations can reproduce many qualitative behaviors of fluidized beds, but they often differ quantitatively from three-dimensional models. A key issue is that 2D models tend to over-predict void fractions and bed expansion, especially at higher flow velocities
+Hydrodynamics and Void Distribution: Two-dimensional Eulerian-Eulerian simulations can reproduce many qualitative behaviors of fluidised beds, but they often differ quantitatively from three-dimensional models. A key issue is that 2D models tend to over-predict void fractions and bed expansion, especially at higher flow velocities
 link.springer.com
 . This occurs because neglecting the third dimension forces the gas-solid flow into a constrained plane, which exaggerates hydrodynamic structures and fluctuations
 link.springer.com
-. In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:Bubble Dynamics: Gas bubbles in a fluidized bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
+. In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:Bubble Dynamics: Gas bubbles in a fluidised bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
 witpress.com
 . In a 3D simulation or experiment, bubbles can expand and coalesce in three directions, forming larger voids that accelerate upward. The 2D constraint suppresses some coalescence, so the bed may appear “bubblier” (many small bubbles) or even form slugging bubbles that span the width. This impacts particle motion and could alter the paths through which solids circulate and exit the bed.
 Circulation and Wall Effects: Three-dimensional beds allow complex circulation patterns — particles can move around bubbles and across the entire cross-section. In a 2D model, by contrast, flow is essentially confined between two parallel walls (the front and back of the 2D slice). This artificial confinement increases wall friction effects and creates a large circulating cell in the 2D plane that has no out-of-plane escape. As a result, 2D simulations may produce stronger single circulation loops or jetting along the centerline, whereas a 3D bed would have more distributed flow paths (including around the perimeter of bubbles or toward the center of a cylinder). Such differences could influence how continuously and evenly the powder flows out — 3D systems tend to have more uniform, axisymmetric flow, while 2D systems might exhibit more pronounced channeling or periodic “puffing.”
@@ -252,7 +316,7 @@ witpress.com
 witpress.com
 . In short, 2D and 3D models can differ in circulation patterns, particle clustering, wall friction effects and turbulence - all of which may affect the steady powder outflow rate.
 Linearity of Piston Velocity vs. Powder Mass Flow Rate
-Experimental Observation: In piston-driven fluidized beds (such as pneumatic powder feeders or powder-fueled engines), experiments consistently show that the powder mass flow rate increases approximately linearly with piston velocity (or with related parameters like the throttle/orifice opening)
+Experimental Observation: In piston-driven fluidised beds (such as pneumatic powder feeders or powder-fueled engines), experiments consistently show that the powder mass flow rate increases approximately linearly with piston velocity (or with related parameters like the throttle/orifice opening)
 researchgate.net
 . Essentially, driving the piston faster injects a larger volume of gas-solids mixture per unit time, yielding a higher mass flow. This linear relationship holds as long as the system is operating below any choking or saturation limits. For example, one study of a powder fuel feeding system found a “high linear tendency” between the mass flow rate and the minimum throttle area (which correlates with piston drive conditions), within the tested range
 researchgate.net
@@ -273,7 +337,7 @@ witpress.com
 witpress.com
 . They are not fully predictive of 3D behavior in a quantitative sense. For example, a 2D model might predict a certain mass flow rate for a given piston speed that differs from the real 3D value by a noticeable margin (due to differences in void fraction and wall friction effects). It might also fail to predict phenomena like unequal powder distribution in a 3D hopper, or the exact point where increasing piston velocity no longer yields proportional increases (onset of choking). As one study put it, only a 3D simulation was able to reproduce both the correct bed height and the dynamic pressure fluctuations of a bubbling bed, whereas 2D had significant deviations
 witpress.com
-. Conclusion - “Acceptable with Caution”: For the piston-driven fluidized bed scenario, using a 2D Eulerian-Eulerian Fluent simulation is reasonable in the early project stages. It offers a fast and informative approximation, and it will likely correctly indicate that there is a linear relationship between piston speed and powder mass flow under normal operating conditions. This makes it a practically acceptable tool for initial design and performance prediction. The literature supports this usage: 2D models can reliably rank design options and reveal trends (e.g. that higher piston speeds yield proportionally higher flow)
+. Conclusion - “Acceptable with Caution”: For the piston-driven fluidised bed scenario, using a 2D Eulerian-Eulerian Fluent simulation is reasonable in the early project stages. It offers a fast and informative approximation, and it will likely correctly indicate that there is a linear relationship between piston speed and powder mass flow under normal operating conditions. This makes it a practically acceptable tool for initial design and performance prediction. The literature supports this usage: 2D models can reliably rank design options and reveal trends (e.g. that higher piston speeds yield proportionally higher flow)
 researchgate.net
 , and they can guide engineers on what range of operation is plausible. The theoretical basis (continuity and momentum balance of two-phase flow) is sound, so there is no fundamental reason the 2D model would invert or lose the linear trend. What must be kept in mind is that extrapolating 2D results to 3D comes with uncertainty. Engineers should apply conservative corrections or eventually verify with a 3D model or experiments. In early design, one might use 2D to narrow the design space (thanks to its speed), then use a higher-fidelity 3D simulation on the shortlisted cases. By doing so, one benefits from the strengths of both approaches. In summary, 2D Eulerian-Eulerian simulations are theoretically sound for capturing the essential flow physics and trends of a piston-driven powder bed, and they are practically very useful in the initial design phase. They do preserve the linear piston velocity vs. mass flow relationship observed in 3D
 researchgate.net
@@ -283,7 +347,7 @@ link.springer.com
 . The consensus in the literature is that 2D and 3D approaches complement each other: use 2D for efficiency and scoping, and 3D for accuracy and final verification
 link.springer.com
 witpress.com
-. Sources: Recent computational studies and reviews of fluidized bed modeling and pneumatic powder feeding have informed these conclusions. Notably, comparisons by Yılmaz et al. (2025) on 2D vs 3D fluidized bed reactors highlight where 2D falls short and where it suffices
+. Sources: Recent computational studies and reviews of fluidised bed modeling and pneumatic powder feeding have informed these conclusions. Notably, comparisons by Yılmaz et al. (2025) on 2D vs 3D fluidised bed reactors highlight where 2D falls short and where it suffices
 link.springer.com
 link.springer.com
 . Similarly, Cardoso et al. (2019) and Xie et al. have demonstrated the specific differences in bed expansion, bubble motion, and pressure dynamics between 2D and 3D models
@@ -295,8 +359,3 @@ researchgate.net
 solver settings
 geometry and mesh details
 boundary and initial conditions
-
-\newpage
-\subsection{Pressure differential vs velocity}
-
-\subsection{Piston gemoetry vs pressure differential}
