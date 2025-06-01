@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read the CSV files
-input_file_1 = 'Research_Files/May/3_bar_sand/22_kermit106.csv'  # 0 2 7
-input_file_2 = 'Research_Files/May/3_bar_sand/22_kermit108.csv'  # 0 1 7
+input_file_1 = 'Research_Files/May/3_bar_sand/23_kermit106.csv'  # 0 2 7
+input_file_2 = 'Research_Files/May/3_bar_sand/23_kermit108.csv'  # 0 1 7
 
 # Load the data into a DataFrame
 df_1 = pd.read_csv(input_file_1)
@@ -12,10 +12,6 @@ df_2 = pd.read_csv(input_file_2)
 # Keep only the specified columns
 df_1 = df_1[['BackendTime', 'ch0sens', 'ch2sens', 'ch7sens']]
 df_2 = df_2[['BackendTime', 'ch0sens', 'ch1sens', 'ch7sens']]
-
-# Overwrite the original files with the filtered data
-df_1.to_csv(input_file_1, index=False)
-df_2.to_csv(input_file_2, index=False)
 
 # Replace any values in 'ch1sens' column of df_2 above 3 with 0
 df_2['ch1sens'] = df_2['ch1sens'].apply(lambda x: None if x > 3 else x)
