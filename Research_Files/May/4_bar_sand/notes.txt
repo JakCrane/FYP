@@ -1,0 +1,7 @@
+21_kermit is fine but removed noise from kermit_analysis so did more
+other 3 22-24 are fine
+issues:
+lid of cyclone popping off
+piston not moving smoothly
+powder buffetting up in gusts 
+sometimes piston not fully packing powder into outlet
