@@ -161,6 +161,29 @@ This then ran into the issue of cocking, a problem where the piston becomes misa
 The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
  
 \section{Expected Behaviour}
+While there are few investigations into the specific implementation of the fluidising bed, parallels can be drawn from similar systems. It has been proposed that you can split the analysis of the flow behavior within the tank into two regions~\cite{Tang22} dense phase moving area before the cone and fluidising region afterwards. This is argued to be because arching occurs, seen in \autoref{fig:idknowyet}, due to the presence of the tube cone interface and pressure from the piston restricting powder movement. This constrains the flows movement above the interface and [maybe means there is no correlation between force on powder and flow rate]
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/bridging.png}
+        \caption{Bridging ig\cite{911Metallurgist_binsflow}.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Simplified fluidised powder bed diagram.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \caption{Current design with turbulent inlet.}
+    \end{minipage}
+    \caption{i dont know yet}\label{fig:idknowyet}
+\end{figure}
 Given that the architecture is a revision of older systems, it is analysed in two stages. Like the motor-actuated 
 One could expect to model a system like this by combining previous data and insight of how the motor actuated fluidised system works and then augmenting this due to the pneumatic actuation of the piston. However, previous investigations into this [cite] seem to suggest that there is no such correlation between force applied to the piston and mass flow rate of the powder. 
 
