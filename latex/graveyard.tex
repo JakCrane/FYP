@@ -123,3 +123,64 @@ It is proposed that the flow characteristics of the fluidised powder bed system 
 
 
 This chokepoint then needs to withstand getting sand blasted as to not change the throat area over time. The most ideal solution to this problem involves very hard materials like!!! or!!! that can withstand the powder for many tests. Given the scope of this project, however, one-time use 3D printed chokepoints were used. They were made of PLA which has a hardness of~!!! and is expected to wear away at a rate of~!!!. This was deemed experimentally acceptable because of a change in throat diameter of~!!! over~!!! doesnt significantly alter the results.
+
+
+\section{Piston design}
+due to granular material being bigger than typical, often gets stucka round the piston and causes it to lock up
+
+redesign
+modelling the piston as a circle and the sand as a fluid. 
+P = rho * h * g
+P = 1529 * (74mm - y) * 9.81~= 15000* (74mm - y)
+\begin{equation}
+    \int_{-0.037}^{0.037}\!\int_{0}^{0.037+\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x
+    \;-\;
+    \int_{-0.037}^{0.037}\!\int_{0}^{0.037-\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x.
+\end{equation}
+
+% \begin{equation}
+%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
+% \end{equation}
+% \begin{equation}
+%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
+% \end{equation}
+\begin{equation}
+    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
+    \;-\;
+    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
+\end{equation}
+\begin{equation}
+    15000\int_{-0.037}^{0.037}\Bigl(0.074\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 2.38697N
+\end{equation}
+
+555.001308106 Pa average pressure differential across the two piston faces to get this force required to compact the sand
+
+deltaP for fluidising bed is $h*(rho_s - rho_a)*9.81$ which is 0.2 1527 10 = 300pa
+
+
+sand drops static pressure only. Therefore probably need to make the piston drop about half a bar of static pressure aswell
+this is easily testable in the setup
+
+need to think about friction when testing for a certain dp across the faces
+
+need to think about the sand when designing for the geometry so it doesnt get stucka
+
+might run into the inherent cocking issue since pressure from sand is concentrated at the bottom
+
+static pressure losses from the tank and set up alone
+
+3 bar (gauge) stagnation goes to 1.405bar static and 1.195bar static = loss of 0.210bar static
+4 bar (gauge) stagnation goes to 1.625bar static and 1.303bar static = loss of 0.322bar static
+5 bar (gauge) stagnation goes to 1.852bar static and 1.432bar static = loss of 0.420bar static
+
+static pressure losses from the tank + piston
+
+3 bar (gauge) stagnation goes to 1.425bar static and 1.209bar static = loss of 0.216bar static
+4 bar (gauge) stagnation goes to 1.628bar static and 1.304bar static = loss of 0.324bar static
+5 bar (gauge) stagnation goes to 1.831bar static and 1.431bar static = loss of 0.400bar static
+
+static pressure losses from the tank + new piston
+
+3 bar (gauge) stagnation goes to 1.423bar static and 1.205bar static = loss of 0.218bar static
+4 bar (gauge) stagnation goes to 1.645bar static and 1.311bar static = loss of 0.334bar static
+5 bar (gauge) stagnation goes to 1.850bar static and 1.450bar static = loss of 0.400bar static

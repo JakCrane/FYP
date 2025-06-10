@@ -1,39 +1,41 @@
 \section{Previous design}\label{sec:prev-design-analysis}
-As seen in \autoref{fig:old-design-phase-density}, there is a marked difference in behaviour between the dynamics under gravity and under microgravity. This hypoethesised issue appears supported by the numerical simulations.
+To test the hypothesised issue with the previous design, animations of the 2D simulation were produced and the change in mass of the solid phase was recorded.~\autoref{fig:old-design-phase-density} presents a screenshot at 2 seconds into the transient simulation. 
 \begin{figure}[htbp]
     \centering
-
-    \begin{minipage}{0.45\textwidth}
+    
+    \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
-        \caption*{(a) Old Design Under Gravity.}
+        \includegraphics[width=\textwidth]{../report_assets/grav_better.png}
+        \caption*{(a) Under Earth's Gravity}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
-        \caption*{(b) Old Design Under microgravity.}
+        \includegraphics[width=\textwidth]{../report_assets/no_grav_better.png}
+        \caption*{(b) Under Microgravity}
     \end{minipage}
-    \caption{Phase density of Old Design.}\label{fig:old-design-phase-density}
+    \caption{Phase Density of Old Design after 2 Seconds}\label{fig:old-design-phase-density}
 \end{figure}
-This behaviour is present in many tanks under microgravity but is usually remedied by propellant management devices. These often employ surface tension as a means to concentrate the liquid held in the tank towards the outlet but this isnt possible with powder. The main consequence of this behaviour is shown in \autoref{fig:old-design-mass-change}.
+As shown, there is a marked difference in the location of powder between the two cases. While the powder in the tank under gravity appears to be fully fluidising, the tank in mircogravity is relatively unaffected by the flow. It is thought this is because the steady state flow does not interact with the region of the tank where the powder sits. For rigor, the unprocessed images are provided in \autoref{sec:unprocessed-images}.
+
 \begin{figure}[htbp]
     \centering
-
-    \begin{minipage}{0.45\textwidth}
+    
+    \begin{minipage}{0.54\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
-        \caption{New regulator.}
+        \includegraphics[width=\textwidth]{../report_assets/old_design_out.png}
+        \caption{Change of Mass in the Tank Over Time}\label{fig:old-design-mass-change}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
-        \caption{New regulator + no solenoid.}
+        \includegraphics[width=0.6\textwidth]{../report_assets/old_initial.png}
+        \caption{Initial Powder Configuration}\label{fig:old-initial}
     \end{minipage}
+\end{figure}
+\autoref{fig:old-design-mass-change} presents the amount of powder in the tank over time, measured by integrating the volume fraction of the solid phase over the entire geometry. At roughly 0.5s, both simulations show a relatively large drop in powder. This is because of how the simulation was initialised, shown in \autoref{fig:old-initial}, leading to the powder starting in the pipe quickly being expelled from the system. After this, there is a large gap between the two powder dispensing rates, again supporting the hypothesis that the previous design would be less appropriate for microgravity applications and supporting the decision to redesign the tank. 
 
-\end{figure}\label{fig:old-design-mass-change}
-Given that mass flow rate is such an important parameter in CSAM systems, it is crucial that controlability is prioritied from the start. While the simulation is only 2D, there is still the important result that the system under gravity has 2 different rates of mass flow. The first is less predictable and highly dependent on the amount of powder in the tank. The second is the time taken to settle into steady state.
+As mentioned in \autoref{sec:old-design-method}, this analysis was conducted with a relatively coarse mesh which may alter the results. The biggest impact would be not resolving key gradients or incorrect momentum exchange between the two phases. As this geometry is relatively simplistic and the velocity into the system small, it is assumed that there would be minimal impact from not resolving velocity or pressure gradients well enough. However, it is less clear how accurately the momentum exchange is affected by this and was assumed to be valid just based off the authors understanding of the expected behaviour of the system. Given more time this would be an area of focus, conducting a mesh convergence study and running the finer meshes for a longer time should be done to validate this preliminary result. Another area for improvement is using an inlet condition more accurate to the physics. A pressure inlet would have been ideal as this is closer to the physics of the system but due to limitations of the simulation software, there was no way to prevent the powder exiting this inlet. This could be fixed with a user defined function, found through simulating the system with a pressure inlet and no powder, and then transferred to this analysis.
 \section{Characterising Pressure Source}\label{sec:static_test}
 \subsection{Initial Test}
 The first step in characterising the system was to investigate the static pressure losses present in the tank without a piston or any powder. This immediately presented a problem as the static pressure readings, given a gas source with a stagnation pressure of 4 to 6 bar, were far below expected, as seen in figure \autoref{fig:static-pressure-drop}. 
@@ -90,6 +92,7 @@ In an attempt to diagnose this behaviour, follow up tests were conducted. As see
 
 \end{figure}
 As a final attempt, the solenoid valve was removed from the set up to verify that this wasnt choking the flow or somehow drastically decreasing static pressure somehow. Again, seen in fig 6, this performed similarly to the setup containing the regulator so wasn't the cause of the behaviour and the system diagram was reverted to \autoref{fig:systems-diagram}.
+
 \subsection{Simulation}
 A 2D Axisymmetric analysis of the empty tank was conducted using fluent. This seemed to support the idea that only 1bar of stagnation pressure was being supplied to the system, not the desired 3bar as setting the pressure inlet to 1bar gave comparable static pressure readings as seen in the tests.
 \begin{figure}[htbp]
@@ -126,8 +129,8 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \label{tab:static-stag-pressures}
 \end{table}
 
-\section{first test}
-yappa yappa
+\section{First Test}\label{sec:first-test}
+As mentioned in \autoref{sec:piston}, the very first test with sand yeilded no result as the first piston design did not generate a strong enough pressure differential to be pushed down the tube. It was also noted that the pressure readings before and after the tank adjusted slower than first expected. Meaning that there was no need to account for the pressure difference inside and outside the 3D printed piece so the walls were added back. Additionally, the length of the piston is a key parameter in both the pressure differential and the likelyhood of the piston rotating and getting jammed against the wall. The second test, the piston started at the beginning of the tank far from the powder and was successfully pushed into the powder packing it at the outlet. 
 \begin{figure}[htbp]
     \centering
 
@@ -149,67 +152,7 @@ force required to compact the sand to the outlet
 sand only at the top moved
 no fluidisation behaviours observed, maybe higher pressures required after all
 chokepoint blocked sand and prevented flow into cyclone seperator
-\section{Piston velocity - mass flow rate relation}
-didnt really work. idk why but it should have
-\section{Piston design}
-due to granular material being bigger than typical, often gets stucka round the piston and causes it to lock up
 
-redesign
-modelling the piston as a circle and the sand as a fluid. 
-P = rho * h * g
-P = 1529 * (74mm - y) * 9.81~= 15000* (74mm - y)
-\begin{equation}
-    \int_{-0.037}^{0.037}\!\int_{0}^{0.037+\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x
-    \;-\;
-    \int_{-0.037}^{0.037}\!\int_{0}^{0.037-\sqrt{0.037^2 - x^2}}15000\,(0.074 - y)\,\mathrm{d}y\,\mathrm{d}x.
-\end{equation}
-
-% \begin{equation}
-%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
-% \end{equation}
-% \begin{equation}
-%     15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \frac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 0.302369.
-% \end{equation}
-\begin{equation}
-    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} + 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
-    \;-\;
-    15000\int_{-0.037}^{0.037}\Bigl(0.037^2 + \tfrac{x^2}{2} - 0.037\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x
-\end{equation}
-\begin{equation}
-    15000\int_{-0.037}^{0.037}\Bigl(0.074\sqrt{0.037^2 - x^2}\Bigr)\,\mathrm{d}x = 2.38697N
-\end{equation}
-
-555.001308106 Pa average pressure differential across the two piston faces to get this force required to compact the sand
-
-deltaP for fluidising bed is $h*(rho_s - rho_a)*9.81$ which is 0.2 1527 10 = 300pa
-
-
-sand drops static pressure only. Therefore probably need to make the piston drop about half a bar of static pressure aswell
-this is easily testable in the setup
-
-need to think about friction when testing for a certain dp across the faces
-
-need to think about the sand when designing for the geometry so it doesnt get stucka
-
-might run into the inherent cocking issue since pressure from sand is concentrated at the bottom
-
-static pressure losses from the tank and set up alone
-
-3 bar (gauge) stagnation goes to 1.405bar static and 1.195bar static = loss of 0.210bar static
-4 bar (gauge) stagnation goes to 1.625bar static and 1.303bar static = loss of 0.322bar static
-5 bar (gauge) stagnation goes to 1.852bar static and 1.432bar static = loss of 0.420bar static
-
-static pressure losses from the tank + piston
-
-3 bar (gauge) stagnation goes to 1.425bar static and 1.209bar static = loss of 0.216bar static
-4 bar (gauge) stagnation goes to 1.628bar static and 1.304bar static = loss of 0.324bar static
-5 bar (gauge) stagnation goes to 1.831bar static and 1.431bar static = loss of 0.400bar static
-
-static pressure losses from the tank + new piston
-
-3 bar (gauge) stagnation goes to 1.423bar static and 1.205bar static = loss of 0.218bar static
-4 bar (gauge) stagnation goes to 1.645bar static and 1.311bar static = loss of 0.334bar static
-5 bar (gauge) stagnation goes to 1.850bar static and 1.450bar static = loss of 0.400bar static
 
 \newpage
 \section{Main Experiment}

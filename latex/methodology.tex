@@ -1,45 +1,30 @@
-\section{Modelling Previous Design}
-To investigate the previous design, a geometry was outlined on Ansys Discovery through measurements of the previous tank, seen in \autoref{fig:old-design-sim} (a).
-% For dimensionalaccuracy, measurements of the COSMOS hopper tank were made and 
-% Measurements taken of tank were 120mm OD 20mm thickness 100mm depth, top section was 30mm ID
+\section{Modelling Previous Design}\label{sec:old-design-method}
+As mentioned earlier, microgravity is incredibly costly to achieve experimentally, so a numerical investigation of the old design was conducted using Ansys Fluent. The simulation was set up and then ran once with gravity and once without, comparing the distribution of powder within the tank and the mass flow rate. An axisymmetric, fine mesh simulation was first conducted as it would have maintained the same quantities as a 3D simulation while running much faster. This proved numerically unstable, therefore, a 2D simulation with a much coarser mesh of 1mm square cells was conducted, seen in \autoref{fig:old-design-sim}.
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
-        \caption*{(a) Previous Design.}
+        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM_2x3.png}
+        \caption*{(a) Previous Design}
     \end{minipage}
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption*{Simplified Geometry.}\label{fig:idkyet9}
+        \includegraphics[width=\textwidth]{../report_assets/geom_old.png}
+        \caption*{(b) Simplified Geometry}\label{fig:idkyet9}
     \end{minipage}
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption*{Current design with turbulent inlet.}\label{fig:idkyet10}
+        \includegraphics[width=\textwidth]{../report_assets/mesh_old.png}
+        \caption*{(c) Mesh Used for Sim}\label{fig:idkyet10}
     \end{minipage}
-
+    
 \end{figure}\label{fig:old-design-sim}
-Initially, a fine-mesh (0.4mm + refinement) axisymmetric model was constructed as it was expected to run faster than a 3D simulation but still retain useful quantities of the simulation. This configuration was shown to be numerically unstable, even crashing with no flow through the tank and the powder just acting under gravity. Therefore, a 2D sim with a much coarser mesh was conducted. While the 2D nature of the sim means that none of the quantities are representative of the 3D design, key flow characteristics are still expected to remain. Increasing the mesh coarseness results in a dampening of sharp gradients likely to cause instabilities. Diffusion maybe relevant but idk
-% courant number maybe?
-The 2-phase flow was modelled using eulerian-eulerian because 
+While the 2D nature of the simulation means that none of the quantities are representative of the real 3D physics, the key flow characteristics of interest are still expected to remain. 
+A simplified geometry, seen in \autoref{fig:old-design-sim} (b), was used as it speads up computational time while still preserving the physics of interest. The vent line pipe was omitted and the outlet pipe was moved to the center, neither of these are expected to impact on the behaviour being investigated. The bottom of the tank held the wire mesh on which the powder sat. The bottom of the surface represents this mesh, acting as the velocity inlet of the simulation at 0.1m/s. To simulate the two phases, a eulerian-eulerian model was used with a gidaspow drag model as this has been shown to best represent fluidising beds~\cite{C6RA28615A}. The powder was modelled as TI6AL4V as this was what was used in the prior testing. Typical titanium allow powder used in SLS printing has a particle size distribution between 15 and 53um and a density between 2.04 and 2.34g/cm3~\cite{ma17040952}. It is assumed this is similar to the powder used in CSAM and therefore a 40um particle size and 2200kg/m3 density was used. The gas was modelled as air at standard operating conditions.
 
-The powder was modelled as TI6AL4V as this was what was used in the prior testing. Typical titanium allow powder used in SLS printing has a particle size distribution between 15 and 53um and a density between 2.04 and 2.34g/cm3~\cite{ma17040952}. It is assumed this is similar to the powder used in CSAM and therefore a 40um particle size and 2200kg/m3 density was used. The gas was modelled as air with a density of 1.225kg/m3.
-
-To model the 
-
-% solid phase was granular using granular viscosity as gidaspow, granular bulk viscosity as lun-et-al and rest as default
-% phase interactions solid-gas gidaspow
-
-
-Ideally, the inlet would have been modelled as a pressure inlet as this is most representative of the system. However it was found that it is more reliable to have a velocity inlet as pressure inlets when flow is reversed allow powder to escape the simulation and this was even less representative of the system. The magnitude of velocity in couldnt really be related to any real values as the 2D nature meant that quantities like that are not conserved. A velocty of 0.1m/s was chosen as fluidisation happend too quickly at 0.5 which meant less accurate physics
-
-A region of the tank above the mesh was then patched to be full of powder and the simulation was ran both with and without gravity to investigate the dynamics.
-\newpage
 \section{Choosing New Feed System Architecture}\label{sec:system_architecture}
 As discussed in \autoref{sec:prev-design-analysis}, a new design was desirable and research into current powder feed technology was conducted. While every effort was made to review analogous systems reported in the literature, time constraints mean that the author cannot rule out overlooking relevant works. The only research found on powder-based AM experiments conducted in microgravity originate from the Fraunhofer Institute for Transportation and Automation Technology, but those reports offer scant detail on the powder-feed mechanism employed~\cite{OVERMEYER2025}. Accordingly, five common terrestrial powder-dispensing methods were examined, and the modifications required to adapt each for use in a space environment were evaluated. Basic schematics of these methods are presented in \autoref{fig:powder-dispensing-methods} and the full analysis can be found in \autoref{appendix:feed-architecture-analysis}. 
 \begin{figure}[htbp]
@@ -84,7 +69,7 @@ As discussed in \autoref{sec:prev-design-analysis}, a new design was desirable a
 Given that CSAM already requires an accelerant gas, the fludising powder bed design was deemed the most optimal as this mitigates one of the architectures largest drawbacks. Furthermore, the method is assumed to be inherently gravity-agnostic, requiring no adjustments of the core mechanic of feeding. 
 
 As mentioned in \autoref{sec:fluidised-powder-feed-systems}, the fluidising powder bed architecture has gone through a number of design iterations since it's first implementation. To align the investigation as closely to state-of-the-art, the pneumatically driven, permiable piston architecture was chosen. This also simplifies the systems plumming and reduces the overall mass of the system but comes at the cost of complexity in dynamics.
-\newpage
+
 \section{Hopper Tank Design}
 % what it was designed for
 The tank was designed to operate at a maximum pressure of 8 bar because of previous experience during the COSMOS project. 8 bar was on the high end of powder hopper inlet pressures during successful tests and was therefore deemed appropriate. A safety factor of 1.5 was chosen but only after manufacturing, it was discovered that the standard for pressure vessels was 3.5-4~\cite{redriver2024asme}. This would be accounted for given another design iteration but was determined a low priority given the time constraints.
@@ -113,7 +98,7 @@ The end caps were manufactured from Acetal C POM Delrin as the material is low-c
         \includegraphics[width=\textwidth]{../report_assets/outlet_end_cap.png}
         \caption*{(c) Outlet End Cap Cross Section}
     \end{minipage}
-    \caption{Components of the Hopper Tank.}\label{fig:hopper-tank-components}
+    \caption{Components of the Hopper Tank}\label{fig:hopper-tank-components}
 \end{figure}
 As seen in \autoref{fig:hopper-tank-components}, the inlet end cap is radially screwed into the tube. This was done as one of the end caps had to be removable to allow for changing the piston. The outlet end cap was bonded to the tube using plastic-friendly epoxy.
 
@@ -122,46 +107,46 @@ To validate that the design could operate at a pressure of 8 bar, a combination 
 
 % design evaluation
 Upon construction of the tank, it was hydrostatically pressure tested to a pressure of 8 bar. At the time of testing, it was known that the safety factor of the design was lower than standard and therefore was not pressurised above the 8 bar limit for fear of damaging the tank. This was definitely not ideal but given the time and budget constraints, manufacturing a new powder hopper was not an option.
-\newpage
-\section{Piston Design}
-The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation. 
+
+\section{Piston Design}\label{sec:piston}
+The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation, seen below. 
 \begin{equation}\label{equ:hydrostatic}
 P = \rho * h * g
 \end{equation}
-The other forces the piston undergoes are the pressure differential and friction.
-
-For 2 of the 3 geometries, the frictional force was unpredictable, especailly if sand particles got into the sides of the piston and prevented smooth movement. This in combination with the inconsistent 
-In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
+This pressure has to balance the pressure differential across the piston from the flow and the additional frictional force on the tank walls to ensure the powder is packed at the outlet. Both the modelling of the pressure differential and the friction from the walls was too complex for a first principles driven desing. Therefore the first design, seen in \autoref{fig:piston_geom} (a), was modelled after a previous study which found the gear geometry to have the best performance~\cite{TANG2023118406}. This was 3D printed with PLA and there was a concern that the high pressure within the tank would not equalise with the pressure inside the print causing crumpling. This is why the wall layers were not printed to allow for this equalisation. 
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
-        \caption{Current feed system diagram.}\label{fig:piston_geom_1}
+        \includegraphics[width=\textwidth]{../report_assets/piston_1.png}
+        \caption*{(a) First Design Iteration.}\label{fig:piston_geom_1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/piston_2.png}
+        \caption*{(b) Second Design Iteration.}\label{fig:piston_geom_2}
     \end{minipage}
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Simplified fluidised powder bed diagram.}\label{fig:piston_geom_2}
+        \caption*{(c) Final Design.}\label{fig:piston_geom_3}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Current design with turbulent inlet.}\label{fig:piston_geom_3}
-    \end{minipage}
-
+    \caption{Piston Design Iterations}\label{fig:piston_geom}
 \end{figure}
+The first design did not generate enough pressure force to be moved down the tank motivating the need for another iteration. To remedy this, the second design was produced to try and constrict the flow around the piston as much as possible to generate a higher force on the piston. As discussed in \autoref{sec:first-test}, this piston did move from the pressure but immediately became jammed by the sand. While it is expected that a smaller particle size could have enabled this piston to work, a novel piston approach was used given the circumstances. That being printing the piston out of flexible TPU.\@ The flexibility of the piston heads allows for resiliance against jamming and therefore the head could cover the whole cross section of the tube creating a larger pressure differential.
 
-The first was blah blah blah and was used in testing the system for the first time.
-Upon identifying that this was not pushing the piston far enough, the piston was redesigned taking inspiration from cite the gear paper.
-This then ran into the issue of cocking, a problem where the piston becomes misaligned due to pressure differences.
-The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
- 
+% In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
+% The first was blah blah blah and was used in testing the system for the first time.
+% Upon identifying that this was not pushing the piston far enough, the piston was redesigned taking inspiration from cite the gear paper.
+% This then ran into the issue of cocking, a problem where the piston becomes misaligned due to pressure differences.
+% The final design was then proposed to solve both the issue of higher dp requirement and cocking/powder sticking resistance. This was made using TPU as it is flexible enough to warp around particles that would otherwise dig into the PLA pistons, and strong enough to hold back most of the air. Due to manufacturing imperfections, the prints had a high surface roughness and measuring permiability of the piston would be done given more time.
+\newpage
+
 \section{Expected Behaviour}
-While there are few investigations into the specific implementation of the fluidising bed, parallels can be drawn from similar systems. It has been proposed that you can split the analysis of the flow behavior within the tank into two regions~\cite{Tang22} dense phase moving area before the cone and fluidising region afterwards. This is argued to be because arching occurs, seen in \autoref{fig:idknowyet}, due to the presence of the tube cone interface and pressure from the piston restricting powder movement. This constrains the flows movement above the interface and [maybe means there is no correlation between force on powder and flow rate]
+While there are few investigations into the specific implementation of the fluidising bed, parallels can be drawn from similar systems. It has been proposed that you can split the analysis of the flow behavior within the tank into two regions: a dense phase moving area before the cone and a fluidising region afterwards~\cite{Tang22}. This analysis assumes arching occurs, seen in \autoref{fig:bulk_powder_structures}, due to the presence of the tube cone interface and pressure from the piston restricting powder movement. This constrains the flows movement above the interface and [maybe means there is no correlation between force on powder and flow rate]
 \begin{figure}[htbp]
     \centering
 
@@ -290,7 +275,7 @@ If needed could take vid of experiment and look at piston displacement but probs
 For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
 \newpage
-\section{Numerical Setup}
+\section{Numerical Setup}\label{sec:numerical-setup}
 \subsection{Pressure Source Verification}
 To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In
 \begin{figure}[htbp]

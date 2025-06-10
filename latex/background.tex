@@ -3,32 +3,27 @@
 Most engineering alloys, including stainless steel, aluminium and titanium, will undergo solid-state bonding when two atomically flat and clean surfaces are brought into contact, particularly in vacuum environments where surface contamination is minimal~\cite{merstallinger2009coldwelding}. 
 This phenomenon is known as cold welding and occurs because the surface energy of the separated metal interfaces is higher than that of the bonded state, making direct bonding thermodynamically favourable~\cite{WagleBaker2015}. 
 
-In space applications, designs typically aim to prevent this but it is the core mechanism that underpins CSAM.\@ By accelerating metal powder particles to supersonic velocities and then impacting them upon the substrate, the particles cold weld to the surface forming a deposit. Seen in \autoref{fig:cs}, as the particles impact the surface they plastically deform, causing the disruption and removal of oxide layers and exposing unoxidised metal surfaces that bond upon contact. 
+Designs typically aim to prevent this in space applications, but it is the core mechanism that underpins CSAM.\@ By accelerating metal powder particles to supersonic velocities and then impacting them upon the substrate, the particles cold weld to the surface forming a deposit. Seen in \autoref{fig:cs}, the particles plastically deform on impact, causing the disruption and removal of the oxide layer, and exposing a clean metal surfaces. 
 \begin{figure}[htbp]
     \centering
     
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/cs_bonding.png}
-        \caption*{Deformation and Bonding on Impact~\cite{ZHANG2024137157}.}
+        \caption{Deformation and Bonding~\cite{ZHANG2024137157}}\label{fig:cs}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/cs_porosity (1).png}
-        \caption*{Do i need this one?~\cite{coatings13040738}.}
+        \caption{Test Samples of CSAM~\cite{coatings13040738}}\label{fig:cs-porosity}
     \end{minipage}
     
-\end{figure}\label{fig:cs}
-The removal of oxide layers is thought to be because of adiabatic shear instability at the particle-substrate interface, which disrupts the brittle oxide shell and enables metallurgical bonding~\cite{assadi2016cold}. However, the precise mechanisms remain a topic of ongoing research and debate within the field~\cite{HASSANIGANGARAJ2018430}.
+\end{figure}
+The removal of the oxide layer is thought to be because of adiabatic shear instability at the particle-substrate interface~\cite{assadi2016cold}, however, the precise mechanisms remain a topic of ongoing research and debate within the field~\cite{HASSANIGANGARAJ2018430}.
 
-CSAM is a solid-state manufacturing process that builds material layers without ever melting the feedstock. Because the material never transitions through a liquid phase, thermal input remains low, preserving the original microstructure of both the powder and the underlying substrate, minimizing residual stresses and avoiding common fusion-related defects like porosity or solidification cracks. 
+A unique advantage of CSAM is that it is a solid-state manufacturing process. Because the material never transitions through a liquid phase, thermal input remains low, preserving the original microstructure of both the powder and the underlying substrate. This minimises issues like residual thermal stresses, oxidation of the material and chemical composition inhomogeneity~\cite{ma16072765}. While solid-state manufacturing also tends to be better at reducing porosity, \autoref{fig:cs-porosity} shows that this can still be a problem depending on the parameters of the system. Arguably the most important parameter is the velocity of the particle impacting the surface. If this velocity is too low then bonding does not occur and if it is too high the powder roughens or erodes the substrate~\cite{Guo2022}. This velocity is dependent on the choice, pressure and temperature of accelerant gas and properties of the powder like mass flow rate, size, shape and hardness. All of these must be carefully chosen or controlled to produce high quality deposits.
 
-Arguably the most important parameters in the CSAM process is the velocity of the particle impacting the surface. If this velocity is too low then bonding does not occur and if it is too high the powder roughens or erodes the substrate. This velocity is dependent on the choice, pressure and temperature of accelerant gas and properties of the powder like mass flow rate, size, shape and hardness. 
-
-An overview of cold spray coating in additive
-manufacturing, component repairing and other
-engineering applications could be useful paper to review for either images or citations/explanations
 \newpage
 \section{Fluidised Powder Bed Phenomenon}
 Given that fluidisation underlies the design architecture presented later, the physics behind a generic fluidised powder-bed system are outlined in this section.
@@ -78,56 +73,51 @@ INVESTIGATE THE SIZE OF THE SETUPS AND FIND PAPER PROVIND WHERE THE REGION OF FL
 NEED TO FIND PAPER CORRELATING MASS FLOW TO PISTON force
 \newpage
 \section{Propellent Management Devices}
-The need to store material in space is not new and has recieved extensive research, especially regarding the storage of propellants. Like the system presented later, propulsion systems can be disturbed or damaged due to the propellant not being constrained to the outlet~\cite{Hartwig2016}. Common solutions to this problem already exist in the form of propellant management devices.  
+The need to store material in space is not new and has recieved extensive research, especially regarding the storage of propellants. Like the manufacturing system presented later, propulsion systems can be disturbed or damaged due to the contents of the tank not being constrained to the outlet~\cite{Hartwig2016}. Solutions to this problem already exist in the form of propellant management devices.
 \begin{figure}[htbp]
     \centering
     
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.25\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/cs_bonding.png}
-        \caption*{Deformation and Bonding on Impact~\cite{ZHANG2024137157}.}
+        \includegraphics[width=\textwidth]{../report_assets/vane.png}
+        \caption{Tank Vanes~\cite{Hartwig2016}}\label{fig:vane}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
+    \hspace{3em}
+    \begin{minipage}{0.47\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/cs_porosity.png}
-        \caption*{Do i need this one?~\cite{coatings13040738}.}
+        \includegraphics[width=\textwidth]{../report_assets/piston.png}
+        \caption{Piston Tank Diagram~\cite{TANG2023118406}}\label{fig:piston}
     \end{minipage}
     
-\end{figure}\label{fig:pmd}
-sloshing phenomenon, surface tension doesnt work, piston tanks and common issues.
-1
-A Detailed Historical Review of Propellant Management
-Devices for Low Gravity Propellant Acquisition
-in jan folder
-\section{Management of Bulk Powder Phenomenon}
-While a lot of attention is given to powder in the dispersed and fluidised state, these behaviours differ greatly from that of powder packed together. This bulk powder phenomenon comes from the fact that particles can rearrange, deform slightly at contact points, and trap interstitial. Powders respond to stress somewhere between a fluid and a frictional solid: they dilate under shear, compact under normal load, and can sustain stable arches that block flow (ratholing or bridging) in hoppers. Key descriptors include bulk density and its evolution under tapping or vibration; the angle of repose and internal friction angle, which reflect particle shape, size distribution, and surface roughness; cohesion and tensile strength, which rise with finer particles, humidity, or electrostatic charging; and compressibility, captured in plots such as the Heckel or Kawakita curves. Constitutive models—ranging from the Mohr–Coulomb criterion to more recent shear-cell and discrete-element simulations—link these properties to practical operations like silo discharge, tableting, and additive manufacturing, where uneven stress fields, segregation, and wall friction dictate reliability and scale-up limits.
-Powder displays both fluid-like behaviour as well as 
-Given that that the storage and distribution of powder is the goal, this section outlines behaviours seen in other systems. A common method of powder storage
+\end{figure}
+Vanes, seen in \autoref{fig:vane}, sponges and galleries have been well tested in microgravity environments~\cite{} but rely on surface tension so are only applicable to storing liquid. Positive expulsion devices like bladders, diaphragms and pistons, seen in \autoref{fig:piston}, mechanically force propellant towards the outlet and, therefore, are suitable for powder applications. 
+
+Alongside allowing for more reliable powder dispension, constraining the powder can prevent problematic dynamics like sloshing from occuring in the tank reducing the systems footprint on the rest of the spacecraft and making attitude control easier.
+
+
+% sloshing phenomenon, surface tension doesnt work, piston tanks and common issues.
+% 1
+% A Detailed Historical Review of Propellant Management
+% Devices for Low Gravity Propellant Acquisition
+% in jan folder
+% given extra time come back to this and try and cite stuff about surface tension and cite maybe the rate of usage
+\section{Management of Bulk Powder}
+Powder in a tightly-packed (bulk) form displays entirely different dynamics to that of powder in a fluidised state and is more complex to describe. This is because of the different types of forces between the particles~\cite{ZAFAR2017389}, contact points and the friction associated changing due to plastic and elastic deformation~\cite{TALEBI2024211} and the particles freedom to rearrange. 
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/bridging.png}
+        \caption{Common Powder Structures~\cite{911Metallurgist_binsflow}}\label{fig:bulk_powder_structures}
+    \end{minipage}
+\end{figure}
+This means powders respond to stress somewhere between a fluid and a frictional solid: they dilate under shear, compact under normal load, and can sustain stable structures, seen in \autoref{fig:bulk_powder_structures}, that block flow in hoppers. 
 \newpage
 \section{Modelling Two-phase flow}
-There are many different kinds of two-phase flow, from the flow of two immiscible liquids to the solid-gas interactions of interest in this report. Further specifications can be made from the solid-gas category and can be further divided into 3 subcategories: seperated, mixed or transitional and dispersed flow. This analysis is looking at solid particles in a gas and would therefore fall under dispered flows~\cite{enwald1996eulerian}. Enwald, Periano and Almstedt define the general idea as first formulating the integral balance of mass, momentum and energy for the two phases in a fixed control volume. These equations must be satisfied at all points in space and time and therefore can be reduced to two equations, the first concerned with the local instantaneous equations for each phase and the other concerned with the local instantaneous jump conditions. ``IE THE INTERACTIONS BETWEEN PHASES AT THE INTERFACE''??
+Given that microgravity is very expensive to achieve experimentally, the project relies on correlating the simulated behaviour under gravity with the experiment and then comparing this with the simulated behaviour under microgravity. Therefore the method used for simulation is outlined below.
 
-In principle, this set of equations could be solved by direct numerical simulation but this would require unrealistic computational times. Therefore there are alternative methods like applying a lagrangian approach for the particulate phase but this requires many many equations for the case with many particles and therefore doesnt scale.
+Because there are so many different kinds of two phase flow, there are countless ways to model the behaviour.  The general idea applies the conservation of mass, momentum and energy equations for both phases over a fixed control volume. While this formulation is sufficient to perform for direct numerical simulation of the flow, simplifying assumptions are often made to avoid the unrealisitic computational requirements~\cite{enwald1996eulerian}. Simulating fluidised beds is currently done through two main methods: the Eulerian-Lagrangian method and the Eulerian-Eulerian method~\cite{C6RA28615A}. The first regards the particles as a discrete phase and the fluidising gas as a continuum. It then tracks the dynamics of the particles in the Lagrangian reference frame and couples them to the continuum through interphase momentum exchange~\cite{SUBRAMANIAM2013215}. The second models both as fluids, tracking the amount of particle phase present in the mixture and uses constitutive equations of granular theory to couple the two continua~\cite{C6RA28615A}. As discussed in \autoref{sec:numerical-setup}, the Eulerian-Eulerian model is most applicable to the system so is further outlined.
 
-Then, the most appropriate method for the case with many particles is the eulerian approach. This works by averaging the local instantaneous equations in either space, time or as an ensemble. The approach relaxes the small mesh and timestep requirements but introduces more unknowns than current equations so requires closure expressions.
 
-The closure laws are of three types: topological, constitutive and transfer laws, where the first type describes the spatial distribution of phase-specific quantities, the second type describes physical properties of the phases and the third type describes different interactions between the phases.~``coppied from source so needs revision''
+While the drag model is not a constitutive equation in the strict sense, in Eulerian-Eulerian models, it acts like one and closes the system of equations. Therefore the choice of drag model greatly impacts the resulting dynamics, especially with respect to the behaviour of bubbles and bed expansion. The gidaspow model was found to be the most representative for fluidising beds~\cite{C6RA28615A}.
 
-\subsection{Closing the set of equations}
-drag model is a big one, syamal-o'brien has been used so far.gidaspow is better apparently according to this research paper Experimental study and transient CFD/DEM
-simulation in a fluidised bed based on different
-drag models
-will try it and use this as a reason as to why i chose it over others
-
-all models in the paper repeatedly underpredict the bed expansion
-\subsection{the chinese research group work}
-
-In addition to the first principles approach, analytical expressions [cite] for the mass flow rate of powder in a fluidised system have been developed and split the regime into a choked system and an unchoked system. The formula for the choked regime, shown in \autoref{equ:1} is simpler, therefore easier to control, and so was used to drive the design choices.
-
-% \begin{align}
-%     M &= \frac{P_0 A}{\sqrt{R_m T_0}} \sqrt{\gamma_m} {\left( \frac{2}{\gamma_m + 1} \right)}^{\frac{\gamma_m + 1}{2(\gamma_m - 1)}} \\[10pt]
-%     \gamma_m &= \gamma_g \left( 1 + \frac{\phi}{1 - \phi} \frac{C_P}{C_{P,g}} \right) {\left( 1 + \frac{\phi}{1 - \phi} \frac{C_P}{C_{P,g}} \gamma_g \right)}^{-1} \\[10pt]
-%     R_m &= \frac{1 - \phi}{1 - \varepsilon} R_g
-% \end{align}\label{equ:1}
-    
