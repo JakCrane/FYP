@@ -131,12 +131,12 @@ This pressure has to balance the pressure differential across the piston from th
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+        \includegraphics[width=\textwidth]{../report_assets/piston_final.png}
         \caption*{(c) Final Design.}\label{fig:piston_geom_3}
     \end{minipage}
     \caption{Piston Design Iterations}\label{fig:piston_geom}
 \end{figure}
-The first design did not generate enough pressure force to be moved down the tank motivating the need for another iteration. To remedy this, the second design was produced to try and constrict the flow around the piston as much as possible to generate a higher force on the piston. As discussed in \autoref{sec:first-test}, this piston did move from the pressure but immediately became jammed by the sand. While it is expected that a smaller particle size could have enabled this piston to work, a novel piston approach was used given the circumstances. That being printing the piston out of flexible TPU.\@ The flexibility of the piston heads allows for resiliance against jamming and therefore the head could cover the whole cross section of the tube creating a larger pressure differential.
+The first design did not generate enough pressure force to be moved down the tank, motivating the need for another iteration. Building off this insight, the second piston was designed to try and constrict the flow around the piston as much as possible to generate a higher pressure force. As discussed in \autoref{sec:first-test}, this piston did move from the pressure but immediately became jammed by the sand. This motivated the next redesign, using a new paradigm to prevent the piston from jamming. The final piston consists of 2 3D printed TPU cones and a connecting rod. The flexibility of the TPU provided much needed resiliance against jamming as individual grains could be flexed around or over to continue compacting the rest. Another common solution to prevent piston cocking is to make it longer and this was achieved through the blue rod. Not only did this allow for the piston to be lighter weight than a fully TPU piston, it also allowed each face to be thinner and therefore give less contact area for friction or powder jamming. Furthermore, the piston face could fully cover the cross section of the tank due to the resistance to sticking and permiability of the print, allowing for a higher pressure differential and, in turn, more consistent compaction of the sand against the outlet.
 
 % In the permiable piston architecture, this is achieved through a constricting the flow to create a pressure differential across the two faces and therefore a resultant force pushing on the piston which is pushing on the powder. One way to do this is through reducing the gap between the tank wall and sides of the piston as it decreases the flowrate passed the piston, allowing the static pressure to build. However, the smaller the gap between the two surfaces, the higher the frictional forces and the increased likelyhood that sand grains get between the two surfaces and further increase friction. This resulted in 3 different geometries being tried.
 % The first was blah blah blah and was used in testing the system for the first time.
@@ -275,6 +275,7 @@ If needed could take vid of experiment and look at piston displacement but probs
 For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
 \newpage
+
 \section{Numerical Setup}\label{sec:numerical-setup}
 \subsection{Pressure Source Verification}
 To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In

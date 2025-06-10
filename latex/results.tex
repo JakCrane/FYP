@@ -129,29 +129,21 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \label{tab:static-stag-pressures}
 \end{table}
 
+\newpage
 \section{First Test}\label{sec:first-test}
-As mentioned in \autoref{sec:piston}, the very first test with sand yeilded no result as the first piston design did not generate a strong enough pressure differential to be pushed down the tube. It was also noted that the pressure readings before and after the tank adjusted slower than first expected. Meaning that there was no need to account for the pressure difference inside and outside the 3D printed piece so the walls were added back. Additionally, the length of the piston is a key parameter in both the pressure differential and the likelyhood of the piston rotating and getting jammed against the wall. The second test, the piston started at the beginning of the tank far from the powder and was successfully pushed into the powder packing it at the outlet. 
+As mentioned in \autoref{sec:piston}, the very first test with was conducted without sand and failed to push the piston down the tank. This quick test was the motivation to characterise the pressure source as it was noted that the pressure readings before and after the tank were lower than expected and changed slower than expected. This meant that the failure mode of the piston crumpling was discounted and the future piston designs ignored this possibility. After characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
+
 \begin{figure}[htbp]
     \centering
-
-    \begin{minipage}{0.45\textwidth}
+    
+    \begin{minipage}{0.6\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
-        \caption{pressure readings full.}\label{fig:static-pres-drop-3bar_full}
+        \includegraphics[width=\textwidth]{../report_assets/first_test.png}
+        \caption{Result of First Powder Test}\label{fig:first-test}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static.png}
-        \caption{pressure readings of 3bar gauge.}\label{fig:static-pressurop-3bar}
-    \end{minipage}
-
+    
 \end{figure}
-highlighted the issue of the piston locking up,
-force required to compact the sand to the outlet
-sand only at the top moved
-no fluidisation behaviours observed, maybe higher pressures required after all
-chokepoint blocked sand and prevented flow into cyclone seperator
+The piston started far down the tank and was successfully pushed towards the outlet. At the point it reached the sand, it became stuck, as the unpacked grains formed a wedge under the piston and caused it to jam into the side walls of the tank. With the powder not compacted against the outlet, ratholing began to occur as the gas entrained the sand particles through the outlet, highlighting an alternate dispensing regime to be avoided. The gap between the piston and the walls was designed to be 1mm so it is expected that this specific issue would not have occured with a finer grain sand. While purchasing finer grain sand or crushing down the current sample were considered, it was decided that a new design would be investigated as this was not something seen in the literature and would be much easier to characterise the friction. A full analysis of the piston was of great interest but given the limited time of the project, was deemed out of the scope. 
 
 
 \newpage
