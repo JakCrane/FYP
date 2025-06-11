@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Paths to your two Fluent output files
-input_file1 = '../June/90mm_wide (2).out'
-input_file2 = '../June/100mm_wide (1).out'
+input_file1 = 'Research_Files/June/90mm_wide (2).out'
+input_file2 = 'Research_Files/June/100mm_wide (1).out'
 
 def read_fluent_out(path):
     data = []
@@ -34,18 +34,19 @@ plt.ylabel('report-def-0 (mass)')
 plt.title('Mass vs flow-time: two simulations')
 plt.legend()
 plt.tight_layout()
-plt.savefig('comparison_mass_vs_flow_time.png')
+# plt.savefig('comparison_mass_vs_flow_time.png')
+plt.show()
 print("Saved comparison plot: comparison_mass_vs_flow_time.png")
 
-# Plot mass change (difference) vs flow_time
-plt.figure()
-plt.plot(df1['flow_time'].iloc[1:], df1_diff.iloc[1:], label='0.75 bar Δmass')
-plt.plot(df2['flow_time'].iloc[1:], df2_diff.iloc[1:], label='1.00 bar Δmass')
-plt.xlabel('flow-time')
-plt.ylabel('Δ report-def-0 (mass change)')
-plt.ylim([-0.1e-5, 0])
-plt.title('Mass change vs flow-time: two simulations')
-plt.legend()
-plt.tight_layout()
-plt.savefig('comparison_mass_change_vs_flow_time.png')
-print("Saved plot: comparison_mass_change_vs_flow_time.png")
+# # Plot mass change (difference) vs flow_time
+# plt.figure()
+# plt.plot(df1['flow_time'].iloc[1:], df1_diff.iloc[1:], label='0.75 bar Δmass')
+# plt.plot(df2['flow_time'].iloc[1:], df2_diff.iloc[1:], label='1.00 bar Δmass')
+# plt.xlabel('flow-time')
+# plt.ylabel('Δ report-def-0 (mass change)')
+# plt.ylim([-0.1e-5, 0])
+# plt.title('Mass change vs flow-time: two simulations')
+# plt.legend()
+# plt.tight_layout()
+# plt.savefig('comparison_mass_change_vs_flow_time.png')
+# print("Saved plot: comparison_mass_change_vs_flow_time.png")
