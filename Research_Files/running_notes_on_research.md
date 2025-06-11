@@ -594,3 +594,10 @@ density of sand = 1529kg/m^3
 
 
 from tests with fixed piston, it appears that the device is only fluidising the particles close to the piston as they have a high enough velocity to do so, this causes the fluidised particles to move through a preexisting path and not fluidise the rest of the device
+
+
+giving up on remeshing so mesh will just warp. Gonna try initialisation of 55% and 80mm piston vel
+vel of the fluid of 0.01m/s
+0.0001 ts
+40 iter
+2000 no ts
