@@ -147,75 +147,136 @@ The first design did not generate enough pressure force to be moved down the tan
 
 \section{Expected Behaviour}
 While there are few investigations into the specific implementation of the fluidising bed, parallels can be drawn from similar systems. It has been proposed that you can split the analysis of the flow behavior within the tank into two regions: a dense phase moving area before the cone and a fluidising region afterwards~\cite{Tang22}. This analysis assumes arching occurs, seen in \autoref{fig:bulk_powder_structures}, due to the presence of the tube cone interface and pressure from the piston restricting powder movement. This constrains the flows movement above the interface and [maybe means there is no correlation between force on powder and flow rate]
-\begin{figure}[htbp]
-    \centering
+% \begin{figure}[htbp]
+%     \centering
 
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/bridging.png}
-        \caption{Bridging ig\cite{911Metallurgist_binsflow}.}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Simplified fluidised powder bed diagram.}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Current design with turbulent inlet.}
-    \end{minipage}
-    \caption{i dont know yet}\label{fig:idknowyet}
-\end{figure}
-Given that the architecture is a revision of older systems, it is analysed in two stages. Like the motor-actuated 
-One could expect to model a system like this by combining previous data and insight of how the motor actuated fluidised system works and then augmenting this due to the pneumatic actuation of the piston. However, previous investigations into this [cite] seem to suggest that there is no such correlation between force applied to the piston and mass flow rate of the powder. 
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/bridging.png}
+%         \caption{Bridging ig\cite{911Metallurgist_binsflow}.}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+%         \caption{Simplified fluidised powder bed diagram.}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+%         \caption{Current design with turbulent inlet.}
+%     \end{minipage}
+%     \caption{i dont know yet}\label{fig:idknowyet}
+% \end{figure}
+% Given that the architecture is a revision of older systems, it is analysed in two stages. Like the motor-actuated 
+% One could expect to model a system like this by combining previous data and insight of how the motor actuated fluidised system works and then augmenting this due to the pneumatic actuation of the piston. However, previous investigations into this [cite] seem to suggest that there is no such correlation between force applied to the piston and mass flow rate of the powder. 
 
-\begin{figure}[htbp]
-    \centering
+% \begin{figure}[htbp]
+%     \centering
 
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
-        \caption{Current feed system diagram.}\label{fig:idkyet1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Simplified fluidised powder bed diagram.}\label{fig:idkyet2}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Current design with turbulent inlet.}\label{fig:idkyet3}
-    \end{minipage}
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM.png}
+%         \caption{Current feed system diagram.}\label{fig:idkyet1}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+%         \caption{Simplified fluidised powder bed diagram.}\label{fig:idkyet2}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
+%         \caption{Current design with turbulent inlet.}\label{fig:idkyet3}
+%     \end{minipage}
 
-\end{figure}
-It is expected that this is because the PT is too far downstream and the powder inbetween is lowering the pressure. Using data given for the experimentation and the pressure drop expected from the cylindrical powder section alone
-it has previously been reported that there is not a simple linear relationship between the force of the piston on the powder and the 
+% \end{figure}
+% It is expected that this is because the PT is too far downstream and the powder inbetween is lowering the pressure. Using data given for the experimentation and the pressure drop expected from the cylindrical powder section alone
+% it has previously been reported that there is not a simple linear relationship between the force of the piston on the powder and the 
 
-% lowkey weak argument look for better
+% % lowkey weak argument look for better
 
-Another argument about piston force VS mass flow rate
+% Another argument about piston force VS mass flow rate
 
-alternatively there is a strong linear correlation between velocity of piston head and mass flow rate of powder. This is well defined and could be used instead of the force
+% alternatively there is a strong linear correlation between velocity of piston head and mass flow rate of powder. This is well defined and could be used instead of the force
 
 
-The physics is hopefully understood as a non-linear combination of the two effects. Gas applying a force to the piston and the fluidisation of the powder. If we look at the system as though it is not gas permiable then we would expect it to look like this. Given the piston head is though, we expect it to change in this way.
+% The physics is hopefully understood as a non-linear combination of the two effects. Gas applying a force to the piston and the fluidisation of the powder. If we look at the system as though it is not gas permiable then we would expect it to look like this. Given the piston head is though, we expect it to change in this way.
 
-At the end of the day, this system is similar to other systems investiaged. It varies in 1 key way, the fact that since it is going into a nozzle then a vacuum in the LPCS process there is no combustion chamber to provide backpressure.
-\newpage
+% At the end of the day, this system is similar to other systems investiaged. It varies in 1 key way, the fact that since it is going into a nozzle then a vacuum in the LPCS process there is no combustion chamber to provide backpressure.
+% \newpage
 
 \section{Experimental Setup}
+The experimental set up was designed to verify the expected behaviour of the fluidising powder feed system under terrestrial conditions to better estimate it's behaviour under microgravity. The core aims were to record the consistency of the powder mass flow rate, verify that changing the pressure upstream of the tank leads to a change in mass flow rate and document any behaviours the system may exhibit that would impact it's suitability for space applications.
+
+\subsection{Layout}
+The default layout, seen in \autoref{fig:layout}, was used to perform most of the testing, with modifications outlined in the sections where they occur. 
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/drawio_setup.png}
+        \caption{Systems diagram.}\label{fig:layout}
+    \end{minipage}
+
+\end{figure}
 \subsection{Data acuisition and actuators}
-Data aquisition was done through ICLR SRAD boards. The sensors were calibrated soon before the experiment but through no rigorous method. Area for improvement.
+To capture the system's behaviour, a combination of video recordings, load cell readings and pressure transducer readings were taken during each test. The placement of the sensors is shown in \autoref{fig:sensors} and their values were read with the use of custom electronics designed by the Imperial College London Rocketry team.
+\begin{figure}[htbp]
+    \centering
 
-The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/load_cell_configuration.png}
+        \caption*{Load Cell Placement}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/pressure_transducer_configuration.png}
+        \caption*{Pressure Transducer Placement}
+    \end{minipage}
+    \caption{Sensor Placement in Experimental Setup}\label{fig:sensors}
+\end{figure}
 
-Tuning of PTs and Load cells
+A computer was connected to the boards and data was logged to it as well as being presented on a bespoke user interface, shown in \autoref{fig:grafana}. Control of the solenoid valve was done through a s
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/grafana.png}
+        \caption{Systems diagram.}\label{fig:grafana}
+    \end{minipage}
+
+\end{figure}
+
+% an easy area for improvement is
+% Data aquisition was done through ICLR SRAD boards. The sensors were calibrated soon before the experiment but through no rigorous method. Area for improvement.
+
+% The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
+
+% Tuning of PTs and Load cells
+% \subsubsection{Cyclone seperator and measurement method}
+% There are many methods used in literature to measure the mass flow rate of powder exiting the tank. Of those, the most common are displacement of the piston, cyclone seperators + load cell and 
+% Typical literature ways of measuring powder mass flow rate is through Displacement of the piston. This paper [cite] shows that other methods equally as effective are measuring the mass of powder leaving. This project does the latter through the use of a cyclone seperator.
+
+% Cyclone seperators work like this
+
+% measurement of the mass changes was done through 3 load cells shown in figure blah
+
+% If needed could take vid of experiment and look at piston displacement but probs not
+
+
+% \subsubsection{Powder}
+% For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
+
+% \newpage
+
 \subsection{Pressure Source Characterisation}
 % justify low pressures in this section
 % Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5 — 10bar range but there is no reason why this pressure range couldnt work
@@ -240,49 +301,14 @@ A final attempt to solve the problem was verifying that the solenoid valve wasn'
 % To further investigate this behaviour, the pressure regulator connected to the compressed air line was set to max (roughly 7bar) and a second regulator was introduced closer to the system. If the problem was large static pressure losses from the long nylon tube connecting the inlet of the experiment to the pressure source, a larger pressure during operation would have been observed. Additionally, if the pressure regulator was faulty or some other weird behaviour was occuring upstream of the setup, this could have indicated that.
 \subsection{Mass flow rate vs Inlet Pressure Experimental Setup}
 
-\begin{figure}[htbp]
-    \centering
-
-    \begin{minipage}{0.95\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/static_test.drawio.png}
-        \caption{Systems diagram.}\label{fig:systems-diagram}
-    \end{minipage}
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Pic of experiment.}\label{fig:experiment-image}
-    \end{minipage}
-
-\end{figure}
-
 \newpage
-
-
-\newpage
-\subsubsection{Cyclone seperator and measurement method}
-There are many methods used in literature to measure the mass flow rate of powder exiting the tank. Of those, the most common are displacement of the piston, cyclone seperators + load cell and 
-Typical literature ways of measuring powder mass flow rate is through Displacement of the piston. This paper [cite] shows that other methods equally as effective are measuring the mass of powder leaving. This project does the latter through the use of a cyclone seperator.
-
-Cyclone seperators work like this
-
-measurement of the mass changes was done through 3 load cells shown in figure blah
-
-If needed could take vid of experiment and look at piston displacement but probs not
-
-
-\subsubsection{Powder}
-For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
-
-\newpage
-
 \section{Numerical Setup}\label{sec:numerical-setup}
 \subsection{Pressure Source Verification}
 To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.95\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/systems_diagram.png}
         \caption{Systems diagram.}\label{fig:geometry_static_sim}
@@ -299,72 +325,72 @@ and was done as a 2D, axisymmetric sim as it was faster and allowed for more det
 
 Mesh convergence was done maybe if i got time?
 
-\subsection{Moving piston simulation}
-governing equations eularian-eularian
-2d is valid because:
-2D vs 3D Eulerian Multiphase Simulations of a Piston-Driven Fluidised Bed
-Flow Features in 2D vs 3D Multiphase Models
-Hydrodynamics and Void Distribution: Two-dimensional Eulerian-Eulerian simulations can reproduce many qualitative behaviors of fluidised beds, but they often differ quantitatively from three-dimensional models. A key issue is that 2D models tend to over-predict void fractions and bed expansion, especially at higher flow velocities
-link.springer.com
-. This occurs because neglecting the third dimension forces the gas-solid flow into a constrained plane, which exaggerates hydrodynamic structures and fluctuations
-link.springer.com
-. In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:Bubble Dynamics: Gas bubbles in a fluidised bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
-witpress.com
-. In a 3D simulation or experiment, bubbles can expand and coalesce in three directions, forming larger voids that accelerate upward. The 2D constraint suppresses some coalescence, so the bed may appear “bubblier” (many small bubbles) or even form slugging bubbles that span the width. This impacts particle motion and could alter the paths through which solids circulate and exit the bed.
-Circulation and Wall Effects: Three-dimensional beds allow complex circulation patterns — particles can move around bubbles and across the entire cross-section. In a 2D model, by contrast, flow is essentially confined between two parallel walls (the front and back of the 2D slice). This artificial confinement increases wall friction effects and creates a large circulating cell in the 2D plane that has no out-of-plane escape. As a result, 2D simulations may produce stronger single circulation loops or jetting along the centerline, whereas a 3D bed would have more distributed flow paths (including around the perimeter of bubbles or toward the center of a cylinder). Such differences could influence how continuously and evenly the powder flows out — 3D systems tend to have more uniform, axisymmetric flow, while 2D systems might exhibit more pronounced channeling or periodic “puffing.”
-Turbulence and Mixing: The restriction to two dimensions also affects turbulence and mixing of the phases. Fully 3D turbulent eddies and clusters cannot form in a 2D plane, so 2D simulations often show greater oscillatory behavior (numerical instability or large-scale swings) but less of the small-scale chaotic mixing present in 3D
-link.springer.com
-. For example, pressure fluctuation spectra differ: only a 3D simulation can capture realistic pressure dynamics, whereas a 2D model gives a distorted spectrum
-witpress.com
-. This means the distribution of particles and the stability of the fluidization can differ — a 3D bed might self-buffer some fluctuations by distributing them in all directions, while a 2D bed tends to amplify fluctuations within its constrained geometry.
-Implications for Mass Flow Features: These flow-feature disparities imply that certain phenomena affecting mass outflow could differ between 2D and 3D. For instance, jetting and channeling of powder-gas mixture might be more pronounced in one case versus the other. A 3D piston-driven bed could develop a roughly axisymmetric flow of powder out of the piston region, whereas a 2D model might produce a sheet-like ejection that interacts differently with the walls. Likewise, particle distribution in 3D may be more uniform across the cross-section of an outlet, while in 2D it might be clumped or stratified, potentially affecting instantaneous mass flow rates. Overall, 2D models capture the qualitative flow patterns (e.g.fluidization regimes, general trends in circulation), but certain 3D-specific effects (like true spatial distribution of particles, or the full spectrum of bubble sizes) are lost, which can influence the accuracy of mass flow predictions
-witpress.com
-witpress.com
-. Researchers therefore caution that 2D CFD results should be used primarily for sensitivity studies or trend analysis, whereas 3D simulations are needed to accurately reproduce absolute measures like bed expansion, bubble size distributions, and pressure oscillation characteristics
-witpress.com
-witpress.com
-. In short, 2D and 3D models can differ in circulation patterns, particle clustering, wall friction effects and turbulence - all of which may affect the steady powder outflow rate.
-Linearity of Piston Velocity vs. Powder Mass Flow Rate
-Experimental Observation: In piston-driven fluidised beds (such as pneumatic powder feeders or powder-fueled engines), experiments consistently show that the powder mass flow rate increases approximately linearly with piston velocity (or with related parameters like the throttle/orifice opening)
-researchgate.net
-. Essentially, driving the piston faster injects a larger volume of gas-solids mixture per unit time, yielding a higher mass flow. This linear relationship holds as long as the system is operating below any choking or saturation limits. For example, one study of a powder fuel feeding system found a “high linear tendency” between the mass flow rate and the minimum throttle area (which correlates with piston drive conditions), within the tested range
-researchgate.net
-. Such linear scaling is a fundamental expectation for a displacement-driven flow. 2D Simulation vs 3D Reality: A well-configured 2D Eulerian-Eulerian simulation should qualitatively preserve this linear trend. If the piston (modeled perhaps as a moving wall or boundary in Fluent) is run at different velocities in a 2D model, one would observe that the outflow of powder increases proportionally. In fact, simplified models often treat the piston-induced flow like a controlled volumetric flow rate, which inherently is linear with piston speed in the absence of complex losses. The key question is accuracy: whether the 2D model’s slope of the mass flow vs. velocity curve matches that of a real 3D system. Geometric constraints can introduce some error here. For instance, 2D simulations, by overestimating void fraction and ease of fluidization, might predict slightly higher mass flow for a given piston speed than a 3D simulation or experiment would
-link.springer.com
-. This is because the 2D model may fluidize the powder bed more readily (bubbles percolating easily in the planar slice), offering less resistance to the piston. On the other hand, certain flow resistances (like friction along side walls or limitations in cross-sectional expansion) in 2D could also cause underestimation in some regimes. Notably, discrepancies are expected to grow at more extreme velocities or flow rates. Xie et al. found that when gas velocities are high, the divergence between 2D and 3D models becomes significant - 2D could not satisfactorily predict the hydrodynamics observed in a 3D cylindrical bed
-link.springer.com
-. By contrast, at lower velocities (milder fluidization), 2D and 3D results were more similar
-link.springer.com
-. Translating this to a piston-driven scenario: at modest piston speeds (near the linear operating regime), a 2D simulation will likely yield a linear mass flow response very close to reality. However, as piston velocity increases (approaching choking flow or very aggressive fluidization), the 2D model might deviate - for example, it might fail to capture the onset of non-linearity or throughput limitations that a 3D system would experience. Real 3D systems can develop complex flow distribution (e.g. some regions flowing while others channel or form stagnant zones) at high rates, whereas a 2D model may either over-homogenize this or exhibit unphysical oscillations. Thus, while the linear relationship itself is likely to appear in 2D simulations, the fidelity of its slope and any departure at extremes must be treated with caution. Validation against 3D data or correlations is advised if one plans to use 2D results for quantitative predictions of mass flow.
-Reliability of 2D Predictions and Use in Design
-Early-Stage Design Use: Despite their limitations, 2D multiphase simulations are widely used in early design and feasibility studies because they are much less computationally intensive than 3D models. Importantly, they capture the basic trends and physics of the system, which is often sufficient for preliminary performance estimates. As noted in a recent review, for certain applications like preliminary thermodynamic design or scouting different operating conditions, the more complex 3D approach “does not offer significant benefits” over 2D in terms of high-level outcomes
-link.springer.com
-. The core behaviors - e.g. how increased piston speed affects flow, or how changes in gas feed influence fluidization - are reflected reasonably well in 2D. In fact, 2D simulations can be effectively utilized to illustrate behavioral trends, albeit with some “acceptable disadvantages” such as misrepresentation of exact bed expansion
-link.springer.com
-. In the context of a piston-driven powder bed, a 2D Fluent model would be a theoretically sound and practically convenient tool to predict whether, say, doubling the piston velocity doubles the powder delivery rate (and it likely will show that linear doubling trend). This helps an engineer get a quick sense of performance scaling without the overhead of a full 3D simulation. Known Limitations: However, one should not take 2D results as gospel when it comes to absolute performance or detailed flow behavior. Multiple validation studies have concluded that 2D simulations should be used with caution and primarily for qualitative insight or sensitivity analysis
-witpress.com
-witpress.com
-. They are not fully predictive of 3D behavior in a quantitative sense. For example, a 2D model might predict a certain mass flow rate for a given piston speed that differs from the real 3D value by a noticeable margin (due to differences in void fraction and wall friction effects). It might also fail to predict phenomena like unequal powder distribution in a 3D hopper, or the exact point where increasing piston velocity no longer yields proportional increases (onset of choking). As one study put it, only a 3D simulation was able to reproduce both the correct bed height and the dynamic pressure fluctuations of a bubbling bed, whereas 2D had significant deviations
-witpress.com
-. Conclusion - “Acceptable with Caution”: For the piston-driven fluidised bed scenario, using a 2D Eulerian-Eulerian Fluent simulation is reasonable in the early project stages. It offers a fast and informative approximation, and it will likely correctly indicate that there is a linear relationship between piston speed and powder mass flow under normal operating conditions. This makes it a practically acceptable tool for initial design and performance prediction. The literature supports this usage: 2D models can reliably rank design options and reveal trends (e.g. that higher piston speeds yield proportionally higher flow)
-researchgate.net
-, and they can guide engineers on what range of operation is plausible. The theoretical basis (continuity and momentum balance of two-phase flow) is sound, so there is no fundamental reason the 2D model would invert or lose the linear trend. What must be kept in mind is that extrapolating 2D results to 3D comes with uncertainty. Engineers should apply conservative corrections or eventually verify with a 3D model or experiments. In early design, one might use 2D to narrow the design space (thanks to its speed), then use a higher-fidelity 3D simulation on the shortlisted cases. By doing so, one benefits from the strengths of both approaches. In summary, 2D Eulerian-Eulerian simulations are theoretically sound for capturing the essential flow physics and trends of a piston-driven powder bed, and they are practically very useful in the initial design phase. They do preserve the linear piston velocity vs. mass flow relationship observed in 3D
-researchgate.net
-. Yet, because of geometric constraints, they can introduce errors in flow details and magnitudes, so their predictions should be regarded as preliminary. For final design confidence - especially if subtle 3D flow features (circulation patterns, non-uniform outflow, etc.) matter - a 3D simulation or experimental validation is recommended
-witpress.com
-link.springer.com
-. The consensus in the literature is that 2D and 3D approaches complement each other: use 2D for efficiency and scoping, and 3D for accuracy and final verification
-link.springer.com
-witpress.com
-. Sources: Recent computational studies and reviews of fluidised bed modeling and pneumatic powder feeding have informed these conclusions. Notably, comparisons by Yılmaz et al. (2025) on 2D vs 3D fluidised bed reactors highlight where 2D falls short and where it suffices
-link.springer.com
-link.springer.com
-. Similarly, Cardoso et al. (2019) and Xie et al. have demonstrated the specific differences in bed expansion, bubble motion, and pressure dynamics between 2D and 3D models
-witpress.com
-witpress.com
-. Experimental research on piston-driven powder feeders provides the empirical evidence of linear flow scaling and helps validate the trends seen in simulations
-researchgate.net
-. All these studies collectively suggest that a 2D Eulerian-Eulerian Fluent simulation is a useful predictive tool with known limitations, and with careful interpretation it can be reliably used to inform 3D behavior in the early stages of engineering design. The linear piston velocity-mass flow relationship is expected to appear in the 2D model (as observed experimentally), but final design decisions should account for 3D effects identified in the literature.
-solver settings
-geometry and mesh details
-boundary and initial conditions
+% \subsection{Moving piston simulation}
+% governing equations eularian-eularian
+% 2d is valid because:
+% 2D vs 3D Eulerian Multiphase Simulations of a Piston-Driven Fluidised Bed
+% Flow Features in 2D vs 3D Multiphase Models
+% Hydrodynamics and Void Distribution: Two-dimensional Eulerian-Eulerian simulations can reproduce many qualitative behaviors of fluidised beds, but they often differ quantitatively from three-dimensional models. A key issue is that 2D models tend to over-predict void fractions and bed expansion, especially at higher flow velocities
+% link.springer.com
+% . This occurs because neglecting the third dimension forces the gas-solid flow into a constrained plane, which exaggerates hydrodynamic structures and fluctuations
+% link.springer.com
+% . In practical terms, a 2D simulation may show larger void regions (bubbles) and more vigorous oscillations in solid concentration than a real 3D system would. These differences mean that certain flow features are not identical between 2D and 3D:Bubble Dynamics: Gas bubbles in a fluidised bed behave differently in a 2D domain. Studies have found that bubbles remain smaller and rise more slowly in a 2D (pseudo-2D) bed than in a full 3D bed
+% witpress.com
+% . In a 3D simulation or experiment, bubbles can expand and coalesce in three directions, forming larger voids that accelerate upward. The 2D constraint suppresses some coalescence, so the bed may appear “bubblier” (many small bubbles) or even form slugging bubbles that span the width. This impacts particle motion and could alter the paths through which solids circulate and exit the bed.
+% Circulation and Wall Effects: Three-dimensional beds allow complex circulation patterns — particles can move around bubbles and across the entire cross-section. In a 2D model, by contrast, flow is essentially confined between two parallel walls (the front and back of the 2D slice). This artificial confinement increases wall friction effects and creates a large circulating cell in the 2D plane that has no out-of-plane escape. As a result, 2D simulations may produce stronger single circulation loops or jetting along the centerline, whereas a 3D bed would have more distributed flow paths (including around the perimeter of bubbles or toward the center of a cylinder). Such differences could influence how continuously and evenly the powder flows out — 3D systems tend to have more uniform, axisymmetric flow, while 2D systems might exhibit more pronounced channeling or periodic “puffing.”
+% Turbulence and Mixing: The restriction to two dimensions also affects turbulence and mixing of the phases. Fully 3D turbulent eddies and clusters cannot form in a 2D plane, so 2D simulations often show greater oscillatory behavior (numerical instability or large-scale swings) but less of the small-scale chaotic mixing present in 3D
+% link.springer.com
+% . For example, pressure fluctuation spectra differ: only a 3D simulation can capture realistic pressure dynamics, whereas a 2D model gives a distorted spectrum
+% witpress.com
+% . This means the distribution of particles and the stability of the fluidization can differ — a 3D bed might self-buffer some fluctuations by distributing them in all directions, while a 2D bed tends to amplify fluctuations within its constrained geometry.
+% Implications for Mass Flow Features: These flow-feature disparities imply that certain phenomena affecting mass outflow could differ between 2D and 3D. For instance, jetting and channeling of powder-gas mixture might be more pronounced in one case versus the other. A 3D piston-driven bed could develop a roughly axisymmetric flow of powder out of the piston region, whereas a 2D model might produce a sheet-like ejection that interacts differently with the walls. Likewise, particle distribution in 3D may be more uniform across the cross-section of an outlet, while in 2D it might be clumped or stratified, potentially affecting instantaneous mass flow rates. Overall, 2D models capture the qualitative flow patterns (e.g.fluidization regimes, general trends in circulation), but certain 3D-specific effects (like true spatial distribution of particles, or the full spectrum of bubble sizes) are lost, which can influence the accuracy of mass flow predictions
+% witpress.com
+% witpress.com
+% . Researchers therefore caution that 2D CFD results should be used primarily for sensitivity studies or trend analysis, whereas 3D simulations are needed to accurately reproduce absolute measures like bed expansion, bubble size distributions, and pressure oscillation characteristics
+% witpress.com
+% witpress.com
+% . In short, 2D and 3D models can differ in circulation patterns, particle clustering, wall friction effects and turbulence - all of which may affect the steady powder outflow rate.
+% Linearity of Piston Velocity vs. Powder Mass Flow Rate
+% Experimental Observation: In piston-driven fluidised beds (such as pneumatic powder feeders or powder-fueled engines), experiments consistently show that the powder mass flow rate increases approximately linearly with piston velocity (or with related parameters like the throttle/orifice opening)
+% researchgate.net
+% . Essentially, driving the piston faster injects a larger volume of gas-solids mixture per unit time, yielding a higher mass flow. This linear relationship holds as long as the system is operating below any choking or saturation limits. For example, one study of a powder fuel feeding system found a “high linear tendency” between the mass flow rate and the minimum throttle area (which correlates with piston drive conditions), within the tested range
+% researchgate.net
+% . Such linear scaling is a fundamental expectation for a displacement-driven flow. 2D Simulation vs 3D Reality: A well-configured 2D Eulerian-Eulerian simulation should qualitatively preserve this linear trend. If the piston (modeled perhaps as a moving wall or boundary in Fluent) is run at different velocities in a 2D model, one would observe that the outflow of powder increases proportionally. In fact, simplified models often treat the piston-induced flow like a controlled volumetric flow rate, which inherently is linear with piston speed in the absence of complex losses. The key question is accuracy: whether the 2D model’s slope of the mass flow vs. velocity curve matches that of a real 3D system. Geometric constraints can introduce some error here. For instance, 2D simulations, by overestimating void fraction and ease of fluidization, might predict slightly higher mass flow for a given piston speed than a 3D simulation or experiment would
+% link.springer.com
+% . This is because the 2D model may fluidize the powder bed more readily (bubbles percolating easily in the planar slice), offering less resistance to the piston. On the other hand, certain flow resistances (like friction along side walls or limitations in cross-sectional expansion) in 2D could also cause underestimation in some regimes. Notably, discrepancies are expected to grow at more extreme velocities or flow rates. Xie et al. found that when gas velocities are high, the divergence between 2D and 3D models becomes significant - 2D could not satisfactorily predict the hydrodynamics observed in a 3D cylindrical bed
+% link.springer.com
+% . By contrast, at lower velocities (milder fluidization), 2D and 3D results were more similar
+% link.springer.com
+% . Translating this to a piston-driven scenario: at modest piston speeds (near the linear operating regime), a 2D simulation will likely yield a linear mass flow response very close to reality. However, as piston velocity increases (approaching choking flow or very aggressive fluidization), the 2D model might deviate - for example, it might fail to capture the onset of non-linearity or throughput limitations that a 3D system would experience. Real 3D systems can develop complex flow distribution (e.g. some regions flowing while others channel or form stagnant zones) at high rates, whereas a 2D model may either over-homogenize this or exhibit unphysical oscillations. Thus, while the linear relationship itself is likely to appear in 2D simulations, the fidelity of its slope and any departure at extremes must be treated with caution. Validation against 3D data or correlations is advised if one plans to use 2D results for quantitative predictions of mass flow.
+% Reliability of 2D Predictions and Use in Design
+% Early-Stage Design Use: Despite their limitations, 2D multiphase simulations are widely used in early design and feasibility studies because they are much less computationally intensive than 3D models. Importantly, they capture the basic trends and physics of the system, which is often sufficient for preliminary performance estimates. As noted in a recent review, for certain applications like preliminary thermodynamic design or scouting different operating conditions, the more complex 3D approach “does not offer significant benefits” over 2D in terms of high-level outcomes
+% link.springer.com
+% . The core behaviors - e.g. how increased piston speed affects flow, or how changes in gas feed influence fluidization - are reflected reasonably well in 2D. In fact, 2D simulations can be effectively utilized to illustrate behavioral trends, albeit with some “acceptable disadvantages” such as misrepresentation of exact bed expansion
+% link.springer.com
+% . In the context of a piston-driven powder bed, a 2D Fluent model would be a theoretically sound and practically convenient tool to predict whether, say, doubling the piston velocity doubles the powder delivery rate (and it likely will show that linear doubling trend). This helps an engineer get a quick sense of performance scaling without the overhead of a full 3D simulation. Known Limitations: However, one should not take 2D results as gospel when it comes to absolute performance or detailed flow behavior. Multiple validation studies have concluded that 2D simulations should be used with caution and primarily for qualitative insight or sensitivity analysis
+% witpress.com
+% witpress.com
+% . They are not fully predictive of 3D behavior in a quantitative sense. For example, a 2D model might predict a certain mass flow rate for a given piston speed that differs from the real 3D value by a noticeable margin (due to differences in void fraction and wall friction effects). It might also fail to predict phenomena like unequal powder distribution in a 3D hopper, or the exact point where increasing piston velocity no longer yields proportional increases (onset of choking). As one study put it, only a 3D simulation was able to reproduce both the correct bed height and the dynamic pressure fluctuations of a bubbling bed, whereas 2D had significant deviations
+% witpress.com
+% . Conclusion - “Acceptable with Caution”: For the piston-driven fluidised bed scenario, using a 2D Eulerian-Eulerian Fluent simulation is reasonable in the early project stages. It offers a fast and informative approximation, and it will likely correctly indicate that there is a linear relationship between piston speed and powder mass flow under normal operating conditions. This makes it a practically acceptable tool for initial design and performance prediction. The literature supports this usage: 2D models can reliably rank design options and reveal trends (e.g. that higher piston speeds yield proportionally higher flow)
+% researchgate.net
+% , and they can guide engineers on what range of operation is plausible. The theoretical basis (continuity and momentum balance of two-phase flow) is sound, so there is no fundamental reason the 2D model would invert or lose the linear trend. What must be kept in mind is that extrapolating 2D results to 3D comes with uncertainty. Engineers should apply conservative corrections or eventually verify with a 3D model or experiments. In early design, one might use 2D to narrow the design space (thanks to its speed), then use a higher-fidelity 3D simulation on the shortlisted cases. By doing so, one benefits from the strengths of both approaches. In summary, 2D Eulerian-Eulerian simulations are theoretically sound for capturing the essential flow physics and trends of a piston-driven powder bed, and they are practically very useful in the initial design phase. They do preserve the linear piston velocity vs. mass flow relationship observed in 3D
+% researchgate.net
+% . Yet, because of geometric constraints, they can introduce errors in flow details and magnitudes, so their predictions should be regarded as preliminary. For final design confidence - especially if subtle 3D flow features (circulation patterns, non-uniform outflow, etc.) matter - a 3D simulation or experimental validation is recommended
+% witpress.com
+% link.springer.com
+% . The consensus in the literature is that 2D and 3D approaches complement each other: use 2D for efficiency and scoping, and 3D for accuracy and final verification
+% link.springer.com
+% witpress.com
+% . Sources: Recent computational studies and reviews of fluidised bed modeling and pneumatic powder feeding have informed these conclusions. Notably, comparisons by Yılmaz et al. (2025) on 2D vs 3D fluidised bed reactors highlight where 2D falls short and where it suffices
+% link.springer.com
+% link.springer.com
+% . Similarly, Cardoso et al. (2019) and Xie et al. have demonstrated the specific differences in bed expansion, bubble motion, and pressure dynamics between 2D and 3D models
+% witpress.com
+% witpress.com
+% . Experimental research on piston-driven powder feeders provides the empirical evidence of linear flow scaling and helps validate the trends seen in simulations
+% researchgate.net
+% . All these studies collectively suggest that a 2D Eulerian-Eulerian Fluent simulation is a useful predictive tool with known limitations, and with careful interpretation it can be reliably used to inform 3D behavior in the early stages of engineering design. The linear piston velocity-mass flow relationship is expected to appear in the 2D model (as observed experimentally), but final design decisions should account for 3D effects identified in the literature.
+% solver settings
+% geometry and mesh details
+% boundary and initial conditions
