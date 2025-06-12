@@ -301,17 +301,16 @@ To seperate the gas and powder, a cyclone seperator was used, seen in \autoref{f
     \caption{Sensor Placement in Experimental Setup}\label{fig:cyclone}
 \end{figure}
 A cyclone separator works by using centrifugal force to separate the sand from the air. As the mixture enters the cyclone chamber tangentially at high speed, it spins rapidly, causing the denser particles to move outward and fall to the bottom, while the cleaner air exits through the top center. As shown in \autoref{fig:cyclone} (c), a dust filter used in vacuum cleaners was used to ensure any fine grains, not captured by the seperator, do not make it out into the air. This was attached to the 3D printed model using PTFE tape and a friction fit, then taped down for added support. The seperator was printed in 3 parts, the top that can be removed to empty out the sand, the walls and the base with screw holes to mount to the load cell.
-The direct cyclone seperator method was chosen to record mass flow, with a back up recording of the mass of the tank during operations. This is because the sand needs to be contained after exiting the tank as inhalation of silica particles can lead to long term health conditions. Therefore, the direct method was chosen as
+% The direct cyclone seperator method was chosen to record mass flow, with a back up recording of the mass of the tank during operations. This is because the sand needs to be contained after exiting the tank as inhalation of silica particles can lead to long term health conditions. Therefore, the direct method was chosen as
 
 \subsection{Powder}
-While 
-For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
+While typical powders used in CSAM are $5\,\mu\mathrm{m}$ to $100\,\mu\mathrm{m}$~\cite{Vaz2023}, budget constraints resulted in sand being the optimal granular material safe enough to work with. This will definitely affect the behaviour of the system but to what extent is unknown. A rudimentary attempt was made to measure the particle diameter using a micrometer but given the time limitations, no formal attempt was made to characterise the diameter distributions or average diameter. As mentioned in \autoref{sec:numerical-setup}, the bulk density, that being the density of the sand including the volume occupied by air, was measured by recording the mass of the sand in a bowl and then filling the same bowl with water.
+
+% For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
 % \newpage
 
-\subsection{Pressure Source Characterisation}
-% justify low pressures in this section
-% Low pressures were investiaged, both because it makes the experiment easier but also because, the lower the mass flowrate of air through the system the more efficient the mass to orbit vs mass of powder available to depost is. Most other research looks at the 5 — 10bar range but there is no reason why this pressure range couldnt work
+\subsection{Procedure to Characterise Pressure Source}
 Due to safety and ease of handling, the desired stagnation pressure supplied into the system came from a compressed air line. As discussed in \autoref{sec:static_test}, characterising the air supply was not trivial and required multiple experiments. 
 
 The first of these involved a flow through the system without any sand or piston. To tune the regulator for these tests, the system was closed by removing inlet tube connecting the tank to the compressed air line and replacing it with a pushfit end cap, as seen in figure \autoref{fig:systems-diagram-end-cap}. The regulator attached to the compressed air line was then adjusted using the inlet PT as a reference. While there was a gauge on the regulator, it was consistently reading 0.2 to 0.3 bar higher than the PTs or manual pressure gauges so was deemed unreliable. 
@@ -331,11 +330,11 @@ The same tests as before were conducted to investigate this but the static press
 A final attempt to solve the problem was verifying that the solenoid valve wasn't causing the problem. If the cross-sectional area of the open solenoid valve was very small, this could have choked the flow and lead to the lower stagnation pressure observed. Even after running the same test again without the solenoid valve, the results were equal to that of the system with the regulator and solenoid valve.
 
 % To further investigate this behaviour, the pressure regulator connected to the compressed air line was set to max (roughly 7bar) and a second regulator was introduced closer to the system. If the problem was large static pressure losses from the long nylon tube connecting the inlet of the experiment to the pressure source, a larger pressure during operation would have been observed. Additionally, if the pressure regulator was faulty or some other weird behaviour was occuring upstream of the setup, this could have indicated that.
-\subsection{Mass flow rate vs Inlet Pressure Experimental Setup}
+\subsection{Procedure to Characterise Full System}
 
 \newpage
 \section{Numerical Setup}\label{sec:numerical-setup}
-\subsection{Pressure Source Verification}
+\subsection{Numerical Setup to Characterise Pressure Source}
 To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, axisymmetric simulation of the simplified system was ran. The geometry used and something can be seen In
 \begin{figure}[htbp]
     \centering
@@ -356,6 +355,7 @@ To verify the source pressure behaviour seen in \autoref{sec:static_test} a 2D, 
 and was done as a 2D, axisymmetric sim as it was faster and allowed for more detail while still preserving quantities of 3D behaviour as no theta dependence or swirling is expected to occur. Size constraints on the number of cells meant that all attempts to invesitage a 3d sim of the physics were numerically unstable and therefore werent useful.
 
 Mesh convergence was done maybe if i got time?
+\subsection{Numerical Setup to Characterise Full System}
 
 % \subsection{Moving piston simulation}
 % governing equations eularian-eularian

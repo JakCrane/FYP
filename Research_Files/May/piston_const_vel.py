@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Paths to your two Fluent output files
-input_file1 = 'Research_Files/June/90mm_wide (2).out'
-input_file2 = 'Research_Files/June/100mm_wide (1).out'
+input_file1 = 'Research_Files/June/90mm_wide_wide.out'
+input_file2 = 'Research_Files/June/30mm_wide_wide.out'
 
 def read_fluent_out(path):
     data = []
