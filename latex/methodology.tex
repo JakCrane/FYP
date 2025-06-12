@@ -147,6 +147,8 @@ The first design did not generate enough pressure force to be moved down the tan
 
 \section{Expected Behaviour}
 While there are few investigations into the specific implementation of the fluidising bed, parallels can be drawn from similar systems. It has been proposed that you can split the analysis of the flow behavior within the tank into two regions: a dense phase moving area before the cone and a fluidising region afterwards~\cite{Tang22}. This analysis assumes arching occurs, seen in \autoref{fig:bulk_powder_structures}, due to the presence of the tube cone interface and pressure from the piston restricting powder movement. This constrains the flows movement above the interface and [maybe means there is no correlation between force on powder and flow rate]
+
+lower pressure due to not needing to go into combustion chamber
 % \begin{figure}[htbp]
 %     \centering
 
@@ -213,18 +215,26 @@ While there are few investigations into the specific implementation of the fluid
 The experimental set up was designed to verify the expected behaviour of the fluidising powder feed system under terrestrial conditions to better estimate it's behaviour under microgravity. The core aims were to record the consistency of the powder mass flow rate, verify that changing the pressure upstream of the tank leads to a change in mass flow rate and document any behaviours the system may exhibit that would impact it's suitability for space applications.
 
 \subsection{Layout}
-The default layout, seen in \autoref{fig:layout}, was used to perform most of the testing, with modifications outlined in the sections where they occur. 
+The default layout, seen in \autoref{fig:experimental-setup}, was used to perform most of the testing, with modifications outlined in the sections where they occur. 
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.6\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/drawio_setup.png}
-        \caption{Systems diagram.}\label{fig:layout}
+        \includegraphics[width=\textwidth]{../report_assets/setup_annotated.png}
+        \caption*{Annotated Image of Setup}
     \end{minipage}
-
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/drawio_setup_vertical.png}
+        \caption*{Systems Diagram of Setup}
+    \end{minipage}
+    \caption{Experimental Setup}\label{fig:experimental-setup}
 \end{figure}
-\subsection{Data acuisition and actuators}
+The testing was undertaken inside Imperial College's Hypersonic Lab which maintains no climate control. It was assumed that the system would not behave noticeably differently under the slightly varying teperatures and pressures that occured over the testing.
+
+\subsection{Data Acquisition and System Actuation}
 To capture the system's behaviour, a combination of video recordings, load cell readings and pressure transducer readings were taken during each test. The placement of the sensors is shown in \autoref{fig:sensors} and their values were read with the use of custom electronics designed by the Imperial College London Rocketry team.
 \begin{figure}[htbp]
     \centering
@@ -243,37 +253,59 @@ To capture the system's behaviour, a combination of video recordings, load cell 
     \caption{Sensor Placement in Experimental Setup}\label{fig:sensors}
 \end{figure}
 
-A computer was connected to the boards and data was logged to it as well as being presented on a bespoke user interface, shown in \autoref{fig:grafana}. Control of the solenoid valve was done through a s
+A computer was connected to the boards and data was logged to it as well as being presented on a bespoke user interface, shown in \autoref{fig:grafana}. The solenoid could also be opened and closed through the dashbaord, allowing for safe operations as all the information and control was in one place.
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.95\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/grafana.png}
-        \caption{Systems diagram.}\label{fig:grafana}
+        \caption{Testing Dashbaord}\label{fig:grafana}
     \end{minipage}
 
 \end{figure}
+Due to budget constraints only cheap pressure transducers and load cells were used. Given this, perfect calibration of the sensors was not as much of a priority. To calibrate the load cells, the data aquisition baord was configured to record the raw values out put by the analog to digital converter (ADC) at both the unloaded, 0kg, state and then with a mass, measured at 0.746kg, placed on it. Since the load cells are a linear sensor, these two points give a gradient and y-intercept to map the ADC counts to. The same procedure was done to calibrate the pressure transducers except using a mechanical pressure gauge and the compressed air line to record 1bar and 4bar ADC outputs.
 
-% an easy area for improvement is
-% Data aquisition was done through ICLR SRAD boards. The sensors were calibrated soon before the experiment but through no rigorous method. Area for improvement.
+An older setup of the experiment included a choke point just after the outlet of the tank. This was because previous literature proposed that fluidising systems where one part of the gas-solid flow is in choking conditions had been found to be simpler to control~\cite{SUN201630}. Due to the grain size of the sand, this chokepoint got clogged in testing so was removed. As there was a pressure transducer before and after the chokepoint, this explains the naming scheme in \autoref{fig:grafana} and why the pre-choke pressure data is just noise as it was no longer connected.
 
-% The data was then sent to a grafana dashboard and this also allowed for actuation of the solenoid valve for clean operations.
+\subsection{Cyclone Seperator and Measurement Method}
+The two most common methods of measuring mass flow rate for this kind of system are using a displacement transducer to measure how far down the tank the piston is or measuring the mass of the powder after it has been fed out of the tank~\cite{SUN201630}\cite{LI2021712}\cite{Tang22}.
+ The displacement transducer method indirectly measures the mass flow by using the near incompressibility of the powder and the assumption of a constant packing density to form a linear relationship between the movement of the piston and the volume of powder dispensed~\cite{SUN201630}. The direct method requires some method of seperating the gas and powder and then measures the powder. 
 
-% Tuning of PTs and Load cells
-% \subsubsection{Cyclone seperator and measurement method}
-% There are many methods used in literature to measure the mass flow rate of powder exiting the tank. Of those, the most common are displacement of the piston, cyclone seperators + load cell and 
-% Typical literature ways of measuring powder mass flow rate is through Displacement of the piston. This paper [cite] shows that other methods equally as effective are measuring the mass of powder leaving. This project does the latter through the use of a cyclone seperator.
+WHY dID I CHOSE THE SEPERATOR INSTEAD OF THE Displacement
+EDITS TO TANK UNIDEAL GIVEN PRESSURE RATING things
+NEED TO CAPUTRE AIR ANYWAY FOR HEALTH AND SAFETY SO EASIER TO implement
+MAYBE CITE COMPARISON PAPER
 
-% Cyclone seperators work like this
+To seperate the gas and powder, a cyclone seperator was used, seen in \autoref{fig:cyclone}.
+\begin{figure}[htbp]
+    \centering
 
-% measurement of the mass changes was done through 3 load cells shown in figure blah
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/cyclone_diagram.png}
+        \caption*{(a) Cyclone Seperator Diagram}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/cyclone_cad.png}
+        \caption*{(b) CAD Model of Seperator}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/cyclone_done.png}
+        \caption*{(c) Cyclone Seperator}
+    \end{minipage}
+    \caption{Sensor Placement in Experimental Setup}\label{fig:cyclone}
+\end{figure}
+A cyclone separator works by using centrifugal force to separate the sand from the air. As the mixture enters the cyclone chamber tangentially at high speed, it spins rapidly, causing the denser particles to move outward and fall to the bottom, while the cleaner air exits through the top center. As shown in \autoref{fig:cyclone} (c), a dust filter used in vacuum cleaners was used to ensure any fine grains, not captured by the seperator, do not make it out into the air. This was attached to the 3D printed model using PTFE tape and a friction fit, then taped down for added support. The seperator was printed in 3 parts, the top that can be removed to empty out the sand, the walls and the base with screw holes to mount to the load cell.
+The direct cyclone seperator method was chosen to record mass flow, with a back up recording of the mass of the tank during operations. This is because the sand needs to be contained after exiting the tank as inhalation of silica particles can lead to long term health conditions. Therefore, the direct method was chosen as
 
-% If needed could take vid of experiment and look at piston displacement but probs not
-
-
-% \subsubsection{Powder}
-% For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
+\subsection{Powder}
+While 
+For safety and due to the limited budget, sand was used as the powder. This is one of the greatest areas for improvement, i dont actually know what size the powder is or the distribution of those sizes. This powder has been measured to have [density = 1.4g/cm3]
 
 % \newpage
 
