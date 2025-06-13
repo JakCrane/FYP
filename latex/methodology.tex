@@ -303,17 +303,18 @@ If the piston has time to accelerate from far away, then it was found to be more
 \newpage
 \section{Numerical Setup}\label{sec:numerical-setup}
 \subsection{Numerical Setup to Characterise Pressure Source}
-To provide an additional angle into the investigation of source pressure behaviour, seen in \autoref{sec:static_test}, a 2D axisymmetric simulation of the simplified system was ran. The geometry used can be seen in \autoref{fig:geometry_static_sim} and an axisymmetric sim as it was faster and allowed for more detail while still preserving quantities of 3D behaviour as no theta dependence or swirling is expected to occur. The mesh used 0.1mm square cells. As seen in the diagram, two regions were seperated from the surface to record the value of static pressure the pressure transducers would see.
+To provide an additional angle into the investigation of source pressure behaviour, seen in \autoref{sec:static_test}, an axisymmetric simulation was conducted of the system without a piston or powder in the tank. The geometry used can be seen in \autoref{fig:geometry_static_sim}, noting the two vertices in the geometry outlined to record the numerical values of pressure at locations similar to the pressure transducers in the experimental setup.
 \begin{figure}[htbp]
     \centering
-
+    
     \begin{minipage}{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/geom_pressure_losses.png}
         \caption{Geometry of Simulation to Characterise Pressure Source}\label{fig:geometry_static_sim}
     \end{minipage}
-
+    
 \end{figure}
+An axisymmetric model was chosen as it requires far fewer computations due to the lower number of cells, while still preserving the pressure quantities of the 3D physics. This was possible as it is expected that there would be no angular dependence around the axis of revoluiton and no swirling is expected to occur. Because of the reduced time requirement of the axisymmetric model, the mesh used 0.1mm square cells to produce a high resolution analysis of the flow. The inlet was modelled as a pressure inlet with a stagnation pressure of 2 bar and the outlet was a pressure outlet at atmospheric conditions. The gas used was air under standard operating conditions as this assumed to be close to what is output from the compressed air line.
 \subsection{Numerical Setup to Characterise Full System}
 To investigate how well the design would translate to the space environment, numerical simulations to observe key flow features were conducted. Given that there is no experimental data on fluidisation under microgravity present in literature, options to verify the validity of the simulations are limited. Therefore, attempts to show well documented behaviours like the relationship between piston velocity and mass flow rate were made. Anchoring the validitiy in these relationships given no other options. The scope of the project reduced the simulation methods to pre-existing software and Ansys Fluent was chosen as it could perform moving mesh simulations as well as two phase flow simulations with limited prerequisit knowledge.
 

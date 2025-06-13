@@ -64,27 +64,27 @@ The first step in characterising the system was to investigate the static pressu
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
-        \caption*{(a) Full 4 bar test.}
+        \caption*{(a) Full 4 bar Test}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static.png}
-        \caption*{(b) Static pressure from 4 bar.}
+        \caption*{(b) Static Pressure from 4 bar}
     \end{minipage}    
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/4_bar_static.png}
-        \caption*{(c) Static pressure from 5 bar.}
+        \caption*{(c) Static Pressure from 5 bar}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/5_bar_static.png}
-        \caption*{(d) Static pressure from 6 bar.}
+        \caption*{(d) Static Pressure from 6 bar}
     \end{minipage}    
 
-    \caption{Full caption mb?}\label{fig:static-pressure-drop}
+    \caption{Static Pressure Readings Before and After the Tank at Different Pressures}\label{fig:static-pressure-drop}
 \end{figure}    
 If the compressed air line was truely supplying a stagnation pressure of 4 bar, through isentropic flow relations the data implies that the mach number of the flow is 1.3 which is unlikely.
 
@@ -113,25 +113,38 @@ In an attempt to diagnose this behaviour, follow up tests were conducted. As see
 As a final attempt, the solenoid valve was removed from the set up to verify that this wasnt choking the flow or somehow drastically decreasing static pressure somehow. Again, seen in fig 6, this performed similarly to the setup containing the regulator so wasn't the cause of the behaviour and the system diagram was reverted to \autoref{fig:systems-diagram}.
 
 \subsection{Simulation}
-The 2D axisymmetric analysis of the empty tank seemed to support the idea that the stagnation pressure supplied into the system was less than 4bar. not the desired 3bar as setting the pressure inlet to 1bar gave comparable static pressure readings as seen in the tests.
+The 2D axisymmetric analysis of the empty tank seemed to support the idea that the stagnation pressure supplied into the system was less than 4 bar. The pressure gradient, seen in \autoref{fig:static-pressure-drop-fluent}, produces comparable results to the readings from the pressure transducers experimentally. 
 \begin{figure}[htbp]
     \centering
-
+    
     \begin{minipage}{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/static_pressure_sim_results.png}
-        \caption{New regulator.}\label{fig:static-pressure-drop-fluent}
+        \caption{Static Pressure of Empty Tank Simulation}\label{fig:static-pressure-drop-fluent}
     \end{minipage}    
-
+    
 \end{figure}    
+The values recorded at the pressure reading regions were 1.46 bar before the tank and 1.06 bar after the tank. While this is close to the experimental results, the outlet is notably lower suggesting this still does not fully explain the behaviour.
 
+The velocity of the flow was also found in the simulation, seen in \autoref{fig:velocity-magnitude-fluent}.
+\begin{figure}[htbp]
+    \centering
+    
+    \begin{minipage}{0.9\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/pressure_characterisation_vel.png}
+        \caption{Velocity Magnitude of Empty Tank Simulation}\label{fig:velocity-magnitude-fluent}
+    \end{minipage}    
+    
+\end{figure}    
+In the 0.1m of pipe, the flow has already accelerated to 275m/s which supports the idea that the flow within the pipes held a lot of the stagnation pressure as dynamic pressure and this is why the static pressure readings were so low.
 \subsection{Stagnation pressure values}
 Given the unreliability of the pressure gauge, a number of assumptions were made to determine the stagnation pressure and allow for analysis of mass flow rate against pressure. Assuming that the flow was choked within the tubes, having a velocity of 343m/s, the isentropic relations give that p/p0 =  0.52828178
 \begin{table}[htbp]
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
-        Pressure regulator setting (bar) & Static Pressure at inlet (bar) &  Stagnation Pressure (bar) \\
+        Pressure Regulator Setting (bar) & Static Pressure at Inlet (bar) &  Stagnation Pressure (bar) \\
         \hline
         4 & 1.405 & 2.66 \\
         5 & 1.625 & 3.08 \\
