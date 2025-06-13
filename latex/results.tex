@@ -37,8 +37,9 @@ As shown, there is a marked difference in the location of powder between the two
 
 As mentioned in \autoref{sec:old-design-method}, this analysis was conducted with a relatively coarse mesh which may alter the results. The biggest impact would be not resolving key gradients or incorrect momentum exchange between the two phases. As this geometry is relatively simplistic and the velocity into the system small, it is assumed that there would be minimal impact from not resolving velocity or pressure gradients well enough. However, it is less clear how accurately the momentum exchange is affected by this and was assumed to be valid just based off the authors understanding of the expected behaviour of the system. Given more time this would be an area of focus, conducting a mesh convergence study and running the finer meshes for a longer time should be done to validate this preliminary result. Another area for improvement is using an inlet condition more accurate to the physics. A pressure inlet would have been ideal as this is closer to the physics of the system but due to limitations of the simulation software, there was no way to prevent the powder exiting this inlet. This could be fixed with a user defined function, found through simulating the system with a pressure inlet and no powder, and then transferred to this analysis.
 
-\section{Pressure Testing Tank Design}
-
+\section{Pressure Testing Tank Design}\label{sec:pressure-testing}
+Validation of the tank design was done in two stages, finite element analysis and hand calculations before manufacturing and hydrostatic pressure testing of the full tank once it was made.
+Before manufacturing of the tank, analysis of the tank under the stresses expected during operating conditions was conducted. As mentioned
 \section{First Test}\label{sec:first-test}
 As mentioned in \autoref{sec:piston}, the very first test with was conducted without sand and failed to push the piston down the tank. This quick test was the motivation to characterise the pressure source as it was noted that the pressure readings before and after the tank were lower than expected and changed slower than expected. This meant that the failure mode of the piston crumpling was discounted and the future piston designs ignored this possibility. After characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
 
@@ -112,20 +113,14 @@ In an attempt to diagnose this behaviour, follow up tests were conducted. As see
 As a final attempt, the solenoid valve was removed from the set up to verify that this wasnt choking the flow or somehow drastically decreasing static pressure somehow. Again, seen in fig 6, this performed similarly to the setup containing the regulator so wasn't the cause of the behaviour and the system diagram was reverted to \autoref{fig:systems-diagram}.
 
 \subsection{Simulation}
-A 2D Axisymmetric analysis of the empty tank was conducted using fluent. This seemed to support the idea that only 1bar of stagnation pressure was being supplied to the system, not the desired 3bar as setting the pressure inlet to 1bar gave comparable static pressure readings as seen in the tests.
+The 2D axisymmetric analysis of the empty tank seemed to support the idea that the stagnation pressure supplied into the system was less than 4bar. not the desired 3bar as setting the pressure inlet to 1bar gave comparable static pressure readings as seen in the tests.
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.9\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
+        \includegraphics[width=\textwidth]{../report_assets/static_pressure_sim_results.png}
         \caption{New regulator.}\label{fig:static-pressure-drop-fluent}
-    \end{minipage}    
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
-        \caption{New regulator + no solenoid.}\label{fig:static-pressure-drop-report}
     \end{minipage}    
 
 \end{figure}    

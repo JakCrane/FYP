@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 
 # Paths to your two Fluent output files
 input_file1 = 'Research_Files/June/90mm_wide_wide.out'
-input_file2 = 'Research_Files/June/30mm_wide_wide.out'
+input_file2 = 'Research_Files/June/60mm_wide_wide.out'
+input_file3 = 'Research_Files/June/30mm_wide_wide.out'
 
 def read_fluent_out(path):
     data = []
@@ -20,15 +21,18 @@ def read_fluent_out(path):
 # Load datasets
 df1 = read_fluent_out(input_file1)
 df2 = read_fluent_out(input_file2)
+df3 = read_fluent_out(input_file3)
 
 # Compute differences (mass change) between consecutive report_def_0 values
 df1_diff = df1['report_def_0'].diff()
 df2_diff = df2['report_def_0'].diff()
+df3_diff = df3['report_def_0'].diff()
 
 # Plot original comparison
 plt.figure()
 plt.plot(df1['flow_time'], df1['report_def_0'], label='1')
 plt.plot(df2['flow_time'], df2['report_def_0'], label='2')
+plt.plot(df3['flow_time'], df3['report_def_0'], label='3')
 plt.xlabel('flow-time')
 plt.ylabel('report-def-0 (mass)')
 plt.title('Mass vs flow-time: two simulations')
