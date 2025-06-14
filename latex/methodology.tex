@@ -102,16 +102,44 @@ The end caps were manufactured from Acetal C POM Delrin as the material is low-c
     \caption{Components of the Hopper Tank}\label{fig:hopper-tank-components}
 \end{figure}
 As seen in \autoref{fig:hopper-tank-components}, the inlet end cap is radially screwed into the tube. This was done as one of the end caps had to be removable to allow for testing different piston designs. The outlet end cap was bonded to the tube using plastic-friendly epoxy.
+\section{Hopper Tank Analysis}
+To validate that the design could operate at a pressure of 8 bar, a combination of hand calculations and finite element analysis (FEA) using solidworks was conducted. The failure modes analysed were stress concentrations from the bolt holes and hoop stress rupture. Fracturing at the delrin-epoxy interface was a concern but as there are no relevant literatures on modelling this, it was not investigated further. Due to the number of bolts and the length of each one, bolt tearout was not investigated as it was deemed an unlikely mode of failure.
 
-To validate that the design could operate at a pressure of 8 bar, a combination of hand calculations and finite element analysis (FEA) using solidworks was conducted, seen in \autoref{sec:pressure-testing}. The failure modes analysed were stress concentrations from the bolt holes and hoop stress rupture. Fracturing at the delrin-epoxy interface was a concern but as there are no relevant literatures on modelling this, it was not investigated further. Due to the number of bolts and the length of each one, bolt tearout was not investigated as it was deemed an unlikely mode of failure.
 
+To investigate the behaviour of stress around the bolt holes,a static force simulation was conducted with two different mesh resolutions, seen in \autoref{fig:solidworks-fea}. 
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/fine_mesh.png}
+        \caption*{Mesh with Fine Setting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/medium_mesh.png}
+        \caption*{Mesh with Medium Setting}
+    \end{minipage}
+    \caption{Solidworks Meshes Used}\label{fig:solidworks-fea}
+\end{figure}
+The force on the bolt holes was assumed to be the force on the end cap face from a 7 bar pressure differential, ignoring any affect from the o-ring. A force of 3,010N was found through the equations below.
+\[
+F = P \cdot A
+\]
+\[
+3,010N = 700,000Pa \cdot (0.037mm^2 \cdot \pi)
+\]
+This force was then applied to only the bottom half of the hole cross-section as this is where the bolt would contact the surface. The acrylic was modelled as 
+
+To investigate the hoop stress rupture failure method, hand calculations were conducted.
 Upon construction of the tank, it was hydrostatically pressure tested to a pressure of 8 bar. At the time of testing, it was known that the safety factor of the design was lower than standard and therefore was not pressurised above the 8 bar limit for fear of damaging the tank. This was definitely not ideal but given the time and budget constraints, manufacturing a new powder hopper was not an option.
 
 \section{Piston Design}\label{sec:piston}
 The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation, seen below. 
-\begin{equation}\label{equ:hydrostatic}
+\[
 P = \rho * h * g
-\end{equation}
+\]
 This pressure has to balance the pressure differential across the piston from the flow and the additional frictional force on the tank walls to ensure the powder is packed at the outlet. Due to the non-linear nature of granular material's affect on friction, modelling this prior was deemed outside of the scope of the project. Additionally, manufacturing imperfections in both the tank tube and piston prevent a detailed study of the flow around the piston so the expected pressure differential was also too complex to model. While the piston design has the greatest potential for optimising the system, time constraints of the project prevented further analysis.
 
 Because of these complexities, the first design, seen in \autoref{fig:piston_geom} (a), was modelled after a previous study that found a gear-like geometry to have the best performance in the gas-permeable powder feed system tested~\cite{TANG2023118406}. 
