@@ -304,25 +304,20 @@ Additionally, the solenoid valve could have had a very small orifice area, chock
 \subsection{Procedure to Characterise Full System}
 To ensure an equal comparison between the behaviour of the system at different inlet pressure configurations, a consistent testing procedure was adhered to.
 
-Starting from default configuration with nothing in the tank clean tank, the inelt end cap was removed and the piston was placed in it. This was positioned at the start of the tank to lower the chance that the piston gets stuck on the sand that forms a ramp, seen in \autoref{fig:sand-ramp}.
+Starting from default configuration with nothing in the tank clean tank, the inelt end cap was removed and the piston was placed in it. This was positioned at the start of the tank to lower the chance that the piston gets stuck on the sand that forms an incline, seen in \autoref{fig:sand-ramp}.
 \begin{figure}[htbp]
     \centering
     
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.60\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/systems_diagram.png}
-        \caption{Systems diagram.}\label{fig:sand-ramp}
+        \includegraphics[width=\textwidth]{../report_assets/sand_ramp.png}
+        \caption{Starting Sand Distribution in Tank}\label{fig:sand-ramp}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../report_assets/Fluidised_Bed_polished.png}
-        \caption{Pic of experiment.}\label{fig:wawaweewa}
-    \end{minipage}
-    
+
 \end{figure}
-If the piston has time to accelerate from far away, then it was found to be more likely to sweep that ramp sand forwards with its movement and fully pack the sand into the outlet instead of getting stuck. Next the female pushfit fitting was removed from the outlet of the tank and 1000-1020g of sand was measured out and put into the tank through the use of a funnel. Once the sand had filled the tank, the pushfit fitting was reattached and a tube with an end cap was placed over the outlet. The tank was then rotated such that the outlet was facing down and tapped to ensure no sand was stuck to the walls close to the piston, preventing successful startup. Then the tank was placed on the load cell stands, ensuring that the system starts with sand fully covering the cross section of the tank close to the outlet. Once placed down, the end cap tube was removed and the tube leading to the cyclone seperator was connected. The cyclone seperator was then taped down to reduce the likelyhood the lid pops off. It is thought that this was only necessary due to the undersizing of the cyclone seperator but a 3rd iteration on that was deemed unnecessary. Once the system was set up, the pressure regulator was tuned like in \autoref{sec:pressure-source-procedure}, closing the system then 
-\newpage
+If the piston has time to accelerate from far away, it was found to be more likely to sweep that ramp sand forwards with its movement and fully pack the sand into the outlet instead of getting stuck. Next the female pushfit fitting was removed from the outlet of the tank and 1000g to 1020g of sand was measured out and put into the tank through the use of a funnel. Once the sand had filled the tank, the pushfit fitting was reattached and a tube with an end cap was placed over the outlet. The tank was then held vertically such that the outlet was facing down and tapped to ensure no sand was stuck to the walls close to the piston, preventing successful startup. Then the tank was placed on the load cell stands, ensuring that the system starts with sand fully covering the cross section of the tank close to the outlet, again seen in \autoref{fig:sand-ramp}. Once placed down, the end cap tube was removed from the inlet and the tube leading to the cyclone seperator was connected. The cyclone seperator was then taped down to reduce the likelyhood the lid pops off. It is thought that this was only necessary due to the undersizing of the cyclone seperator but since taping it solved the issue, a 3rd iteration on the design was deemed unnecessary. Once the system was set up, the pressure regulator was tuned like in \autoref{sec:pressure-source-procedure}. End cap was removed from the closed system configuration and the tube was then reattached to the tank inlet.
+
+Now that the system was ready for testing the valves were opened and the data was logged. Ideally, the computer would have been placed far away from the system, the ball valve would have been opened and only when the solenoid valve was actuated remotely would the system function. Unfortunately, due to the solenoid valve leaking, the computer had to be placed near the system to minimise the time between opening the ball valve and actuating the solenoid. Once the pressure reading at the outlet had dropped sufficiently, it was assumed all the powder had been dispensed into the seperator and the valves were closed.
 \section{Numerical Setup}\label{sec:numerical-setup}
 \subsection{Numerical Setup to Characterise Pressure Source}
 To provide an additional angle into the investigation of source pressure behaviour, seen in \autoref{sec:static_test}, an axisymmetric simulation was conducted of the system without a piston or powder in the tank. The geometry used can be seen in \autoref{fig:geometry_static_sim}, noting the two vertices in the geometry outlined to record the numerical values of pressure at locations similar to the pressure transducers in the experimental setup.
