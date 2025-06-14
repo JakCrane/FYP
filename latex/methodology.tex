@@ -103,10 +103,10 @@ The end caps were manufactured from Acetal C POM Delrin as the material is low-c
 \end{figure}
 As seen in \autoref{fig:hopper-tank-components}, the inlet end cap is radially screwed into the tube. This was done as one of the end caps had to be removable to allow for testing different piston designs. The outlet end cap was bonded to the tube using plastic-friendly epoxy.
 \section{Hopper Tank Analysis}
-To validate that the design could operate at a pressure of 8 bar, a combination of hand calculations and finite element analysis (FEA) using solidworks was conducted. The failure modes analysed were stress concentrations from the bolt holes and hoop stress rupture. Fracturing at the delrin-epoxy interface was a concern but as there are no relevant literatures on modelling this, it was not investigated further. Due to the number of bolts and the length of each one, bolt tearout was not investigated as it was deemed an unlikely mode of failure.
+To validate that the design could operate up to a pressure of 8 bar during experimentation, a combination of hand calculations and finite element analysis (FEA) using solidworks was conducted. The failure modes analysed were stress concentrations from the bolt holes and hoop stress rupture. Fracturing at the delrin-epoxy interface was a concern but as there are no relevant literatures on modelling this, it was not investigated further. Due to the number of bolts and the length of each one, bolt tearout was not investigated as it was deemed an unlikely mode of failure.
 
 
-To investigate the behaviour of stress around the bolt holes,a static force simulation was conducted with two different mesh resolutions, seen in \autoref{fig:solidworks-fea}. 
+To investigate the behaviour of stress around the bolt holes, a static force simulation was conducted with two different mesh resolutions, seen in \autoref{fig:solidworks-fea}. 
 \begin{figure}[htbp]
     \centering
 
@@ -119,9 +119,9 @@ To investigate the behaviour of stress around the bolt holes,a static force simu
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/medium_mesh.png}
-        \caption*{Mesh with Medium Setting}
+        \caption*{Mesh with More Coarse Setting}
     \end{minipage}
-    \caption{Solidworks Meshes Used}\label{fig:solidworks-fea}
+    \caption{Solidworks Meshes Used to Analyse Tank Design}\label{fig:solidworks-fea}
 \end{figure}
 The force on the bolt holes was assumed to be the force on the end cap face from a 7 bar pressure differential, ignoring any affect from the o-ring. A force of 3,010N was found through the equations below.
 \[
@@ -130,10 +130,7 @@ F = P \cdot A
 \[
 3,010N = 700,000Pa \cdot (0.037m^2 \cdot \pi)
 \]
-This force was then applied to only the bottom half of the hole cross-section as this is where the bolt would contact the surface. The acrylic was modelled using solidworks pre-defined medium-high impact acrylic with a youngs modulus of 3000N/mm2 and a yield stress of 45 N/mm2.
-
-To investigate the hoop stress rupture failure method, hand calculations were conducted.
-Upon construction of the tank, it was hydrostatically pressure tested to a pressure of 8 bar. At the time of testing, it was known that the safety factor of the design was lower than standard and therefore was not pressurised above the 8 bar limit for fear of damaging the tank. This was definitely not ideal but given the time and budget constraints, manufacturing a new powder hopper was not an option.
+This force was then applied to only the bottom half of the bolt hole's cross-section as this is where the bolt would contact the surface. The acrylic was modelled using solidworks pre-defined medium-high impact acrylic with a youngs modulus of $3000 N/mm^2$ and a yield stress of $45 N/mm^2$. These values were also used in hand calculations to investigate the hoop stress rupture failure mode.
 
 \section{Piston Design}\label{sec:piston}
 The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation, seen below. 
@@ -146,19 +143,19 @@ Because of these complexities, the first design, seen in \autoref{fig:piston_geo
 \begin{figure}[htbp]
     \centering
     
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.29\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/piston_1.png}
         \caption*{(a) First Design}\label{fig:piston_geom_1}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.29\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/piston_2.png}
         \caption*{(b) Second Design}\label{fig:piston_geom_2}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.29\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/piston_final.png}
         \caption*{(c) Final Design}\label{fig:piston_geom_3}
@@ -231,8 +228,9 @@ To capture the system's behaviour, a combination of video recordings, load cell 
     \end{minipage}
     \caption{Sensor Placement in Experimental Setup}\label{fig:sensors}
 \end{figure}
+The load cells were placed at the start and end of the tank as well as beneath the cyclone seperator. This was done as it allows for two independent measurements of powder mass movement to allow for cross-validation and redundancy. The pressure transducers were placed before and after the tank with the goal of being able to use them for a deeper analysis of the system. This analysis was never conducted due to the complexity of modelling the pistons impact on the static pressure as well as time constraints of the project.
 
-A computer was connected to the boards and data was logged to it as well as being presented on a bespoke user interface, shown in \autoref{fig:grafana}. The solenoid could also be opened and closed through the dashbaord, allowing for safe operations as all the information and control was in one place.
+A computer was connected to the electronics system to log and display the data on a bespoke user interface, shown in \autoref{fig:grafana}. The solenoid valve, seen in \autoref{fig:experimental-setup}, could also be opened and closed through the dashbaord, allowing for safe operations as all the information and control was in one place.
 \begin{figure}[htbp]
     \centering
 
@@ -243,20 +241,16 @@ A computer was connected to the boards and data was logged to it as well as bein
     \end{minipage}
 
 \end{figure}
-Due to budget constraints only cheap pressure transducers and load cells were used. Given this, perfect calibration of the sensors was not as much of a priority. To calibrate the load cells, the data aquisition baord was configured to record the raw values out put by the analog to digital converter (ADC) at both the unloaded, 0kg, state and then with a mass, measured at 0.746kg, placed on it. Since the load cells are a linear sensor, these two points give a gradient and y-intercept to map the ADC counts to. The same procedure was done to calibrate the pressure transducers except using a mechanical pressure gauge and the compressed air line to record 1bar and 4bar ADC outputs.
+Due to budget constraints, low-cost pressure transducers and load cells were used. Given this, extensive calibration was not prioritised as these components typically exhibit higher variability and lower stability, limiting the benefits of precise calibration. To calibrate the load cells, the data aquisition baord was configured to record the raw values out put by the analog to digital converter (ADC) at both the unloaded, 0kg, state and then with a mass, measured at 0.746kg, placed on it. Since the load cells are a linear sensor, these two points give a gradient and y-intercept to map the ADC counts to. The same procedure was done to calibrate the pressure transducers except using a mechanical pressure gauge and the compressed air line to record 1 bar and 4 bar ADC outputs.
 
-An older setup of the experiment included a choke point just after the outlet of the tank. This was because previous literature proposed that fluidising systems where one part of the gas-solid flow is in choking conditions had been found to be simpler to control~\cite{SUN201630}. Due to the grain size of the sand, this chokepoint got clogged in testing so was removed. As there was a pressure transducer before and after the chokepoint, this explains the naming scheme in \autoref{fig:grafana} and why the pre-choke pressure data is just noise as it was no longer connected.
+An older setup of the experiment included a choke point just after the outlet of the tank. This was because previous literature proposed that fluidising systems where one part of the gas-solid flow is in choking conditions had been found to be simpler to control~\cite{SUN201630}. Due to the grain size of the sand, this chokepoint got clogged in testing so was removed. As there was a pressure transducer before and after the chokepoint, this explains the data labels in \autoref{fig:grafana} and why the pre-choke pressure data is just noise as it was no longer connected.
 
 \subsection{Cyclone Seperator and Measurement Method}
-The two most common methods of measuring mass flow rate for this kind of system are using a displacement transducer to measure how far down the tank the piston is or measuring the mass of the powder after it has been fed out of the tank~\cite{SUN201630}\cite{LI2021712}\cite{Tang22}.
- The displacement transducer method indirectly measures the mass flow by using the near incompressibility of the powder and the assumption of a constant packing density to form a linear relationship between the movement of the piston and the volume of powder dispensed~\cite{SUN201630}. The direct method requires some method of seperating the gas and powder and then measures the powder. 
+The two most common methods of measuring mass flow rate for this kind of system are using a displacement transducer to measure how far down the tank the piston is or measuring the mass of the powder after it has been fed out of the tank~\cite{SUN201630}\cite{LI2021712}\cite{Tang22}. The displacement transducer method indirectly measures the mass flow by using the near incompressibility of the powder and the assumption of a constant packing density to form a linear relationship between the movement of the piston and the volume of powder dispensed~\cite{SUN201630}. The direct method requires some method of seperating the gas and powder and then measures the mass of powder over time. 
 
-WHY dID I CHOSE THE SEPERATOR INSTEAD OF THE Displacement
-EDITS TO TANK UNIDEAL GIVEN PRESSURE RATING things
-NEED TO CAPUTRE AIR ANYWAY FOR HEALTH AND SAFETY SO EASIER TO implement
-MAYBE CITE COMPARISON PAPER
+The direct mass measurement method was used as it had 3 advantages over measuring piston displacement. There was no additional modifications to the tank end cap needed as to incorporate the sensor a hole would have to be drilled and readings could be inteferred with by the powder. Second was the risk that the piston velocity would not be constant, a concern that was validated during testing. Finally, the powder needed to be contained no matter what method was chosen as airbourne sand particles are a hazard to lung health so adding a load cell to this containment method was much more simple.
 
-To seperate the gas and powder, a cyclone seperator was used, seen in \autoref{fig:cyclone}.
+To contain the powder and seperate out the gas, a cyclone seperator was used, seen in \autoref{fig:cyclone}.
 \begin{figure}[htbp]
     \centering
 
@@ -386,13 +380,13 @@ after figuring out this was a limitation placed on the student license, smoothin
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_before_moving.png}
-        \caption{Mesh at Beginning of Simulation}\label{fig:2D-tank}
+        \caption{Mesh at Beginning of Simulation}\label{fig:beginning-mesh}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_after_moving.png}
-        \caption{Mesh at End of Simulation}\label{fig:mesh-tank}
+        \caption{Mesh at End of Simulation}\label{fig:end-mesh}
     \end{minipage}
 
 \end{figure}
