@@ -199,7 +199,8 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
 
 
 \newpage
-\section{Main Experiment}
+\section{Mass Flow Rate Experimental Results}
+\subsection{Inlet Pressure of 4 bar}
 \begin{figure}[htbp]
     \centering
 
@@ -271,7 +272,8 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \caption{3rd Test 4 Bar Inlet}
     
 \end{figure}\label{fig:43}
-\newpage
+
+\subsection{Inlet Pressure of 5 bar}
 \begin{figure}[htbp]
     \centering
 
@@ -344,11 +346,13 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     
 \end{figure}\label{fig:53}
 
+\subsection{Inlet Pressure of 6 bar}
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.3\textwidth}
-        \centering
+        \centeri
+        ng
         \includegraphics[width=\textwidth]{../report_assets/61_raw_mass.png}
         \caption*{Raw Load Cell Readings}
     \end{minipage}
@@ -361,7 +365,7 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/61_clean_flow_100.png}
+        \includegraphics[width=\textwidth]{../report_assets/61_clean_flow_50.png}
         \caption*{Mass Flow Rate}
     \end{minipage}
     \caption{1st Test 6 Bar Inlet}
@@ -385,7 +389,7 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/63_clean_flow_100.png}
+        \includegraphics[width=\textwidth]{../report_assets/63_clean_flow_50.png}
         \caption*{Mass Flow Rate}
     \end{minipage}
     \caption{2nd Test 6 Bar Inlet}
@@ -409,13 +413,17 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \hfill
     \begin{minipage}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/64_clean_flow_100.png}
+        \includegraphics[width=\textwidth]{../report_assets/64_clean_flow_50.png}
         \caption*{Mass Flow Rate}
     \end{minipage}
     \caption{3rd Test 6 Bar Inlet}
     
 \end{figure}\label{fig:64}
 
+\section{Mass Flow Rate Discussion}
+For each of the tests, the raw load cell readings can be seen on the first graph. Most graphs show that there was noise in the readings resulting in a few data points being drastically larger or smaller than the surrounding data. While steps were taken to prevent this like taping down the screw terminal incase the problem was from faulty wire connections but this never fixed the issue. The fact that the noise is less common in the lower pressure recordings implies that this could be somehow caused by electrostatic charge buildup in the sand from the triboelectric effect.
+
+These anomolous
 The first thing to note from the tests is the large variation between the shapes of the mass flow rate even within tests of the same inlet pressure. Comparing the mass flow rate for all tests with a 4 bar pressure inlet shows this phenomenon. An important thing to note is due to the smoothing applied, done by taking the average of a 100 sample window that moves through the data, there is edge distortion at the start and end. The sensors were polled at a frequency of 10Hz meaning up to 10s of starting flow will be averaged with the behaviour before the valves were opened. Accounting for this by looking at the behavour 10s after the valves were opened and 10s before the tank is empty, still highlights the variability. A difference of almost 0.001kg/s of mass flow rate between tests 1 and 2 compared to test 3 for a pressure inlet of 4 bar.
 
 This was initially hypothesised to be because the low pressure means that the system is in a transitional phase between a gas-solid choked and unchoked regime. If this were to be the case, then the subesquent tests at higher pressures should show a more consistent flow rate. While this is seen in testing with a 5 bar inlet pressure, with most of the flow sitting between 0.003 and 0.004kg/s

@@ -54,7 +54,7 @@
 # plt.ylabel('Load Cell Values (kg)')
 # plt.ylim(0, 2)
 # plt.legend()
-
+# plt.tight_layout()
 # # Show the plot
 # # plt.show()
 # # # Save the plot
@@ -103,7 +103,8 @@
 # plt.xlabel('Experiment Time (s)')
 # plt.ylabel('Load Cell Values (kg)')
 # plt.legend()
-
+# plt.tight_layout()
+# # plt.show()
 # # # Show the plot
 # plt.savefig('./latex/report_assets/64_clean_mass.png')
 
@@ -126,12 +127,12 @@ df_1['ch2plus7'] = -1*df_1['ch2plus7']
 df_1['m_flow'] = df_1['ch2plus7'].diff()
 df_2['m_flow'] = df_2['ch7sens'].diff()
 # Apply a rolling mean to smooth the curves
-window_size = 100  # Adjust as needed for smoothing
+window_size = 50  # Adjust as needed for smoothing
 df_1['smooth_combined'] = df_1['ch2plus7'].rolling(window=window_size, center=True, min_periods=1).mean()
 df_2['smooth_ch7sens'] = df_2['ch7sens'].rolling(window=window_size, center=True, min_periods=1).mean()
 
-df_1['m_flow_smooth'] = df_1['smooth_combined'].diff()
-df_2['m_flow_smooth'] = df_2['smooth_ch7sens'].diff()
+df_1['m_flow_smooth'] = df_1['smooth_combined'].diff()*10
+df_2['m_flow_smooth'] = df_2['smooth_ch7sens'].diff()*10
 
 plt.rc('legend', fontsize=24)   # Increase legend font size
 plt.rc('lines', linewidth=4)    # Further increase line width
@@ -140,16 +141,18 @@ plt.figure(figsize=(12, 8))    # Increase figure size
 plt.rc('xtick', labelsize=24)   # Increase x-axis tick font size
 plt.rc('ytick', labelsize=24)   # Increase y-axis tick font size
 
-plt.plot(df_1['BackendTime'], df_1['m_flow_smooth'], label='Combined Tank', color='purple')
-plt.plot(df_2['BackendTime'], df_2['m_flow_smooth'], label='Cyclone Seperator', color='orange')
+plt.plot(df_1['BackendTime'], df_1['m_flow_smooth']*1000, label='Combined Tank', color='purple')
+plt.plot(df_2['BackendTime'], df_2['m_flow_smooth']*1000, label='Cyclone Seperator', color='orange')
 
 plt.axvline(x=24.8, color='green', linestyle='--')
+plt.axvline(x=29.8, color='red', linestyle='--')
+plt.axvline(x=43.9, color='red', linestyle='--')
 plt.axvline(x=55.4, color='green', linestyle='--')
 
 plt.xlabel('Experiment Time (s)')
-plt.ylabel('Load Cell Values (kg)')
+plt.ylabel('Mass Flow Rate (g/s)')
 plt.legend()
-plt.ylim(-0.001, 0.0068)
+plt.ylim(-10, 68)
 
 # # Show the plot
-plt.savefig('./latex/report_assets/64_clean_flow_100.png')
+plt.savefig('./latex/report_assets/64_clean_flow_50.png')
