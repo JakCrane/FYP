@@ -60,6 +60,8 @@ The FEA was first ran with 6 bolt holes instead of 8 but was increased as the pr
 \end{figure}  
 \autoref{fig:fea-results} (a) shows the original vertices of the tank under no load overlayed in orange over the deformed tank. As there is very little difference between the two, non-linear behaviours from deformation could be ignored. A cylinder is one of the most resiliant shapes to buckling, especially when pressurised so this was not investigated in detail. While there is a slight increase in von mises stress in the more fine mesh, this was assumed to be because of the increased resolution of the boundary between the surface that did have a load applied and the rest of the bolt hole that did not. As the real load is not applied in this way it was determined satisfactory for manufacturing.
 
+The next failure mode checked was hoop stress rupturing, through the use of Lamé's equations. This gave a value of 8.88 GPa of stress at the inner wall and 8.18 GPa of stress at the outer wall. Since it was significantly lower than the bolt hole stress concentration stress, this failure mode was not expected to occur before the others.
+
 After manufacturing, the tank was then hydrostatically pressure tested. The first attempt at pressurising the tank with water resulted in the epoxy-delrin interface seperating. While this was a concern from the design stage, it was expected that reattaching the end cap with a more plastic friendly epoxy and extensive preperation of the bonding delrin surface would solve the issue. This was shown to be true in the subsequent pressure test, seen in \autoref{fig:hydro-results}.
 \begin{figure}[htbp]
     \centering
@@ -72,13 +74,14 @@ After manufacturing, the tank was then hydrostatically pressure tested. The firs
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../report_assets/coarse_mesh_results.png}
-        \caption*{(b) More Coarse Mesh}
+        \includegraphics[width=\textwidth]{../report_assets/hydro_grafana.png}
+        \caption*{(b) Screenshot of Results from Video}
     \end{minipage}    
     \caption{Results of Tank FEA}\label{fig:hydro-results}
 
 \end{figure}  
-the tank, analysis of the tank under the stresses expected during operating conditions was conducted. As mentioned
+Unfortunately, only a video recording of the test was taken and the data being logged was not recorded. A screenshot from this video can be seen in \autoref{fig:hydro-results} (b) and the jagged rise in gauge pressure comes from the actuation of the manual pump. The tank held this 7 bar of gauge pressure for 2 to 3 minutes before the pressure was released. While longer durations under pressure would have given more certainty to the safety of the tank, the strict requirements to vertify the pressure vessel were not needed for the experimentation so were not investigated.
+
 \section{First Test}\label{sec:first-test}
 As mentioned in \autoref{sec:piston}, the very first test with was conducted without sand and failed to push the piston down the tank. This quick test was the motivation to characterise the pressure source as it was noted that the pressure readings before and after the tank were lower than expected and changed slower than expected. This meant that the failure mode of the piston crumpling was discounted and the future piston designs ignored this possibility. After characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
 
@@ -412,6 +415,10 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
     \caption{3rd Test 6 Bar Inlet}
     
 \end{figure}\label{fig:64}
+
+The first thing to note from the tests is the large variabtion between the shapes of the mass flow rate even within tests of the same inlet pressure. Comparing the mass flow rate for all tests with a 4 bar pressure inlet shows this phenomenon. Important to note is due to the smoothing applied, done by taking the average of a 100 sample window that moves through the system, there is edge distortion at the start and end. The sensors were polled at a frequency of 10Hz meaning that 10s of 
 While each invidual test well endorses the system, especially 3rd test 4 bar, due to the reliable and high mass flow rate, repeatability is severly lacking.
 
 It was expected that higher pressures would have smoothed out the flow rate as ??? when in reality it only increased the issue. 
+
+pressure drop across the bed

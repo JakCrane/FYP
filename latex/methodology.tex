@@ -130,8 +130,13 @@ F = P \cdot A
 \[
 3,010N = 700,000Pa \cdot (0.037m^2 \cdot \pi)
 \]
-This force was then applied to only the bottom half of the bolt hole's cross-section as this is where the bolt would contact the surface. The acrylic was modelled using solidworks pre-defined medium-high impact acrylic with a youngs modulus of $3000 N/mm^2$ and a yield stress of $45 N/mm^2$. These values were also used in hand calculations to investigate the hoop stress rupture failure mode.
+This force was then applied to only the bottom half of the bolt hole's cross-section as this is where the bolt would contact the surface. The acrylic was modelled using solidworks pre-defined medium-high impact acrylic with a youngs modulus of 3 GPa and a yield stress of 45 GPa. 
 
+These values were also used in hand calculations to investigate the hoop stress rupture failure mode. Thick-walled cylinder calculations, using Lamé's equation seen below, allowed for the calculation of the hoop stress~\cite{mydatabook_lame}.
+\[
+\sigma_\theta(r) = \frac{p_i r_i^2 - p_o r_o^2}{r_o^2 - r_i^2} + \frac{(p_o - p_i) r_i^2 r_o^2}{(r_o^2 - r_i^2) r^2}
+\]
+The outer radius, $r_o$, was 0.04m and the inner, $r_i$, 0.037m. The pressure outside the tank, $p_o$, was taken to be atmospheric pressure and inside, $p_i$, was modelled as 8 bar.
 \section{Piston Design}\label{sec:piston}
 The piston's main function in this design is to constrain the powder to the outlet of the device. By modelling the sand as a fluid, the force required by the piston to pack the sand against the outlet can be calculated through the hydrostatic pressure equation, seen below. 
 \[
@@ -186,6 +191,8 @@ This analysis assumes arching occurs, previously discussed in \autoref{sec:bulk-
 If, in a system where the piston provides little force on the powder, the fluidising region undergoes expansion, analogous to bed expansion, passed the cone-tube interface (leftwards on the diagram). Then, applying more force to the piston would compress this region down, meaning a higher density of powder in the fluidising region, therefore more particles to be entrained out so a higher mass flow rate. In the case the force on the piston is greatly increased, the fluidising region would be compressed down into the cone and the dense phase moving area would reach the cone-tube interface. This would allow arching to occur and the additional force would be transferred through the powder into the cone, no longer compressing the fluidising region. In this case the behaviour seen in research would occur, where at a certain force, additional pressure on the piston produces no additional mass flow rate. 
 
 This explaination of the system puts very high demand on the design of the piston as it controls both the force on the powder and the flow rate of fluidising gas. These two quantities are functions of the inlet pressure and the fact they are coupled in a non-trivial way is not condusive of an easily controllabile design but comes with considerable benefits in terms of miniaturisation, a compromise deemed satisfactory.
+
+There is also a second mechanism to be expected, that being a change in behaviour relative to how much sand is in the tank. As mentioned in \autoref{sec:background-powder-beds}, the pressure drop across a fluidising powder bed approximately matches the weight of the particles per area in the fluidised regime. This means there is expected to be a relationship between the pressure of flow seen by the fluidising region and the amount of powder in the tank.
 
 \section{Experimental Setup}
 The experimental set up was designed to verify the expected behaviour of the fluidising powder feed system under terrestrial conditions to better estimate it's behaviour under microgravity. The core aims were to record the consistency of the powder mass flow rate, verify that changing the pressure upstream of the tank leads to a change in mass flow rate and document any behaviours the system may exhibit that would impact it's suitability for space applications.
