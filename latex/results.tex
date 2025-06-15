@@ -443,7 +443,7 @@ Other interesting behaviours are \autoref{fig:52} (c), which shows a relatively 
 The final significant result of the testing is the mass flow rate range of 20g/s to 60g/s. This is 3 orders of magnitude higher than previous systems, reporting feed rates of 3.5 and 5.7 grams a minute~\cite{BHATTIPROLU20181}. While this strongly supports the scalability of fluidising powder feed systems, it weakens the parallels that can be drawn between the behaviour of this system and others in literature. To address this, the chokepoint could be reintroduced given the powder size is reduced to prevent the clogging issue. This could, however, reduce the pressure differential seen by the piston leading to a reduced packing efficacy.
 
 \subsection{System Behaviour}
-The system behaviour differed greatly to expectations outlined in \autoref{sec:expected-behaviour}. As seen in \autoref{fig:real}, there was a fluidising region touching the piston head. 
+The system behaviour differed greatly to expectations outlined in \autoref{sec:expected-behaviour}. As seen in \autoref{fig:real}, there was a fluidising region touching the piston head which was unexpected. 
 \begin{figure}[htbp]
     \centering
     
@@ -454,6 +454,46 @@ The system behaviour differed greatly to expectations outlined in \autoref{sec:e
     \end{minipage}
     
 \end{figure}
-The end cap blocks the view of the cone so there is no way to tell from these tests whether there was also a fluidising region there, the existance of a region close to the piston was unexpected. It is hypothesised that this is due to the particle size of the powder. At the micron scale, gravity increasingly plays a role in the fluidisation process for larger particles, as discussed in \autoref{sec:background-powder-beds}, therefore at the millimeter scale, it could dominate entirely. This behaviour was also seen along side an inconsistent velocity of the piston, moving in steps more often than a constant and slow velocity. It is also unclear why this happens and it is even more of a surprise that this is not seen in any of the mass flow rate data. Whether this is due to the fact that the powder was only rearranging in the tank in discrete movements and was still being smoothly dispensed or was redistributing in the pipe as it travelled into the seperator is also unclear and more analysis would have to be conducted.
+The end cap blocks the view of the cone so there is no way to tell from these tests whether there was also a fluidising region there or if they connected. It is hypothesised that this is due to the particle size of the powder. At the micron scale, gravity increasingly plays a role in the fluidisation process for larger particles, as discussed in \autoref{sec:background-powder-beds}, therefore at the millimeter scale, it could dominate entirely. This behaviour was also seen along side an inconsistent velocity of the piston, moving in steps more often than a constant and slow velocity. It is also unclear why this happens and it is even more of a surprise that this is not seen in any of the mass flow rate data. Whether this is due to the fact that the powder was only rearranging in the tank in discrete movements and was still being smoothly dispensed or was redistributing in the pipe as it travelled into the seperator is also unclear and more analysis would have to be conducted.
 
 \section{Results of Numerical Analysis}
+
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/sim_no_grav_amount.png}
+        \caption*{(a) Hydrostatic Pressure Testing Setup}
+    \end{minipage}    
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/sim_no_grav_rate.png}
+        \caption*{(b) Screenshot of Results from Video}
+    \end{minipage}    
+    \caption{Results of Tank FEA}\label{fig:sim-results-no-grav}
+
+\end{figure} 
+
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/sim_grav_amount.png}
+        \caption*{(a) Hydrostatic Pressure Testing Setup}
+    \end{minipage}    
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/sim_grav_rate.png}
+        \caption*{(b) Screenshot of Results from Video}
+    \end{minipage}    
+    \caption{Results of Tank FEA}\label{fig:sim-results-grav}
+
+\end{figure} 
+
+Note that not all the simulations finished their desired 2000 steps. As seen in \autoref{fig:sim-results-no-grav} (a), the 90mm simulation terminated early. This instability was investigated by running a simulation on half time and it again crashed at the same simulation time. This implies that it was caused by the mesh deforming too much, an issue outlined in \autoref{sec:numerical-setup}, as both crashed at the same mesh deformation and the stability was not improved by the reduce in time step.
