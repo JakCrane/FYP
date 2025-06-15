@@ -193,8 +193,7 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
         6 & 1.852 & 3.51 \\
         \hline
     \end{tabular}    
-    \caption{Summary of static and stagnation pressures for different tests.}
-    \label{tab:static-stag-pressures}
+    \caption{Summary of static and stagnation pressures for different tests.}\label{tab:static-stag-pressures}
 \end{table}    
 
 
@@ -444,4 +443,17 @@ Other interesting behaviours are \autoref{fig:52} (c), which shows a relatively 
 The final significant result of the testing is the mass flow rate range of 20g/s to 60g/s. This is 3 orders of magnitude higher than previous systems, reporting feed rates of 3.5 and 5.7 grams a minute~\cite{BHATTIPROLU20181}. While this strongly supports the scalability of fluidising powder feed systems, it weakens the parallels that can be drawn between the behaviour of this system and others in literature. To address this, the chokepoint could be reintroduced given the powder size is reduced to prevent the clogging issue. This could, however, reduce the pressure differential seen by the piston leading to a reduced packing efficacy.
 
 \subsection{System Behaviour}
-The system behaviour differed greatly to expectations outlined in \autoref{sec:expected-behaviour}. 
+The system behaviour differed greatly to expectations outlined in \autoref{sec:expected-behaviour}. As seen in \autoref{fig:real}, there was a fluidising region touching the piston head. 
+\begin{figure}[htbp]
+    \centering
+    
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/real_behaviour.png}
+        \caption{A Snapshot of the 2nd 5 bar Inlet Test}\label{fig:real}
+    \end{minipage}
+    
+\end{figure}
+The end cap blocks the view of the cone so there is no way to tell from these tests whether there was also a fluidising region there, the existance of a region close to the piston was unexpected. It is hypothesised that this is due to the particle size of the powder. At the micron scale, gravity increasingly plays a role in the fluidisation process for larger particles, as discussed in \autoref{sec:background-powder-beds}, therefore at the millimeter scale, it could dominate entirely. This behaviour was also seen along side an inconsistent velocity of the piston, moving in steps more often than a constant and slow velocity. It is also unclear why this happens and it is even more of a surprise that this is not seen in any of the mass flow rate data. Whether this is due to the fact that the powder was only rearranging in the tank in discrete movements and was still being smoothly dispensed or was redistributing in the pipe as it travelled into the seperator is also unclear and more analysis would have to be conducted.
+
+\section{Results of Numerical Analysis}
