@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # input_file2 = 'Research_Files/June/60mm_wide_wide.out'
 # input_file3 = 'Research_Files/June/30mm_wide_wide.out'
 
-input_file1 = 'Research_Files/June/90mm_grav.out'
+input_file1 = 'Research_Files/June/90mm_grav_retake.out'
 input_file2 = 'Research_Files/June/60mm_grav_initial.out'
 input_file3 = 'Research_Files/June/30mm_grav.out'
 def read_fluent_out(path):
