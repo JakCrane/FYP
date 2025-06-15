@@ -1,35 +1,43 @@
 \section{Modelling Previous Design}\label{sec:old-design-method}
-Because microgravity is incredibly costly to achieve experimentally, a numerical investigation of the old design was conducted using Ansys Fluent. The simulation was ran once with gravity and once without to compare the distribution of powder within the tank and the mass flow rate. 
+Because microgravity is incredibly costly to achieve experimentally, a numerical investigation of the previous design was conducted using ANSYS Fluent. The simulation was run twice, once with gravity and once without, to compare the distribution of powder within the tank and the resulting mass flow rate. 
 
-Initially, an axisymmetric simulation using square cells of 0.4mm was attempted. The axisymmetric configuration was chosen as it would have ran as fast as a 2D simulation, because of the reduced number of cells, while maintaining the 3D physics of the real system. It is assumed the fineness of the mesh used allowed for strong gradients in flow conditions to be resolved as the simulation was numerically unstable and repeatedly crashed. To solve this a new 2D simulation with a coarser mesh of 1mm square cells was conducted, seen in \autoref{fig:old-design-sim}.
+Initially, an axisymmetric simulation using square cells of 0.4mm was attempted. This configuration was chosen because it could run as quickly as a 2D simulation, due to the reduced number of cells, while still capturing the 3D physics of the real system. It was assumed that the fine mesh allowed for strong, non-physical, flow gradients to be resolved as the simulation was numerically unstable and repeatedly crashed. To address this, a new 2D simulation with a coarser mesh of 1mm square cells was performed, shown in \autoref{fig:old-design-sim}.
 \begin{figure}[htbp]
     \centering
 
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM_2_3.png}
         \caption*{(a) Previous Design}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/geom_old.png}
         \caption*{(b) Simplified Geometry}\label{fig:idkyet9}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_old.png}
         \caption*{(c) Mesh Used for Sim}\label{fig:idkyet10}
     \end{minipage}
     
 \end{figure}\label{fig:old-design-sim}
-While the 2D nature of the simulation means the quantities like mass flow rate or inlet conditions can not be matched to the real system, the key flow characteristics of interest are still expected to remain. This is because particle position within the tank and fluidisation are not reliant on 3 dimensions. A simplified geometry, seen in \autoref{fig:old-design-sim} (b), was used as it sped up computational time while still preserving the geometric features of interest. It is important to note that the vent line pipe was omitted and the outlet pipe was moved to the center, neither of these are expected to impact on the behaviour being investigated. The bottom of the tank held the wire mesh on which the powder sat and represents the bottom of the geometric surface. In the simulation it acted as the velocity inlet in which gas entered the system at a velocity of 0.1m/s. To simulate the two gas and powder phases, a eulerian-eulerian model was used with a gidaspow drag model as this has been shown to best represent fluidising beds~\cite{C6RA28615A}. The powder was modelled as TI6AL4V as this was used during the COSMOS project. Titanium alloy powder used in SLS printing has a particle size distribution between $15\,\mu\mathrm{m}$ and $53\,\mu\mathrm{m}$ and a density between $2.04\ \mathrm{g/cm^3}$ and $2.34\ \mathrm{g/cm^3}$~\cite{ma17040952}, which is assumed to be similar to the powder used in CSAM.\@ Hence a $40\,\mu\mathrm{m}$ particle size and $2200\ \mathrm{kg/m^3}$ density was used. The gas was modelled as nitrogen at standard operating conditions as this was also used during the COSMOS project.
+While the 2D nature of the simulation means the quantities such as mass flow rate and inlet conditions can not be matched exactly to the real system, the key flow characteristics of interest are still expected to persist. This is because particle position within the tank and the onset of fluidisation are not strongly dependent on three-dimensional effects.
+
+A simplified geometry, seen in \autoref{fig:old-design-sim} (b), was used to reduce computational time while preserving the essential geometric features. It is important to note that the vent line pipe was omitted and the outlet pipe was moved to the center; neither of these modifications are expected to affect the behaviour under investigation. 
+
+The bottom of the tank held a wire mesh on which the powder rested, representing the lower geometric boundary. In the simulation, this mesh acted as a velocity inlet, with gas entering the system at a velocity of 0.1m/s. 
+
+To simulate the two gas and powder phases, an Eulerian-Eulerian model was employed along with the Gidaspow drag model, which has been shown to best represent fluidised beds~\cite{C6RA28615A}. The powder was modelled as TI6AL4V, consistent with the material used during COSMOS.\@ Titanium alloy powder used in selective layer sintering (SLS) have a particle size distribution between $15\,\mu\mathrm{m}$ and $53\,\mu\mathrm{m}$ and a density ranging from $2.04\ \mathrm{g/cm^3}$ to $2.34\ \mathrm{g/cm^3}$~\cite{ma17040952}, which is assumed to be similar to the powder used in CSAM.\@ Hence a representative particle size of $40\,\mu\mathrm{m}$ and a density of $2200\ \mathrm{kg/m^3}$ were used. 
+
+The gas was modelled as nitrogen at standard operating conditions, consistent with its use in COSMOS.\@
 
 \section{Choosing A New Feed System Architecture}\label{sec:system_architecture}
-As discussed in \autoref{sec:prev-design-analysis}, the results of the analysis into the previous design supported the hypothesised issues. Therefore, a new design was desirable and research into current powder feed technology was conducted to better understand the strengths and weaknesses of prior systems. A thorough review of analogous systems was conducted, however it is a possibility that key papers may have been overlooked. The only research paper found on powder-based AM experiments conducted in microgravity originate from the Fraunhofer Institute for Transportation and Automation Technology. Yet, this report offers scant details on the powder-feed mechanism employed~\cite{OVERMEYER2025}. 
+As discussed in \autoref{sec:prev-design-analysis}, the results of the analysis into the previous design supported the hypothesised issues. Consequently, a new design was deemed necessary, and a review of current powder feed technologies was conducted to better understand the strengths and limitations of prior systems. Although a thorough review of analogous systems was undertaken, it remains possible that some key papers were overlooked. The only research found on powder-based AM experiments conducted in microgravity originate from the Fraunhofer Institute; yet, this report offers limited detail on the powder-feed mechanism employed~\cite{OVERMEYER2025}. 
 
-Accordingly, five common terrestrial powder-dispensing methods were examined, comparing both their efficacy in the space environment without modifications and the difficulty of implementing the changes required. Only basic schematics of these methods are presented in \autoref{fig:powder-dispensing-methods} as the details for the unchosen architectures is not relevant and the chosen architecture is outlined in \autoref{sec:fluidised-powder-feed-systems}. 
+Accordingly, five common terrestrial powder-dispensing methods were examined, comparing both their suitability for use in the space environment without modifications and the complexity of implementing any necessary adaptations. Only basic schematics of these methods are presented in \autoref{fig:powder-dispensing-methods}, as the details of the unselected architectures are not relevant. 
 \begin{figure}[htbp]
     \centering
 
@@ -51,9 +59,6 @@ Accordingly, five common terrestrial powder-dispensing methods were examined, co
         \includegraphics[width=\textwidth]{../report_assets/Liquid_oerlikon.png}
         \caption*{(c) Liquid Suspension Design~\cite{OerlikonMetcoFeeders2023}}
     \end{minipage}
-
-    \vspace{0.5cm} % space between top and bottom rows
-    
     % Second row: 2 images
     \begin{minipage}{0.35\textwidth}
         \centering
@@ -69,7 +74,7 @@ Accordingly, five common terrestrial powder-dispensing methods were examined, co
     
     \caption{5 Common Powder Feed System Architectures}\label{fig:powder-dispensing-methods}
 \end{figure}
-The tabulation of the full analysis can be found in \autoref{appendix:feed-architecture-analysis}. Given that CSAM requires an accelerant gas, the fludising powder bed design was chosen as the most promising design as it mitigates one of the architectures largest drawbacks. Furthermore, the method is assumed to be less affected by microgravity than other options as the main forces the particle experiences are fluid mechanical in nautre, requiring no adjustments of the core mechanic of feeding. 
+The chosen architecture is outlined in \autoref{sec:fluidised-powder-feed-systems} and the tabulation of the full analysis can be found in \autoref{appendix:feed-architecture-analysis}. Given that CSAM requires an accelerant gas, the fludising powder bed design was chosen as the most promising design as it mitigates one of the architectures largest drawbacks. Furthermore, the method is assumed to be less affected by microgravity than other options as the main forces the particle experiences are fluid mechanical in nautre, requiring no adjustments of the core mechanic of feeding. 
 
 As mentioned in \autoref{sec:fluidised-powder-feed-systems}, the fluidising powder bed architecture has gone through a number of design iterations since it's first implementation due to miniaturisation. To align the investigation with state-of-the-art systems, the pneumatically driven, permiable piston architecture was chosen. 
 
