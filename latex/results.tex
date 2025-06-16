@@ -57,7 +57,7 @@ The initial FEA was performed using a configuration with six bolt holes. However
         \includegraphics[width=\textwidth]{../report_assets/coarse_mesh_results.png}
         \caption*{(b) More Coarse Mesh}
     \end{minipage}    
-    \caption{Results of Tank FEA}\label{fig:fea-results}
+    \caption{Stress Concentrations Around Tank Bolt Holes}\label{fig:fea-results}
 
 \end{figure}  
 \autoref{fig:fea-results} (a) shows the original vertices of the tank under no load, overlaid in orange on the deformed tank geometry. As the difference between the undeformed and deformed shapes is minimal, nonlinear deformation effects were considered negligible. Cylindrical geometries are inherently resistant to buckling, especially when pressurised internally, so buckling was not investigated in detail.
@@ -81,7 +81,7 @@ After manufacturing, the tank underwent hydrostatic pressure testing. During the
         \includegraphics[width=\textwidth]{../report_assets/hydro_grafana.png}
         \caption*{(b) Screenshot of Results from Video}
     \end{minipage}    
-    \caption{Results of Tank FEA}\label{fig:hydro-results}
+    \caption{Hydrostatic Pressure Testing of Tank}\label{fig:hydro-results}
 
 \end{figure}  
 Unfortunately, only a video recording of the test was taken and the logged pressure data was not captured. A screenshot of the video is shown in \autoref{fig:hydro-results} (b), where the jagged rise in gauge pressure is from the manual actuation of the pump. The tank held successfully held a gauge pressure of 7 bar for approximately 2 to 3 minutes before the pressure was released. Although maintaining pressure for a longer durations would have provided greater confidence in the tank's safety, formal pressure vessel certification was not required for the intended experimental use and was therefore not persued.
@@ -112,7 +112,7 @@ The first step in characterising the system was to investigate the static pressu
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_full.png}
-        \caption*{(a) Full 4 bar Test}
+        \caption*{(a) Full Dataset from 4 bar Test}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
@@ -139,22 +139,22 @@ If the compressed air line were truly supplying a stagnation pressure of 4 bar, 
 As shown in \autoref{fig:static-pressure-drop} (a), the regulator was capable of maintaining a static pressure of 4 bar when the system was closed. Upon opening the system, one might expect the regulator to continue maintaining this 4 bar pressure, with only moderate reductions caused by static pressure losses and flow acceleration downstream of the regulator. However, by the time the flow reached the pressure transducer upstream of the tank, the static pressure had fallen to 1.4 bar.
 
 \subsection{Further Investigation}
-In an attempt to diagnose this behaviour, follow up tests were conducted with different setups and a 4 bar inlet pressure to validate a component of the system was not to blame. As seen in \autoref{fig:follow-up-stat-test}, the performance with the additional regulator or removal of the solenoid valve was much worse giving even lower static pressure readings. 
+In an attempt to diagnose this behaviour, follow-up tests were conducted with different setups and a 4 bar inlet pressure to validate a component of the system was not to blame. As seen in \autoref{fig:follow-up-stat-test}, the performance with the additional regulator or removal of the solenoid valve was much worse giving even lower static pressure readings. 
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
-        \caption{New Regulator}\label{fig:static-pressure-drop-new-reg}
+        \caption*{(a) Testing with New Regulator}\label{fig:static-pressure-drop-new-reg}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
-        \caption{New Regulator and no Solenoid Valve}\label{fig:static-pressure-drop-no-solenoid}
+        \caption*{(b) Testing with New Regulator and No Solenoid Valve}\label{fig:static-pressure-drop-no-solenoid}
     \end{minipage}    
-    \caption{Follow Up Testing with Different Configurations}\label{fig:follow-up-stat-test}
+    \caption{Follow-up 4 bar Tests with Different Configurations}\label{fig:follow-up-stat-test}
 \end{figure}    
 
 
@@ -217,7 +217,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         Stagnation Pressure (bar) & 2.66 & 3.08 & 3.51 \\
         \hline
     \end{tabular}
-    \caption{Summary of Static and Stagnation Pressures for Different Tests}\label{tab:static-stag-pressures}
+    \caption{Summary of Estimated Stagnation Pressures for Each Test}\label{tab:static-stag-pressures}
 \end{table}
 
 
@@ -247,7 +247,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/41_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test 4 Bar Inlet}
+    \caption{1st Test Using a 4 Bar Inlet Pressure}
 
 \end{figure}\label{fig:41}
 \vfill
@@ -271,7 +271,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/42_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test 4 Bar Inlet}
+    \caption{2nd Test Using a 4 Bar Inlet Pressure}
     
 \end{figure}\label{fig:42}
 \vfill
@@ -295,7 +295,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/43_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test 4 Bar Inlet}
+    \caption{3rd Test Using a 4 Bar Inlet Pressure}
     
 \end{figure}\label{fig:43}
 \vfill
@@ -324,7 +324,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/51_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test 5 Bar Inlet}
+    \caption{1st Test Using a 5 Bar Inlet Pressure}
     
 \end{figure}\label{fig:51}
 \vfill
@@ -349,7 +349,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/52_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test 5 Bar Inlet}
+    \caption{2nd Test Using a 5 Bar Inlet Pressure}
     
 \end{figure}\label{fig:52}
 \vfill
@@ -374,7 +374,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/53_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test 5 Bar Inlet}
+    \caption{3rd Test Using a 5 Bar Inlet Pressure}
     
 \end{figure}\label{fig:53}
 \vfill
@@ -402,7 +402,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/61_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test 6 Bar Inlet}
+    \caption{1st Test Using a 6 Bar Inlet Pressure}
     
 \end{figure}\label{fig:61}
 
@@ -427,7 +427,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/63_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test 6 Bar Inlet}
+    \caption{2nd Test Using a 6 Bar Inlet Pressure}
     
 \end{figure}\label{fig:63}
 
@@ -452,7 +452,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/64_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test 6 Bar Inlet}
+    \caption{3rd Test Using a 6 Bar Inlet Pressure}
     
 \end{figure}\label{fig:64}
 \vfill
@@ -609,13 +609,13 @@ Ideally, 60 mm/s would also have been investigated but given the troubleshooting
     \begin{minipage}{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/30mm_grav_1.png}
-        \caption*{(a) Starting Particle Distribution}
+        \caption*{(a) Starting Distribution}
     \end{minipage}
     \hfill
     \begin{minipage}{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/30mm_grav_2.png}
-        \caption*{(b) Particle Distribution after 0.1 seconds}
+        \caption*{(b) Distribution after 0.1 seconds}
     \end{minipage}
     \hfill
     \begin{minipage}{0.32\textwidth}
@@ -632,13 +632,13 @@ Ideally, 60 mm/s would also have been investigated but given the troubleshooting
     \begin{minipage}{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/90mm_grav_1.png}
-        \caption*{(a) Starting Particle Distribution}
+        \caption*{(a) Starting Distribution}
     \end{minipage}
     \hfill
     \begin{minipage}{0.32\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/90mm_grav_2.png}
-        \caption*{(b) Particle Distribution after 0.1 seconds}
+        \caption*{(b) Distribution after 0.1 seconds}
     \end{minipage}
     \hfill
     \begin{minipage}{0.32\textwidth}

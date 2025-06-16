@@ -1,32 +1,32 @@
 \section{Modelling Previous Design}\label{sec:old-design-method}
 Because microgravity is incredibly costly to achieve experimentally, a numerical investigation of the previous design was conducted using ANSYS Fluent. The transient simulation was run twice, once with gravity and once without, to compare the distribution of powder within the tank and the resulting mass flow rate. 
 
-Initially, an axisymmetric simulation using square cells of 0.4mm was attempted. This configuration was chosen because it could run as quickly as a 2D simulation, due to the reduced number of cells, while still capturing the 3D physics of the real system. It was assumed that the fine mesh allowed for strong, non-physical, flow gradients to be resolved as the simulation was numerically unstable and repeatedly crashed. To address this, a new 2D simulation with a coarser mesh of 1mm square cells was performed, shown in \autoref{fig:old-design-sim}.
+Initially, an axisymmetric simulation using square cells of 0.4mm was attempted. This configuration was chosen because it could run as quickly as a 2D simulation, due to the reduced number of cells, while still capturing the 3D physics of the real system. It was assumed that the fine mesh allowed for strong, non-physical, flow gradients to be resolved as the simulation was numerically unstable and repeatedly crashed. To address this, a new 2D simulation with a coarser mesh of 1mm square cells was performed, shown in \autoref{fig:old-des-mesh}.
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/COSMOS_DIAGRAM_2_3.png}
-        \caption*{(a) Previous Design}
+        \caption{Previous Design}
     \end{minipage}
     \hfill
     \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/geom_old.png}
-        \caption*{(b) Simplified Geometry}\label{fig:idkyet9}
+        \caption{Simplified Geometry}\label{fig:simpl-geom}
     \end{minipage}
     \hfill
     \begin{minipage}{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_old.png}
-        \caption*{(c) Mesh Used for Sim}\label{fig:idkyet10}
+        \caption{Mesh Used}\label{fig:old-des-mesh}
     \end{minipage}
     
-\end{figure}\label{fig:old-design-sim}
+\end{figure}
 While the 2D nature of the simulation means the quantities such as mass flow rate and inlet conditions can not be matched exactly to the real system, the key flow characteristics of interest are still expected to persist. This is because particle position within the tank and the onset of fluidisation are not strongly dependent on three-dimensional effects.
 
-A simplified geometry, seen in \autoref{fig:old-design-sim} (b), was used to reduce computational time while preserving the essential geometric features. It is important to note that the vent line pipe was omitted and the outlet pipe was moved to the center; neither of these modifications are expected to affect the behaviour under investigation. 
+A simplified geometry, seen in \autoref{fig:simpl-geom}, was used to reduce computational time while preserving the essential geometric features. It is important to note that the vent line pipe was omitted and the outlet pipe was moved to the center; neither of these modifications are expected to affect the behaviour under investigation. 
 
 The bottom of the tank held a wire mesh on which the powder rested, representing the lower geometric boundary. In the simulation, this mesh acted as a velocity inlet, with gas entering the system at a velocity of 0.1m/s. 
 
@@ -191,7 +191,7 @@ To predict the behaviour of the system, parallels were drawn from research looki
     \begin{minipage}{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/expected_result.png}
-        \caption{Expected Behaviour}\label{fig:expected}
+        \caption{Diagram of Expected Behaviour}\label{fig:expected}
     \end{minipage}
     
 \end{figure}
@@ -222,7 +222,7 @@ The default layout, seen in \autoref{fig:experimental-setup}, was used to perfor
         \includegraphics[width=\textwidth]{../report_assets/drawio_setup_vertical.png}
         \caption*{Systems Diagram of Setup}
     \end{minipage}
-    \caption{Experimental Setup}\label{fig:experimental-setup}
+    \caption{Setup used During Experimentation}\label{fig:experimental-setup}
 \end{figure}
 Testing was conducted in Imperial College's Hypersonic Laboratory, which does not have climate control. It was assumed that the system would not behave noticeably differently under the slight variations in temperature and pressure that occurred during the testing period.
 
@@ -287,7 +287,7 @@ To contain the powder and seperate out the gas, a cyclone separator was used, se
         \includegraphics[width=\textwidth]{../report_assets/cyclone_done.png}
         \caption*{(c) Cyclone Separator}
     \end{minipage}
-    \caption{Sensor Placement in Experimental Setup}\label{fig:cyclone}
+    \caption{Seperator Design and Implementation}\label{fig:cyclone}
 \end{figure}
 A cyclone separator works by using centrifugal force to separate the sand from the air. As the mixture enters the cyclone chamber tangentially at high speed, it spins rapidly, causing the denser particles to move outward and fall to the bottom, while the cleaner air exits through the top center. As shown in \autoref{fig:cyclone} (c), a dust filter used in vacuum cleaners was used to ensure any fine grains, not captured by the separator, do not make it out into the air. This was attached to the 3D printed model using PTFE tape and a friction fit, then taped down for added support. The separator was printed in 3 parts, the top that can be removed to empty out the sand, the walls and the base with screw holes to mount to the load cell.
 % The direct cyclone separator method was chosen to record mass flow, with a back up recording of the mass of the tank during operations. This is because the sand needs to be contained after exiting the tank as inhalation of silica particles can lead to long term health conditions. Therefore, the direct method was chosen as
@@ -365,13 +365,13 @@ Therefore, to conduct this study, a 2D, two-phase, incompressible transient flow
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/big_sim_geom.png}
-        \caption{2D Geometry of Tank}
+        \caption*{2D Geometry of Tank}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/big_sim_mesh.png}
-        \caption{Mesh of Tank}\label{fig:mesh-tank}
+        \caption*{Mesh of Tank}\label{fig:mesh-tank}
     \end{minipage}
     \caption{Geometry and Mesh Used in Numerical Investigation of Tank}\label{fig:fluent-sim-tank}
 \end{figure}
@@ -384,15 +384,15 @@ To simulate the piston with a constant velocity, a dynamic mesh was used with sm
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_before_moving.png}
-        \caption{Mesh at Beginning of Simulation}\label{fig:beginning-mesh}
+        \caption*{(a) Mesh at Beginning of Simulation}\label{fig:beginning-mesh}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/mesh_after_moving.png}
-        \caption{Mesh at End of Simulation}
+        \caption*{(b) Mesh at End of Simulation}
     \end{minipage}
-    \caption{lalala}\label{fig:fluent-mesh-deformation}
+    \caption{Mesh Deformation Throughout Simulation}\label{fig:fluent-mesh-deformation}
 \end{figure}
 The simulations under both earth's gravity and microgravity conditions were ran 3 times for different piston velocities. The velocities were 30mm/s, 60mm/s and 90mm/s.
 
