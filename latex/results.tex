@@ -1,5 +1,5 @@
 \section{Analysis of Previous Design}\label{sec:prev-design-analysis}
-To test the hypothesised issue with the previous design, animations of the 2D simulation were produced and the change in mass of the solid phase was recorded.~\autoref{fig:old-design-phase-density} presents a screenshot at 2 seconds into the transient simulation. 
+To test the hypothesised issue with the previous design, animations of the 2D simulation were generated, and the change in mass of the solid phase was recorded.~\autoref{fig:old-design-phase-density} shows a snapshot at two seconds into the transient simulation. 
 \begin{figure}[htbp]
     \centering
     
@@ -16,7 +16,7 @@ To test the hypothesised issue with the previous design, animations of the 2D si
     \end{minipage}
     \caption{Phase Density of Old Design after 2 Seconds}\label{fig:old-design-phase-density}
 \end{figure}
-As shown, there is a marked difference in the location of powder between the two cases. While the powder in the tank under gravity appears to be fully fluidising, the tank in mircogravity is relatively unaffected by the flow. It is thought this is because the steady state flow does not interact with the region of the tank where the powder sits. For rigor, the unprocessed images are provided in \autoref{sec:unprocessed-images}.
+As illustrated, there is a marked difference in the powder distribuiton between the two cases. While the powder in the tank under gravity appears to fully fluidise, the tank in mircogravity remains relatively unaffected by the flow. This is likely because the steady-state flow field does not interact with the region of the tank where the powder settles. For completeness, all unprocessed simulation images are provided in \autoref{sec:unprocessed-images}.
 
 \begin{figure}[htbp]
     \centering
@@ -33,14 +33,16 @@ As shown, there is a marked difference in the location of powder between the two
         \caption{Initial Powder Configuration}\label{fig:old-initial}
     \end{minipage}
 \end{figure}
-\autoref{fig:old-design-mass-change} presents the amount of powder in the tank over time, measured by integrating the volume fraction of the solid phase over the entire geometry. At roughly 0.5s, both simulations show a relatively large drop in powder. This is because of how the simulation was initialised, shown in \autoref{fig:old-initial}, leading to the powder starting in the pipe quickly being expelled from the system. After this, there is a large gap between the two powder dispensing rates, again supporting the hypothesis that the previous design would be less appropriate for microgravity applications and supporting the decision to redesign the tank. 
+\autoref{fig:old-design-mass-change} presents the change in amount of powder within the tank over time, measured by integrating the volume fraction of the solid phase over the entire geometry. At roughly 0.5 seconds, both simulations exhibit a noticeable drop in powder content. This behaviour is attributed to the initial conditions of the simulation, as shown in \autoref{fig:old-initial}, where the powder was initially located within the pipe and was rapidly expelled from the system. Beyond this point, a significant divergence in powder dispensing rates emerges between the two cases, further supporting the hypothesis that the previous design is less suitable for microgravity applications and justifying the decision to redesign the tank. 
 
-As mentioned in \autoref{sec:old-design-method}, this analysis was conducted with a relatively coarse mesh which may alter the results. The biggest impact would be not resolving key gradients or incorrect momentum exchange between the two phases. As this geometry is relatively simplistic and the velocity into the system small, it is assumed that there would be minimal impact from not resolving velocity or pressure gradients well enough. However, it is less clear how accurately the momentum exchange is affected by this and was assumed to be valid just based off the authors understanding of the expected behaviour of the system. Given more time this would be an area of focus, conducting a mesh convergence study and running the finer meshes for a longer time should be done to validate this preliminary result. Another area for improvement is using an inlet condition more accurate to the physics. A pressure inlet would have been ideal as this is closer to the physics of the system but due to limitations of the simulation software, there was no way to prevent the powder exiting this inlet. This could be fixed with a user defined function, found through simulating the system with a pressure inlet and no powder, and then transferred to this analysis.
+As mentioned in \autoref{sec:old-design-method}, this analysis was conducted with a relatively coarse mesh, which may have influenced the accuracy of the results. The primary concerns are the potential under-resolution of key flow gradients and inaccuracies in the momentum exchange between the two phases. However, given the simplicity of the geometry and the low inlet velocity, it is assumed that any impact from insufficient resolution of velocity or pressure gradients is minimal. The effect on momentum exchange is less certain and was considered acceptable based on the author's understanding of the expected system behavior. With additional time, this area should be explored further through a mesh convergence study to validate these preliminary findings.
+
+Another area for improvement involves the inlet boundary condition. A pressure inlet would more accurately represent the physical system, but due to limitations in the simulation software, there was no straightforward method to prevent powder from exiting through this inlet if it were modelled that way. This issue could be addressed using a user-defined function (UDF). By first simulating the system with a pressure inlet and no powder, the resulting inlet velocity profile could be extracted and then applied to the current analysis using a UDF.\@
 
 \section{Analysis and Testing Tank Design}\label{sec:pressure-testing}
-As mentioned in \autoref{sec:tank-fea-setup}, validation of the tank design was done in two stages, finite element analysis and hand calculations before manufacturing and hydrostatic pressure testing of the full tank once it was made.
+As mentioned in \autoref{sec:tank-fea-setup}, validation of the tank design was conducted in two stages: first through FEA and hand calculations prior to manufacturing, and then through hydrostatic pressure testing of the completed tank.
 
-The FEA was first ran with 6 bolt holes instead of 8 but was increased as the predicted stress of 6 bolts was above the yield stress of acrylic. As seen in \autoref{fig:fea-results}, the 8 bolt hole configuration shows stresses close to the yeild strength but still below it.
+The initial FEA was performed using a configuration with six bolt holes. However, this was increased to eight after the predicted stress in the six-bolt configuration exceeded the yield strength of acrylic. As seen in \autoref{fig:fea-results}, the eight-bolt hole configuration shows stresses that are close to, but still below, the material's yield strength.
 \begin{figure}[htbp]
     \centering
 
@@ -58,11 +60,13 @@ The FEA was first ran with 6 bolt holes instead of 8 but was increased as the pr
     \caption{Results of Tank FEA}\label{fig:fea-results}
 
 \end{figure}  
-\autoref{fig:fea-results} (a) shows the original vertices of the tank under no load overlayed in orange over the deformed tank. As there is very little difference between the two, non-linear behaviours from deformation could be ignored. A cylinder is one of the most resiliant shapes to buckling, especially when pressurised so this was not investigated in detail. While there is a slight increase in von mises stress in the more fine mesh, this was assumed to be because of the increased resolution of the boundary between the surface that did have a load applied and the rest of the bolt hole that did not. As the real load is not applied in this way it was determined satisfactory for manufacturing.
+\autoref{fig:fea-results} (a) shows the original vertices of the tank under no load, overlaid in orange on the deformed tank geometry. As the difference between the undeformed and deformed shapes is minimal, nonlinear deformation effects were considered negligible. Cylindrical geometries are inherently resistant to buckling, especially when pressurised internally, so buckling was not investigated in detail.
 
-The next failure mode checked was hoop stress rupturing, through the use of Lamé's equations. This gave a value of 8.88 GPa of stress at the inner wall and 8.18 GPa of stress at the outer wall. Since it was significantly lower than the bolt hole stress concentration stress, this failure mode was not expected to occur before the others.
+While a slight increase in von Mises stress was observed in the finer mesh, this was attributed to improved resolution at the boundary between the loaded and unloaded surfaces of the bolt holes. Since the real load application does not exactly match the simplified simulation boundary condition, the observed stress concentrations were deemed acceptable to start manufacturing.
 
-After manufacturing, the tank was then hydrostatically pressure tested. The first attempt at pressurising the tank with water resulted in the epoxy-delrin interface seperating. While this was a concern from the design stage, it was expected that reattaching the end cap with a more plastic friendly epoxy and extensive preperation of the bonding delrin surface would solve the issue. This was shown to be true in the subsequent pressure test, seen in \autoref{fig:hydro-results}.
+The next failure mode checked was hoop stress rupture, evaluated using Lamé's equations. These calculations yielded a maximum stress of 8.88 MPa at the inner wall and 8.18 MPa at the outer wall. As these values are significantly lower than the stress concentrations around the bolt holes, hoop stress rupture was not considered the critical failure mode.
+
+After manufacturing, the tank underwent hydrostatic pressure testing. During the first attempt, pressurising the tank with water caused the epoxy-Delrin interface to seperate. Although this failure mode was anticipated during the design phase, it was expected that reattaching the end cap using a more plastic-compatible epoxy, along with thorough surface preperation of the Delrin bonding area, would resolve the issue. This assumption was validated in the subsequent pressure test, shown in \autoref{fig:hydro-results}.
 \begin{figure}[htbp]
     \centering
 
@@ -80,10 +84,10 @@ After manufacturing, the tank was then hydrostatically pressure tested. The firs
     \caption{Results of Tank FEA}\label{fig:hydro-results}
 
 \end{figure}  
-Unfortunately, only a video recording of the test was taken and the data being logged was not recorded. A screenshot from this video can be seen in \autoref{fig:hydro-results} (b) and the jagged rise in gauge pressure comes from the actuation of the manual pump. The tank held this 7 bar of gauge pressure for 2 to 3 minutes before the pressure was released. While longer durations under pressure would have given more certainty to the safety of the tank, the strict requirements to vertify the pressure vessel were not needed for the experimentation so were not investigated.
+Unfortunately, only a video recording of the test was taken and the logged pressure data was not captured. A screenshot of the video is shown in \autoref{fig:hydro-results} (b), where the jagged rise in gauge pressure is from the manual actuation of the pump. The tank held successfully held a gauge pressure of 7 bar for approximately 2 to 3 minutes before the pressure was released. Although maintaining pressure for a longer durations would have provided greater confidence in the tank's safety, formal pressure vessel certification was not required for the intended experimental use and was therefore not persued.
 
 \section{First Test}\label{sec:first-test}
-As mentioned in \autoref{sec:piston}, the very first test with was conducted without sand and failed to push the piston down the tank. This quick test was the motivation to characterise the pressure source as it was noted that the pressure readings before and after the tank were lower than expected and changed slower than expected. This meant that the failure mode of the piston crumpling was discounted and the future piston designs ignored this possibility. After characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
+As mentioned in \autoref{sec:piston}, the initial test was conducted without sand and failed to push the piston down the tank. This quick test motivated the need to characterise the pressure source, as the pressure readings upstream and downstream of the tank were both lower and more sluggish than expected. As a result the failure mode of piston crumpling was ruled out, and subsequent piston designs did not account for this possibility. Following the characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
 
 \begin{figure}[htbp]
     \centering
@@ -95,11 +99,13 @@ As mentioned in \autoref{sec:piston}, the very first test with was conducted wit
     \end{minipage}
     
 \end{figure}
-The piston started far down the tank and was successfully pushed towards the outlet. At the point it reached the sand, it became stuck, as the unpacked grains formed a wedge under the piston and caused it to jam into the side walls of the tank. With the powder not compacted against the outlet, ratholing began to occur as the gas entrained the sand particles through the outlet, highlighting an alternate dispensing regime to be avoided. The gap between the piston and the walls was designed to be 1mm so it is expected that this specific issue would not have occured with a finer grain sand. While purchasing finer grain sand or crushing down the current sample were considered, it was decided that a new design would be investigated as this was not something seen in the literature and would be much easier to characterise the friction. A full analysis of the piston was of great interest but given the limited time of the project, was deemed out of the scope. 
+The piston initially started near the inlet of the tank and was successfully pushed toward the outlet. However, upon reaching the sand, it became stuck. The unpacked grains formed a wedge beneath the piston, causing it to jam against the tank walls. Since the powder was not compacted against the outlet, ratholing occurred, with gas entraining sand particles through the outlet—highlighting an undesirable dispensing regime.
+
+The piston-to-wall clearance was designed to be 1 mm, the same order of magnitude as the diameter of some of the large grains of sand, so it is expected that this specific issue would not have occurred with finer-grain sand. While options such as purchasing finer sand or crushing the current sample were considered, it was ultimately decided to pursue a new design. This jamming behavior is not well reported in piston tank design literature and posed challenges for friction characterization. Although a full analysis of the piston mechanics was of great interest, complexities in the underlying physics pushed it outside the scope of the project due to time constraints.
 
 \section{Characterising Pressure Source}\label{sec:static_test}
 \subsection{Initial Test}
-The first step in characterising the system was to investigate the static pressure losses present in the tank without a piston or any powder. This immediately presented a problem as the static pressure readings, given a gas source with a stagnation pressure of 4 to 6 bar, were far below expected, as seen in figure \autoref{fig:static-pressure-drop}. 
+The first step in characterising the system was to investigate the static pressure losses within the tank in the absence of a piston or any powder. This immediately revealed an issue: the static pressure readings, assuming a gas source with a stagnation pressure of 4 to 6 bar, were significantly lower than expected, as shown in~\autoref{fig:static-pressure-drop}.
 \begin{figure}[htbp]
     \centering
 
@@ -128,47 +134,45 @@ The first step in characterising the system was to investigate the static pressu
 
     \caption{Static Pressure Readings Before and After the Tank at Different Pressures}\label{fig:static-pressure-drop}
 \end{figure}    
-If the compressed air line was truely supplying a stagnation pressure of 4 bar, through isentropic flow relations the data implies that the mach number of the flow is 1.3 which is unlikely.
+If the compressed air line were truly supplying a stagnation pressure of 4 bar, isentropic flow relations suggest that the flow would have a Mach number of approximately 1.3, an unlikely result under the given conditions.
 
-As seen in \autoref{fig:static-pressure-drop} (a), the regulator was able to control the static pressure to 4 bar when the system was closed. When the system opens, one could expect that the regulator would maintain this 4 bar static pressure and only static pressure losses in the system and acceleration of the flow beyond the regulator would reduce it somewhat. However, by the time the flow reached the pressure transducer before the tank, the static pressure had dropped to 1.4 bar. 
-
-Assuming the flow was mach 1 through the nylon pipe, this would imply a stagnation pressure of roughly 2 bar not the 4 bar initially desired. As seen in~\autoref{fig:static-pressure-drop} (c) and (d), this behaviour was persistant at higher inlet pressures, dont really know why rn but justify when i do
+As shown in \autoref{fig:static-pressure-drop} (a), the regulator was capable of maintaining a static pressure of 4 bar when the system was closed. Upon opening the system, one might expect the regulator to continue maintaining this 4 bar pressure, with only moderate reductions caused by static pressure losses and flow acceleration downstream of the regulator. However, by the time the flow reached the pressure transducer upstream of the tank, the static pressure had fallen to 1.4 bar.
 
 \subsection{Further Investigation}
-In an attempt to diagnose this behaviour, follow up tests were conducted. As seen in figure the performance was much worse giving even lower static pressure readings. 
+In an attempt to diagnose this behaviour, follow up tests were conducted with different setups and a 4 bar inlet pressure to validate a component of the system was not to blame. As seen in \autoref{fig:follow-up-stat-test}, the performance with the additional regulator or removal of the solenoid valve was much worse giving even lower static pressure readings. 
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_new_reg.png}
-        \caption{New regulator.}\label{fig:static-pressure-drop-new-reg}
+        \caption{New Regulator}\label{fig:static-pressure-drop-new-reg}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/3_bar_static_no_solenoid.png}
-        \caption{New regulator + no solenoid.}\label{fig:static-pressure-drop-no-solenoid}
+        \caption{New Regulator and no Solenoid Valve}\label{fig:static-pressure-drop-no-solenoid}
     \end{minipage}    
-
+    \caption{Follow Up Testing with Different Configurations}\label{fig:follow-up-stat-test}
 \end{figure}    
-As a final attempt, the solenoid valve was removed from the set up to verify that this wasnt choking the flow or somehow drastically decreasing static pressure somehow. Again, seen in fig 6, this performed similarly to the setup containing the regulator so wasn't the cause of the behaviour and the system diagram was reverted to \autoref{fig:systems-diagram}.
+
 
 \subsection{Simulation}
-The 2D axisymmetric analysis of the empty tank seemed to support the idea that the stagnation pressure supplied into the system was less than 4 bar. The pressure gradient, seen in \autoref{fig:static-pressure-drop-fluent}, produces comparable results to the readings from the pressure transducers experimentally. 
+From the experimental testing, two likely explanations emerged: first, the stagnation pressure supplied to the system may have been less than 4 bar due to choking upstream of the regulator; second, the static pressure readings may have been reduced by the high velocity of the flow, resulting in elevated dynamic pressure. To further investigate the system, a 2D axisymmetric steady-state simulation of the empty tank was conducted, which appeared to support both explanations. The pressure gradient observed in the simulation, shown in \autoref{fig:static-pressure-drop-fluent}, yielded results comparable to the experimental pressure transducer readings, when using a gauge pressure inlet of 1 bar.
 \begin{figure}[htbp]
     \centering
     
     \begin{minipage}{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/static_pressure_sim_results.png}
-        \caption{Static Pressure of Empty Tank Simulation}\label{fig:static-pressure-drop-fluent}
+        \caption{Static Gauge Pressure of Empty Tank Simulation}\label{fig:static-pressure-drop-fluent}
     \end{minipage}    
     
 \end{figure}    
-The values recorded at the pressure reading regions were 1.46 bar before the tank and 1.06 bar after the tank. While this is close to the experimental results, the outlet is notably lower suggesting this still does not fully explain the behaviour.
+The simulated pressure values at the measurement locations were 1.46 bar upstream of the tank and 1.06 bar downstream. While these are close to the experimental data, the outlet pressure was notably lower, indicating that the simulation does not fully account for the observed behaviour.
 
-The velocity of the flow was also found in the simulation, seen in \autoref{fig:velocity-magnitude-fluent}.
+The velocity distribution from the same simulation is shown in \autoref{fig:velocity-magnitude-fluent}.
 \begin{figure}[htbp]
     \centering
     
@@ -179,26 +183,46 @@ The velocity of the flow was also found in the simulation, seen in \autoref{fig:
     \end{minipage}    
     
 \end{figure}    
-In the 0.1m of pipe, the flow has already accelerated to 275m/s which supports the idea that the flow within the pipes held a lot of the stagnation pressure as dynamic pressure and this is why the static pressure readings were so low.
-\subsection{Stagnation pressure values}
-Given the unreliability of the pressure gauge, a number of assumptions were made to determine the stagnation pressure and allow for analysis of mass flow rate against pressure. Assuming that the flow was choked within the tubes, having a velocity of 343m/s, the isentropic relations give that p/p0 =  0.52828178
+Within just 0.1 m of pipe, the flow was found to accelerate to 275mm/s. This supports the hypothesis that a significant portion of the stagnation pressure is converted into dynamic pressure within the piping, which would explain the low static pressure readings observed experimentally.
+
+\subsection{Stagnation Pressure Values}
+Based on experimental testing, it was concluded that the observed behaviour was not the result of human error in setting up the system. Therefore, the hypothesised explanation is further supported by the numerical simulation, particularly with regard to the theorised high velocity in the pipes. As a result, to estimate the actual stagnation pressure at the inlet, isentropic relations were applied. Assuming the flow velocity reached Mach 1, the ratio of static to stagnation pressure is given by:
+\[
+\frac{p}{p_o} = 0.52828178.
+\]
+This relation was used to calculate the upstream stagnation pressures seen in \autoref{tab:static-stag-pressures} seen below.
+
+% \begin{table}[htbp]
+%     \centering
+    
+%     \begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+%         \hline
+%         Pressure Regulator Setting (bar) & Static Pressure at Inlet (bar) &  Stagnation Pressure (bar) \\
+%         \hline
+%         4 & 1.405 & 2.66 \\
+%         5 & 1.625 & 3.08 \\
+%         6 & 1.852 & 3.51 \\
+%         \hline
+%     \end{tabular}    
+%     \caption{Summary of static and stagnation pressures for different tests.}\label{tab:static-stag-pressures}
+% \end{table}    
 \begin{table}[htbp]
     \centering
-    
-    \begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+    \begin{tabular}{l c c c}
         \hline
-        Pressure Regulator Setting (bar) & Static Pressure at Inlet (bar) &  Stagnation Pressure (bar) \\
+        & Test 1 & Test 2 & Test 3 \\
         \hline
-        4 & 1.405 & 2.66 \\
-        5 & 1.625 & 3.08 \\
-        6 & 1.852 & 3.51 \\
+        Pressure Regulator Setting (bar) & 4.00 & 5.00 & 6.00 \\
+        Static Pressure at Inlet (bar) & 1.405 & 1.625 & 1.852 \\
+        Stagnation Pressure (bar) & 2.66 & 3.08 & 3.51 \\
         \hline
-    \end{tabular}    
-    \caption{Summary of static and stagnation pressures for different tests.}\label{tab:static-stag-pressures}
-\end{table}    
+    \end{tabular}
+    \caption{Summary of Static and Stagnation Pressures for Different Tests}\label{tab:static-stag-pressures}
+\end{table}
 
 
 \newpage
+
 \section{Mass Flow Rate Experiment}
 \subsection{Results from an Inlet Pressure of 4 bar}
 \vfill
@@ -435,16 +459,42 @@ Given the unreliability of the pressure gauge, a number of assumptions were made
 \newpage
 
 \subsection{Mass Flow Rate Analysis and Discussion}
-For each of the tests, the raw load cell readings can be seen on graph a. Most graphs show that there was noise in the readings resulting in a few data points being drastically larger or smaller than the surrounding data. While steps were taken to prevent this, like taping down the screw terminal incase the problem was a faulty wire connections, they never fixed the issue. The fact that the noise is less common in the lower pressure recordings implies that this could be somehow caused by electrostatic charge buildup in the sand from the triboelectric effect. These anomolous results were removed by hand and the load cell data from the start and the end of the tank were added together to find the mass leaving the whole tank over time seen in graph b. Finally, from the two mass measurements a simple moving average was calculated with a window of 100 data points for the 4 and 5 bar inlet pressure tests and a window of 50 data points for the 6 bar inlet pressure tests. The polling rate of the sensors was 10Hz so with a 100 data point moving window, data up to 10s after the opening of the valve will be affected by edge distortion. The green dashed lines on the graphs indicate the time where the valves were opened or closed, while the red dashed lines represent data that should be unaffected by edge distortion. This was prescribed as being 10 seconds after the opening of the valve and 10s before the mass change plateaued for the 4 and 5 bar inlet pressure test; the 6 bar test used 5s correspondingly.
+For each test, the raw load cell readings are shown in graphs (a). Most plots reveal the presence of noise in the readings, resulting in several data points being significantly higher or lower than the surrounding values. Although steps were taken to mitigate this, such as taping down the screw terminals in case of faulty wire connections, the issue persisted. Interestingly, the noise appears to be less common in the lower-pressure recordings, suggesting a potential link to electrostatic charge buildup in the sand due to the triboelectric effect.
 
-The first thing to note from the tests is the large variation between the shapes of the mass flow rate even within tests of the same inlet pressure. Comparing the mass flow rate for all tests with a 4 bar pressure inlet shows this phenomenon.  Even reducing the analysis to the data within the red dashed lines still highlights the variability. Even more problematic is the gradient of mass flow rate. Test 1 starts at around 18g/s and then finishes at 25g/s, test 2 starts at 21g/s and ends at 28g/s and test 3 starts and ends around 29g/s. A slight increase over time of mass flow rate would be expected as there is less powder in the tank to lower the static pressure the fluidising region sees. The difference in change in mass flow rate over time between the first two tests and the final one does cast doubt on the systems ability to dispense powder at a consistent mass flow rate. Both the gradient of the mass flow rate and the magnitude are varying between tests.
+Anomalous readings were manually removed, and the load cell data from the start and end of the tank were combined to compute the total mass exiting the tank over time, as shown in graphs (b). A simple moving average was then applied to the combined tank and cyclone separator data: a window of 100 data points was used for the 4 and 5 bar inlet pressure tests, and 50 data points for the 6 bar tests. With a sensor polling rate of 10 Hz, a 100-point moving average introduces edge distortion for up to 10 seconds after the valve is opened. Green dashed lines in the graphs indicate the valve open/close events, while red dashed lines mark the time regions considered free from edge distortion, 10 seconds after opening and 10 seconds before the mass plateau for the lower-pressure tests, and 5 seconds for the 6 bar test.
 
-Other interesting behaviours are \autoref{fig:52} (c), which shows a relatively large divergence of mass flow rates calculated between the two methods. Upon reviewing the video recording of this test it is not apparent what caused this result as it was conducted the same as the tests before and after it and visually, behaved the same.
+One of the most notable observations is the significant variation in mass flow rate profiles, even among tests conducted at the same inlet pressure. For example, comparing all tests at a 4 bar inlet shows considerable inconsistency. Even when analysis is restricted to the region within the red dashed lines, variability remains evident. More concerning is the gradient of the mass flow rate. In the 4 bar tests:
+\begin{itemize}
+    \item Test 1 starts around 18 g/s and ends at 25 g/s,
+    \item Test 2 begins at 21 g/s and reaches 25 g/s,
+    \item Test 3 remains relatively flat at 29 g/s throughout.
+\end{itemize}
+A slight increase in mass flow rate over time is expected, due to the decreasing amount of powder in the tank reducing static pressure losses from fluidisation. However, the inconsistent behaviour between tests, particularly the much flatter profile of Test 3 when compared to Tests 1 and 2, raises questions about the system's ability to dispense powder at a consistent rate. Both the gradient and absolute values of mass flow rate vary considerably between trials.
 
-The final significant result of the testing is the mass flow rate range of 20g/s to 60g/s. This is 3 orders of magnitude higher than previous systems, reporting feed rates of 3.5 and 5.7 grams a minute~\cite{BHATTIPROLU20181}. While this strongly supports the scalability of fluidising powder feed systems, it weakens the parallels that can be drawn between the behaviour of this system and others in literature. To address this, the chokepoint could be reintroduced given the powder size is reduced to prevent the clogging issue. This could, however, reduce the pressure differential seen by the piston leading to a reduced packing efficacy.
+Further unexpected behaviour can be seen in \autoref{fig:52} (c), where a non-negligible divergence is observed between the mass flow rates calculated from the two methods. A review of the corresponding video recording revealed no clear cause; the test was conducted under the same conditions as adjacent ones and appeared visually similar.
+
+The final and most significant outcome of the testing is the measured mass flow rate range of 20 g/s to 60 g/s. This is approximately three orders of magnitude greater than feed rates reported in previous systems, such as 3.5 and 5.7 g/min~\cite{BHATTIPROLU20181}. While this result highlights the strong scalability potential of fluidised powder feed systems, it limits the direct comparability of this system's behaviour with those described in existing literature. To address this disparity, a chokepoint could be reintroduced, provided the powder particle size is reduced to avoid clogging. However, this modification may also lower the pressure differential across the piston, potentially reducing packing efficiency.
+
+\subsection{System Controllability}
+Even with the variation in mass flow rates outlined above, they still follow a general linear trend of mass flow rate increasing with static pressure, seen in \autoref{fig:controllability-py}.
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/controllability_py.png}
+        \caption{Mass Flow Rate Relationship with Stagnation Pressure}\label{fig:controllability-py}
+    \end{minipage}    
+\end{figure}    
+While direct extrapolation to the lower flow rates reported in the literature would be inappropriate, the results nonetheless provide strong evidence that the required inlet pressure for powder feed systems can be significantly reduced. This is a parameter that has not been thoroughly investigated in prior studies, likely because feed systems for metallic powder-fed engines are designed to inject powder into combustion chambers operating at high pressures. In such systems, reducing a relative pressure difference between the tank inlet and outlet from 10 bar to 3 bar offers limited benefits, as the combustion chamber itself may be at pressures exceeding 30 bar. 
+
+Although reducing the pressure rating of a 40 bar vessel to 33 bar yields some mass and volume savings, the impact is far more significant when reducing a 10 bar vessel to 3 bar. This makes the finding particularly valuable for ISM applications. In addition to the miniaturisation aspect, the required gas flow rate can be reduced. In space-based cold spray systems, gas is a non-renewable and limited resource. Therefore, lowering both the inlet pressure and the associated gas flow rate required for effective powder feeding provides clear advantages—specifically, reducing the quantity and pressure of gas that must be transported into space.
+
+
+It should be noted, however, that the graph presented obscures an important detail: two distinct driving forces influence the mass flow rate, and these are non-trivially coupled. Therefore, further investigation into how these driving forces behave at lower pressures is required before this finding can be confidently used to inform design decisions.
 
 \subsection{System Behaviour}
-The system behaviour differed greatly to expectations outlined in \autoref{sec:expected-behaviour}. As seen in \autoref{fig:real}, there was a fluidising region touching the piston head which was unexpected. 
+The system behaviour differed significantly from the expectations outlined in \autoref{sec:expected-behaviour}. As seen in \autoref{fig:real}, a fluidising region was observed in direct contact with the piston head, an unexpected result. 
 \begin{figure}[htbp]
     \centering
     
@@ -455,46 +505,150 @@ The system behaviour differed greatly to expectations outlined in \autoref{sec:e
     \end{minipage}
     
 \end{figure}
-The end cap blocks the view of the cone so there is no way to tell from these tests whether there was also a fluidising region there or if they connected. It is hypothesised that this is due to the particle size of the powder. At the micron scale, gravity increasingly plays a role in the fluidisation process for larger particles, as discussed in \autoref{sec:background-powder-beds}, therefore at the millimeter scale, it could dominate entirely. This behaviour was also seen along side an inconsistent velocity of the piston, moving in steps more often than a constant and slow velocity. It is also unclear why this happens and it is even more of a surprise that this is not seen in any of the mass flow rate data. Whether this is due to the fact that the powder was only rearranging in the tank in discrete movements and was still being smoothly dispensed or was redistributing in the pipe as it travelled into the seperator is also unclear and more analysis would have to be conducted.
+The end cap obstructs the view of the conical section, so it remains unclear whether a fluidising region was also present there, or whether the two regions may have been connected. It is hypothesised that this unexpected fluidisation pattern is due to the particle size of the powder. As discussed in \autoref{sec:background-powder-beds}, at the micron scale, gravity increasingly influences the fluidisation of larger particles. At the millimetre scale, gravitational effects may dominate entirely.
 
-\section{Results of Numerical Analysis}
+This behaviour was also accompanied by inconsistent piston movement, which progressed in discrete steps rather than with a smooth, continuous velocity. The cause of this behaviour is not well understood, and it is particularly surprising that it is not reflected in any of the mass flow rate data. It is possible that the powder was being rearranged inside the tank in discrete bursts while still being dispensed smoothly, or that redistribution occurred within the pipe as the powder travelled toward the separator. However, further analysis would be required to investigate this effect in detail.
 
+\section{Numerical Analysis of Mass Flow Rate}
+As mentioned in \autoref{sec:numerical-setup}, the validity of the simulations, especially given their 2D nature, are unknown. However the numerical investigation did present some potentially useful results.
 
+\subsection{Results of System Under Microgravity}
+The investigation into the flow under microgravity was conducted first and the simulation was tuned to this regime. The relationship between mass flow rate and piston velocity was conducted, recording the integration of the particle amount in the system over time as well as recording the particle distributions. As shown in \autoref{fig:sim-results-no-grav}, the relationship can be somewhat replicated as a positive correlation between mass flow and piston velocity can be seen.
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/sim_no_grav_amount.png}
-        \caption*{(a) Hydrostatic Pressure Testing Setup}
+        \caption*{(a) Amount of Powder in the System}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/sim_no_grav_rate.png}
-        \caption*{(b) Screenshot of Results from Video}
+        \caption*{(b) Mass Flow Rate of Powder}
     \end{minipage}    
-    \caption{Results of Tank FEA}\label{fig:sim-results-no-grav}
+    \caption{Numerical Results of System Under Microgravity}\label{fig:sim-results-no-grav}
 
 \end{figure} 
+Interestingly, the powder mass flow rate initially starts at the same rate and only diverges after a time. Even then, it is not consistent suggesting longer or more detailed simulations could reveal additional information.
 
+The particle distributions at the start, 0.1s in and the end (whether that is 0.2 seconds for the successful simulations or 0.175 for the ones that crashed), are shown in \autoref{fig:30mm_no_grav} and \autoref{fig:90mm_no_grav}.
+\begin{figure}[htbp]
+    \centering
 
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_no_grav_1.png}
+        \caption*{(a) Starting Distribution}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_no_grav_2.png}
+        \caption*{(b) Distribution after 0.1 seconds}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_no_grav_3.png}
+        \caption*{(c) Final Distribution}
+    \end{minipage}
+    \caption{Particle Distributions from a Piston Velocity of 30 mm/s}
+
+\end{figure}\label{fig:30mm_no_grav}
+
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_no_grav_1.png}
+        \caption*{(a) Starting Distribution}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_no_grav_2.png}
+        \caption*{(b) Distribution after 0.1 seconds}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_no_grav_3.png}
+        \caption*{(c) Final Distribution}
+    \end{minipage}
+    \caption{Particle Distributions from a Piston Velocity of 90 mm/s}
+
+\end{figure}\label{fig:90mm_no_grav}
+These simulations seem to show two seperate regions of particle density. While this could be viewed as supporting the theorised behaviour, outlined in \autoref{sec:expected-behaviour}, \autoref{fig:90mm_no_grav} (c) seems to suggest that when the piston moves fast enough towards the outlet, the fluidised region vanishes. This could be because the piston will move 90 mm/s in the simulation regardless of the force provided by any arching at the tube-cone interface or could be due to physics not captured by the chosen models, either way additional investigations into this could prove fruitful but were not conducted given the time requirements of the project.
+
+\subsection{Results of System Under Earth's Gravity}
+The simulations with gravity proved much more problematic. The ethos of the numerical investigation was to set up a system with identical parameters and only change the strength of gravitational force applied. This resulted in the system under gravity being relatively unrepresentative of the experimental phenomena observed. Shown in \autoref{fig:sim-results-grav}, the amount of powder in the system and the corresponding mass flow rate for the 30 mm/s and 90 mm/s piston velocities are shown.
 \begin{figure}[htbp]
     \centering
 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/sim_grav_amount.png}
-        \caption*{(a) Hydrostatic Pressure Testing Setup}
+        \caption*{(a) Amount of Powder in the System}
     \end{minipage}    
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../report_assets/sim_grav_rate.png}
-        \caption*{(b) Screenshot of Results from Video}
+        \caption*{(b) Mass Flow Rate of Powder}
     \end{minipage}    
-    \caption{Results of Tank FEA}\label{fig:sim-results-grav}
+    \caption{Numerical Results of System Under Earth's Gravity}\label{fig:sim-results-grav}
 
 \end{figure} 
+Ideally, 60 mm/s would also have been investigated but given the troubleshooting of this behaviour took so long, there was no time to complete this set of studies. This independence of mass flow rate and piston velocity deviates from the literature and experimental results indicates an incorrect formulation of the simulation. The main cause for this is thought to be the value taken for the gravitational constant. Given nothing else to go off of, gravitational acceleration was taken to be 9.81 m/s. Considering the inlet velocity is 0.01 m/s, it is assumed that this was so large that it dominated the behaviour. As seen in \autoref{fig:30mm_grav} and \autoref{fig:90mm_grav}, the piston still increased compaction at the outlet with the void above the particles being much smaller in the 90 mm/s case.
+\begin{figure}[htbp]
+    \centering
 
-Note that not all the simulations finished their desired 2000 steps. As seen in \autoref{fig:sim-results-no-grav} (a), the 90mm simulation terminated early. This instability was investigated by running a simulation on half time and it again crashed at the same simulation time. This implies that it was caused by the mesh deforming too much, an issue outlined in \autoref{sec:numerical-setup}, as both crashed at the same mesh deformation and the stability was not improved by the reduce in time step.
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_grav_1.png}
+        \caption*{(a) Starting Particle Distribution}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_grav_2.png}
+        \caption*{(b) Particle Distribution after 0.1 seconds}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/30mm_grav_3.png}
+        \caption*{(c) Mass Flow Rate}
+    \end{minipage}
+    \caption{Particle Distributions from a Piston Velocity of 30 mm/s}
+
+\end{figure}\label{fig:30mm_grav}
+\begin{figure}[htbp]
+    \centering
+
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_grav_1.png}
+        \caption*{(a) Starting Particle Distribution}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_grav_2.png}
+        \caption*{(b) Particle Distribution after 0.1 seconds}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../report_assets/90mm_grav_3.png}
+        \caption*{(c) Mass Flow Rate}
+    \end{minipage}
+    \caption{Particle Distributions from a Piston Velocity of 90 mm/s}
+
+\end{figure}\label{fig:90mm_grav}
+However, there are no visual indications of fluidisation and therefore it is assumed that the velocity inlet is too little to promete it. Given more time, a new simulation would be setup, ideally in 3D to ground the inlet parameters and gravity in research-based values. 
+
+Also of note, \autoref{fig:90mm_grav} (c) shows voids near the piston, right before crashing. This is thought to be a symptom of the deformed mesh issue discussed in \autoref{sec:numerical-setup}.

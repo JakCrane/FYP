@@ -1,13 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# # Paths to your two Fluent output files
+# Paths to your two Fluent output files
 # input_file1 = 'Research_Files/June/90mm_wide_wide.out'
 # input_file2 = 'Research_Files/June/60mm_wide_wide.out'
 # input_file3 = 'Research_Files/June/30mm_wide_wide.out'
 
 input_file1 = 'Research_Files/June/90mm_grav_retake.out'
-input_file2 = 'Research_Files/June/60mm_grav_initial.out'
+input_file2 = 'Research_Files/June/30mm_grav.out'
 input_file3 = 'Research_Files/June/30mm_grav.out'
 def read_fluent_out(path):
     data = []
@@ -40,10 +40,10 @@ plt.figure(figsize=(12, 8))    # Increase figure size
 plt.rc('xtick', labelsize=24)   # Increase x-axis tick font size
 plt.rc('ytick', labelsize=24)   # Increase y-axis tick font size
 
-plt.plot(df1['flow_time'], df1['report_def_0'], label='90mm')
-plt.plot(df2['flow_time'], df2['report_def_0'], label='60mm')
-plt.plot(df3['flow_time'], df3['report_def_0'], label='30mm')
-plt.xlabel('Simulation Time')
+plt.plot(df1['flow_time'], df1['report_def_0'], label='90 mm/s')
+# plt.plot(df2['flow_time'], df2['report_def_0'], label='60 mm/s')
+plt.plot(df3['flow_time'], df3['report_def_0'], label='30 mm/s')
+plt.xlabel('Simulation Time (s)')
 plt.ylabel('Amount of Powder in System')
 plt.legend()
 plt.tight_layout()
@@ -59,10 +59,10 @@ plt.figure(figsize=(12, 8))    # Increase figure size
 plt.rc('xtick', labelsize=24)   # Increase x-axis tick font size
 plt.rc('ytick', labelsize=24)   # Increase y-axis tick font size
 
-plt.plot(df1['flow_time'], df1_diff, label='90mm')
-plt.plot(df2['flow_time'], df2_diff, label='60mm')
-plt.plot(df3['flow_time'], df3_diff, label='30mm')
-plt.xlabel('Simulation Time')
+plt.plot(df1['flow_time'], df1_diff, label='90 mm/s')
+# plt.plot(df2['flow_time'], df2_diff, label='60 mm/s')
+plt.plot(df3['flow_time'], df3_diff, label='30 mm/s')
+plt.xlabel('Simulation Time (s)')
 plt.ylabel('Powder Flow Rate')
 plt.legend()
 plt.tight_layout()
