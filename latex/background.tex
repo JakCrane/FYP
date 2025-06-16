@@ -23,7 +23,7 @@ The removal of the oxide layer is thought to result from adiabatic shear instabi
 
 A unique advantage of CSAM is that it is a solid-state manufacturing process. Because the material never transitions through a liquid phase, thermal input remains low, preserving the original microstructure of both the powder and the underlying substrate. This minimises issues such as residual thermal stresses, material oxidation and chemical composition inhomogeneity~\cite{ma16072765}. While solid-state manufacturing also tends to be better at reducing porosity, \autoref{fig:cs-porosity} shows that this can still be a problem depending on the parameters of the system. 
 
-Arguably the most important parameter is the velocity of the particle impacting the surface. If this velocity is too low then bonding does not occur and if it is too high the powder roughens or erodes the substrate~\cite{Guo2022}. This velocity is dependent on the choice, pressure and temperature of accelerant gas and properties of the powder like mass flow rate, size, shape and hardness. All of these must be carefully chosen or controlled to produce high-quality deposits.
+Arguably the most important parameter is the velocity of the particle impacting the surface. If this velocity is too low then bonding does not occur and if it is too high the powder roughens or erodes the substrate~\cite{Guo2022}. This velocity is dependent on the choice, pressure and temperature of accelerant gas and properties of the powder such as mass flow rate, size, shape and hardness. All of these must be carefully chosen or controlled to produce high-quality deposits.
 
 
 \section{Fluidised Powder Bed Phenomenon}\label{sec:background-powder-beds}
@@ -78,7 +78,7 @@ The second innovation involved fluidising the powder from both the piston face a
    
 \end{figure}
 
-The final revision was removing the fluidisation at the end of the tank entirely, as seen in \autoref{fig:gas-permeable}. Designing the tank outlet to include a porous medium in its walls requires additional structural reinforcement, which increases the overall mass. Furthermore, the extra plumbing needed to supplt fluidising gas to the outlet adds unnecessary mass, which can be avoided by fluidising solely from the rear.
+The final revision was removing the fluidisation at the end of the tank entirely, as seen in \autoref{fig:gas-permeable}. Designing the tank outlet to include a porous medium in its walls requires additional structural reinforcement, which increases the overall mass. Furthermore, the extra plumbing needed to supply fluidising gas to the outlet adds unnecessary mass, which can be avoided by fluidising solely from the rear.
 \begin{figure}[htbp]
     \centering
     
@@ -90,7 +90,7 @@ The final revision was removing the fluidisation at the end of the tank entirely
    
 \end{figure}
 
-Powder feed systems for powder-fed rocket motors have many similarities with CSAM feed systems but differ in one notable respect. While the particles in cold spray are fed into atmospheric conditions, or vacuum conditions for space applications, the particles in an engine are fed into the high-pressure combustion chamber. This means that the downstream pressure in the two systems differs significantly, which explains why the majority of the literature focuses on high-pressure powder feed systems. Given that lower pressures, $>1\,\mathrm{MPa}$, are less extensively investigated, this report contributes to the analysis of such conditions.
+Powder feed systems for powder-fed rocket motors have many similarities with CSAM feed systems but differ in one notable respect. While the particles in cold spray are fed into atmospheric conditions, or vacuum conditions for space applications, the particles in an engine are fed into the high-pressure combustion chamber. This means that the downstream pressure in the two systems differs significantly, which explains why the majority of the literature focuses on high-pressure powder feed systems. Given that lower pressures, $<1\,\mathrm{MPa}$, are less extensively investigated, this report contributes to the analysis of such conditions.
 % A commonly cited first implementation of a fluisising powder feed system consists of a cylindrical tank with a piston to constrain the powder to the outlet~\cite{LI2021712}. As this paper is no longer in the public domain, the author assumes that the piston is motor actuated as the use of gas-actuated pistons is often credited to later work~\cite{TANG2023118406} and how the tank is fluidised is unknown. The gas actuated piston revisions pass the fluidising gas down the piston rod and through a gas-permeable piston face~\cite{Loftus1972}. Close to the outlet there is a porous section in which the fluidising gas is supplied. Despite the number of papers referencing this research, the author is unable to validate whether this is still in the public domain. This design was improved upon by pneumatically actuating the piston and supplying the fluidising gas through the piston shaft, with the gas exiting a porous plate mounted on the piston face~\cite{Loftus1972}. 
 
 \section{Propellent Management Devices}
@@ -111,7 +111,7 @@ The need to store material in space is not new and has received extensive resear
     \end{minipage}
     
 \end{figure}
-Vanes, seen in \autoref{fig:vane}, sponges and galleries have been well tested in microgravity environments~\cite{Hartwig2016} but they rely on surface tension and are therefore only applicable to storing liquid. Positive expulsion devices like bladders, diaphragms and pistons, seen in \autoref{fig:piston}, mechanically force propellant towards the outlet and, are thus suitable for powder applications. 
+Vanes, seen in \autoref{fig:vane}, sponges and galleries have been well tested in microgravity environments~\cite{Hartwig2016} but they rely on surface tension and are therefore only applicable to storing liquid. Positive expulsion devices such as bladders, diaphragms and pistons, seen in \autoref{fig:piston}, mechanically force propellant towards the outlet, and are thus suitable for powder applications. 
 
 In addition to enabling more reliable powder dispensation, constraining the powder can prevent problematic dynamics such as sloshing from occuring within the tank. This reduces the system's footprint on the rest of the spacecraft and simplifies attitude control.
 
@@ -133,12 +133,12 @@ Powder in a tightly-packed (bulk) form exhibits entirely different dynamics from
     \end{minipage}
 \end{figure}
 This means powders respond to stress in a manner intermediate between a fluid and a frictional solid: they dilate under shear, compact under normal load, and can sustain stable structures, such as those shown in \autoref{fig:bulk_powder_structures}, that block flow in hoppers. 
-\section{Modelling Two-phase flow}
+\section{Modelling Two-Phase flow}
 Given the high cost of conducting experiments in microgravity, this project relies on correlating simulated behaviour under gravity with the experimental results, and then comparing this with the simulations conducted under microgravity conditions. Therefore, the simulation model used is outlined below.
 
 Due to the wide variety of two-phase flow types, there are numerous ways to model the behaviour.  The general idea applies the conservation of mass, momentum and energy equations for both phases over a fixed control volume. While this formulation is sufficient for performing direct numerical simulation, simplifying assumptions are often made to avoid the unrealistic computational demands~\cite{enwald1996eulerian}. 
 
-Fluidising beds are typically simulated using one of two main approaches: the Eulerian-Lagrangian method or the Eulerian-Eulerian method~\cite{C6RA28615A}. The Eulerian-Lagrangian treats the particles as a discrete phase and the fluidising gas as a continuum. It tracks the dynamics of individual particles in a Lagrangian reference frame and couples them to the gas through interphase momentum exchange~\cite{SUBRAMANIAM2013215}. The Eulerian-Eulerian method models both phases as interpenetrating continua, tracking the local volume fraction of the particle phase and using constitutive equations from granular flow theory to couple the two~\cite{C6RA28615A}. As discussed in \autoref{sec:numerical-setup}, the Eulerian-Eulerian model is most applicable to the system under study so is further outlined.
+Fluidising beds are typically simulated using one of two main approaches: the Eulerian-Lagrangian method or the Eulerian-Eulerian method~\cite{C6RA28615A}. The Eulerian-Lagrangian treats the particles as a discrete phase and the fluidising gas as a continuum. It tracks the dynamics of individual particles in a Lagrangian reference frame and couples them to the gas through interphase momentum exchange~\cite{SUBRAMANIAM2013215}. The Eulerian-Eulerian method models both phases as interpenetrating continua, tracking the local volume fraction of the particle phase and using constitutive equations from granular flow theory to couple the two~\cite{C6RA28615A}. As discussed in \autoref{sec:numerical-setup}, the Eulerian-Eulerian model is most applicable to the system under study and is therefore outlined further.
 
 While the drag model is not a constitutive equation in the strict sense, it functions as one in Eulerian-Eulerian models by closing the system of equations. Therefore the choice of drag model significant impacts the resulting dynamics, particularly with respect to the behaviour of bubbles and bed expansion. The Gidaspow model has found to be the most representative for fluidised beds~\cite{C6RA28615A}.
 

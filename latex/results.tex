@@ -16,7 +16,7 @@ To test the hypothesised issue with the previous design, animations of the 2D si
     \end{minipage}
     \caption{Phase Density of Old Design after 2 Seconds}\label{fig:old-design-phase-density}
 \end{figure}
-As illustrated, there is a marked difference in the powder distribuiton between the two cases. While the powder in the tank under gravity appears to fully fluidise, the tank in mircogravity remains relatively unaffected by the flow. This is likely because the steady-state flow field does not interact with the region of the tank where the powder settles. For completeness, all unprocessed simulation images are provided in \autoref{sec:unprocessed-images}.
+As illustrated, there is a marked difference in the powder distribution between the two cases. While the powder in the tank under gravity appears to fully fluidise, the tank in mircogravity remains relatively unaffected by the flow. This is likely because the steady-state flow field does not interact with the region of the tank where the powder settles. For completeness, all unprocessed simulation images are provided in \autoref{sec:unprocessed-images}.
 
 \begin{figure}[htbp]
     \centering
@@ -66,7 +66,7 @@ While a slight increase in von Mises stress was observed in the finer mesh, this
 
 The next failure mode checked was hoop stress rupture, evaluated using Lamé's equations. These calculations yielded a maximum stress of 8.88 MPa at the inner wall and 8.18 MPa at the outer wall. As these values are significantly lower than the stress concentrations around the bolt holes, hoop stress rupture was not considered the critical failure mode.
 
-After manufacturing, the tank underwent hydrostatic pressure testing. During the first attempt, pressurising the tank with water caused the epoxy-Delrin interface to seperate. Although this failure mode was anticipated during the design phase, it was expected that reattaching the end cap using a more plastic-compatible epoxy, along with thorough surface preperation of the Delrin bonding area, would resolve the issue. This assumption was validated in the subsequent pressure test, shown in \autoref{fig:hydro-results}.
+After manufacturing, the tank underwent hydrostatic pressure testing. During the first attempt, pressurising the tank with water caused the epoxy-Delrin interface to separate. Although this failure mode was anticipated during the design phase, it was expected that reattaching the end cap using a more plastic-compatible epoxy, along with thorough surface preperation of the Delrin bonding area, would resolve the issue. This assumption was validated in the subsequent pressure test, shown in \autoref{fig:hydro-results}.
 \begin{figure}[htbp]
     \centering
 
@@ -84,7 +84,7 @@ After manufacturing, the tank underwent hydrostatic pressure testing. During the
     \caption{Hydrostatic Pressure Testing of Tank}\label{fig:hydro-results}
 
 \end{figure}  
-Unfortunately, only a video recording of the test was taken and the logged pressure data was not captured. A screenshot of the video is shown in \autoref{fig:hydro-results} (b), where the jagged rise in gauge pressure is from the manual actuation of the pump. The tank held successfully held a gauge pressure of 7 bar for approximately 2 to 3 minutes before the pressure was released. Although maintaining pressure for a longer durations would have provided greater confidence in the tank's safety, formal pressure vessel certification was not required for the intended experimental use and was therefore not persued.
+Unfortunately, only a video recording of the test was taken and the logged pressure data was not captured. A screenshot of the video is shown in \autoref{fig:hydro-results} (b), where the jagged rise in gauge pressure is from the manual actuation of the pump. The tank held successfully held a gauge pressure of 7 bar for approximately 2 to 3 minutes before the pressure was released. Although maintaining pressure for a longer durations would have provided greater confidence in the tank's safety, formal pressure vessel certification was not required for the intended experimental use and was therefore not pursued.
 
 \section{First Test}\label{sec:first-test}
 As mentioned in \autoref{sec:piston}, the initial test was conducted without sand and failed to push the piston down the tank. This quick test motivated the need to characterise the pressure source, as the pressure readings upstream and downstream of the tank were both lower and more sluggish than expected. As a result the failure mode of piston crumpling was ruled out, and subsequent piston designs did not account for this possibility. Following the characterisation of the pressure source, the second piston was tested, seen in \autoref{fig:first-test}. 
@@ -101,7 +101,7 @@ As mentioned in \autoref{sec:piston}, the initial test was conducted without san
 \end{figure}
 The piston initially started near the inlet of the tank and was successfully pushed toward the outlet. However, upon reaching the sand, it became stuck. The unpacked grains formed a wedge beneath the piston, causing it to jam against the tank walls. Since the powder was not compacted against the outlet, ratholing occurred, with gas entraining sand particles through the outlet—highlighting an undesirable dispensing regime.
 
-The piston-to-wall clearance was designed to be 1 mm, the same order of magnitude as the diameter of some of the large grains of sand, so it is expected that this specific issue would not have occurred with finer-grain sand. While options such as purchasing finer sand or crushing the current sample were considered, it was ultimately decided to pursue a new design. This jamming behavior is not well reported in piston tank design literature and posed challenges for friction characterization. Although a full analysis of the piston mechanics was of great interest, complexities in the underlying physics pushed it outside the scope of the project due to time constraints.
+The piston-to-wall clearance was designed to be 1 mm, the same order of magnitude as the diameter of some of the large grains of sand, so it is expected that this specific issue would not have occurred with finer-grain sand. While options such as purchasing finer sand or crushing the current sample were considered, it was ultimately decided to pursue a new design. This jamming behavior is not well reported in piston tank design literature and posed challenges for friction characterisation. Although a full analysis of the piston mechanics was of great interest, complexities in the underlying physics pushed it outside the scope of the project due to time constraints.
 
 \section{Characterising Pressure Source}\label{sec:static_test}
 \subsection{Initial Test}
@@ -190,7 +190,7 @@ Based on experimental testing, it was concluded that the observed behaviour was 
 \[
 \frac{p}{p_o} = 0.52828178.
 \]
-This relation was used to calculate the upstream stagnation pressures seen in \autoref{tab:static-stag-pressures} seen below.
+This relation was used to calculate the upstream stagnation pressures seen in \autoref{tab:static-stag-pressures} below.
 
 % \begin{table}[htbp]
 %     \centering
@@ -247,7 +247,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/41_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test Using a 4 Bar Inlet Pressure}
+    \caption{1st Test Using a 4 bar Inlet Pressure}
 
 \end{figure}\label{fig:41}
 \vfill
@@ -271,7 +271,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/42_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test Using a 4 Bar Inlet Pressure}
+    \caption{2nd Test Using a 4 bar Inlet Pressure}
     
 \end{figure}\label{fig:42}
 \vfill
@@ -295,7 +295,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/43_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test Using a 4 Bar Inlet Pressure}
+    \caption{3rd Test Using a 4 bar Inlet Pressure}
     
 \end{figure}\label{fig:43}
 \vfill
@@ -324,7 +324,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/51_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test Using a 5 Bar Inlet Pressure}
+    \caption{1st Test Using a 5 bar Inlet Pressure}
     
 \end{figure}\label{fig:51}
 \vfill
@@ -349,7 +349,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/52_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test Using a 5 Bar Inlet Pressure}
+    \caption{2nd Test Using a 5 bar Inlet Pressure}
     
 \end{figure}\label{fig:52}
 \vfill
@@ -374,7 +374,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/53_clean_flow_100.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test Using a 5 Bar Inlet Pressure}
+    \caption{3rd Test Using a 5 bar Inlet Pressure}
     
 \end{figure}\label{fig:53}
 \vfill
@@ -402,7 +402,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/61_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{1st Test Using a 6 Bar Inlet Pressure}
+    \caption{1st Test Using a 6 bar Inlet Pressure}
     
 \end{figure}\label{fig:61}
 
@@ -427,7 +427,7 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/63_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{2nd Test Using a 6 Bar Inlet Pressure}
+    \caption{2nd Test Using a 6 bar Inlet Pressure}
     
 \end{figure}\label{fig:63}
 
@@ -452,16 +452,16 @@ This relation was used to calculate the upstream stagnation pressures seen in \a
         \includegraphics[width=\textwidth]{../report_assets/64_clean_flow_50.png}
         \caption*{(c) Mass Flow Rate}
     \end{minipage}
-    \caption{3rd Test Using a 6 Bar Inlet Pressure}
+    \caption{3rd Test Using a 6 bar Inlet Pressure}
     
 \end{figure}\label{fig:64}
 \vfill
 \newpage
 
 \subsection{Mass Flow Rate Analysis and Discussion}
-For each test, the raw load cell readings are shown in graphs (a). Most plots reveal the presence of noise in the readings, resulting in several data points being significantly higher or lower than the surrounding values. Although steps were taken to mitigate this, such as taping down the screw terminals in case of faulty wire connections, the issue persisted. Interestingly, the noise appears to be less common in the lower-pressure recordings, suggesting a potential link to electrostatic charge buildup in the sand due to the triboelectric effect.
+For each test, the raw load cell readings are shown in graphs (a) above. Most plots reveal the presence of noise in the readings, resulting in several data points being significantly higher or lower than the surrounding values. Although steps were taken to mitigate this, such as taping down the screw terminals in case of faulty wire connections, the issue persisted. Interestingly, the noise appears to be less common in the lower-pressure recordings, suggesting a potential link to electrostatic charge buildup in the sand due to the triboelectric effect.
 
-Anomalous readings were manually removed, and the load cell data from the start and end of the tank were combined to compute the total mass exiting the tank over time, as shown in graphs (b). A simple moving average was then applied to the combined tank and cyclone separator data: a window of 100 data points was used for the 4 and 5 bar inlet pressure tests, and 50 data points for the 6 bar tests. With a sensor polling rate of 10 Hz, a 100-point moving average introduces edge distortion for up to 10 seconds after the valve is opened. Green dashed lines in the graphs indicate the valve open/close events, while red dashed lines mark the time regions considered free from edge distortion, 10 seconds after opening and 10 seconds before the mass plateau for the lower-pressure tests, and 5 seconds for the 6 bar test.
+Anomalous readings were manually removed, and the load cell data from the start and end of the tank were combined to compute the total mass exiting the tank over time, as shown in graphs (b) above. A simple moving average was then applied to the combined tank and cyclone separator data: a window of 100 data points was used for the 4 and 5 bar inlet pressure tests, and 50 data points for the 6 bar tests. With a sensor polling rate of 10 Hz, a 100-point moving average introduces edge distortion for up to 10 seconds after the valve is opened. Green dashed lines in the graphs indicate the valve open/close events, while red dashed lines mark the time regions considered free from edge distortion, 10 seconds after opening and 10 seconds before the mass plateau for the lower-pressure tests, and 5 seconds for the 6 bar test.
 
 One of the most notable observations is the measured mass flow rate range of 20 g/s to 60 g/s. This is approximately three orders of magnitude greater than feed rates reported in previous systems, such as 3.5 and 5.7 g/min~\cite{BHATTIPROLU20181}. While this result highlights the strong scalability potential of fluidised powder feed systems, it limits the direct comparability of this system's behaviour with those described in existing literature. To address this disparity, a chokepoint could be reintroduced, provided the powder particle size is reduced to avoid clogging. However, this modification may also lower the pressure differential across the piston, potentially reducing packing efficiency.
 
@@ -531,9 +531,9 @@ The investigation into the flow under microgravity was conducted first and the s
     \caption{Numerical Results of System Under Microgravity}\label{fig:sim-results-no-grav}
 
 \end{figure} 
-Interestingly, the powder mass flow rate initially starts at the same rate and only diverges after a time. Even then, it is not consistent suggesting longer or more detailed simulations could reveal additional information.
+Interestingly, the powder mass flow rate initially starts at the same rate and only diverges after a time. Even then, it is not consistent, suggesting longer or more detailed simulations could reveal additional information.
 
-The particle distributions at the start, 0.1s in and the end (whether that is 0.2 seconds for the successful simulations or 0.175 for the ones that crashed), are shown in \autoref{fig:30mm_no_grav} and \autoref{fig:90mm_no_grav}.
+The particle distributions at the start, 0.1s in and the end (whether that is 0.2 seconds for the successful simulations or 0.175 for the ones that crashed) are shown in \autoref{fig:30mm_no_grav} and \autoref{fig:90mm_no_grav}.
 \begin{figure}[htbp]
     \centering
 
@@ -581,7 +581,7 @@ The particle distributions at the start, 0.1s in and the end (whether that is 0.
     \caption{Particle Distributions from a Piston Velocity of 90 mm/s}
 
 \end{figure}\label{fig:90mm_no_grav}
-These simulations seem to show two seperate regions of particle density. While this could be viewed as supporting the theorised behaviour, outlined in \autoref{sec:expected-behaviour}, \autoref{fig:90mm_no_grav} (c) seems to suggest that when the piston moves fast enough towards the outlet, the fluidised region vanishes. This could be because the piston will move 90 mm/s in the simulation regardless of the force provided by any arching at the tube-cone interface or could be due to physics not captured by the chosen models, either way additional investigations into this could prove fruitful but were not conducted given the time requirements of the project.
+These simulations seem to show two separate regions of particle density. While this could be viewed as supporting the theorised behaviour, outlined in \autoref{sec:expected-behaviour}, \autoref{fig:90mm_no_grav} (c) seems to suggest that when the piston moves fast enough towards the outlet, the fluidised region vanishes. This could be because the piston will move 90 mm/s in the simulation regardless of the force provided by any arching at the tube-cone interface or could be due to physics not captured by the chosen models, either way additional investigations into this could prove fruitful but were not conducted given the time requirements of the project.
 
 \subsection{Results of System Under Earth's Gravity}
 The simulations with gravity proved much more problematic. The ethos of the numerical investigation was to set up a system with identical parameters and only change the strength of gravitational force applied. This resulted in the system under gravity being relatively unrepresentative of the experimental phenomena observed. Shown in \autoref{fig:sim-results-grav}, the amount of powder in the system and the corresponding mass flow rate for the 30 mm/s and 90 mm/s piston velocities are shown.
@@ -602,7 +602,7 @@ The simulations with gravity proved much more problematic. The ethos of the nume
     \caption{Numerical Results of System Under Earth's Gravity}\label{fig:sim-results-grav}
 
 \end{figure} 
-Ideally, 60 mm/s would also have been investigated but given the troubleshooting of this behaviour took so long, there was no time to complete this set of studies. This independence of mass flow rate and piston velocity deviates from the literature and experimental results indicates an incorrect formulation of the simulation. The main cause for this is thought to be the value taken for the gravitational constant. Given nothing else to go off of, gravitational acceleration was taken to be 9.81 m/s. Considering the inlet velocity is 0.01 m/s, it is assumed that this was so large that it dominated the behaviour. As seen in \autoref{fig:30mm_grav} and \autoref{fig:90mm_grav}, the piston still increased compaction at the outlet with the void above the particles being much smaller in the 90 mm/s case.
+Ideally, 60 mm/s would also have been investigated but given the troubleshooting of this behaviour took so long, there was no time to complete this set of studies. This independence of mass flow rate and piston velocity deviates from the literature and experimental results indicate an incorrect formulation of the simulation. The main cause for this is thought to be the value taken for the gravitational constant. Given nothing else to go off of, gravitational acceleration was taken to be 9.81 m/s. Considering the inlet velocity is 0.01 m/s, it is assumed that this was so large that it dominated the behaviour. As seen in \autoref{fig:30mm_grav} and \autoref{fig:90mm_grav}, the piston still increased compaction at the outlet with the void above the particles being much smaller in the 90 mm/s case.
 \begin{figure}[htbp]
     \centering
 
