@@ -148,11 +148,11 @@ plt.axvline(x=24.8, color='green', linestyle='--')
 plt.axvline(x=29.8, color='red', linestyle='--')
 plt.axvline(x=43.9, color='red', linestyle='--')
 plt.axvline(x=55.4, color='green', linestyle='--')
-
 plt.xlabel('Experiment Time (s)')
 plt.ylabel('Mass Flow Rate (g/s)')
 plt.legend()
 plt.ylim(-10, 68)
+plt.tight_layout()
 
 # # Show the plot
 plt.savefig('./latex/report_assets/64_clean_flow_50.png')

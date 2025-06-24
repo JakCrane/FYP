@@ -12,6 +12,7 @@
 /latex/bin/*
 
 !latex/bin/main.tex
+!latex/bin/main.pdf
 /Research_Files/April/fsi_stuff/fsi_files
 /Research_Files/May/fsi_for_real_this_time/*
 !Research_Files/May/fsi_for_real_this_time/fsi_2d_simplified_no_pwder.wbpj
